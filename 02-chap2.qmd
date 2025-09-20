@@ -1,4 +1,4 @@
-# Visualising Time Series Data
+# Introduction to Time Series Analysis
 
 ```{r}
 library(reticulate)

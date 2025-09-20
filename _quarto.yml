@@ -1,5 +1,6 @@
 project:
   type: book
+  output-dir: docs
 
 book:
   title: "Spatio-Temporal Data Analysis"
@@ -15,10 +16,7 @@ book:
 
 bibliography: thesisrefs.bib
 csl: american-statistical-association.csl
-degreetype: Doctor of Philosophy
-submitted: 2024
-affiliation: Department of Econometrics & Business Statistics
-degrees: 'B.Sc. (Hons), University of Tangambalanga'
+
 
 format:
   monashthesis-html: default
