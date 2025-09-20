@@ -1,0 +1,102 @@
+[
+  {
+    "objectID": "01-chap1.html",
+    "href": "01-chap1.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "1.1 Cross-sectional data\nIn statistics and data science, datasets can take different forms depending on how they are collected and organized. Understanding the type of data is crucial because it guides the choice of appropriate analytical methods.\nData collected at a single point in time across multiple units (e.g., households, firms, individuals).\nExample: household income survey conducted in 2025.\nAssumption: Each observation (e.g., each household, individual, firm) is assumed to be unrelated to the others.\nIn practice, this assumption can be violated if:",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "01-chap1.html#cross-sectional-data",
+    "href": "01-chap1.html#cross-sectional-data",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "There’s clustering (e.g., individuals from the same village may be correlated).\nThere’s spatial correlation (e.g., nearby locations may be similar).\nThere’s hidden time effects (if data were not truly collected at the same time).",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "01-chap1.html#time-series-data",
+    "href": "01-chap1.html#time-series-data",
+    "title": "1  Introduction",
+    "section": "1.2 Time series data",
+    "text": "1.2 Time series data\nA time series is a sequence of observations taken sequentially in time. The data may consist of one variable (univariate time series) or multiple variables (multivariate time series) observed over regular or irregular time intervals.\nExamples:\nUnivariate: Monthly rainfall in Colombo from 2000–2025.\nMultivariate: Monthly rainfall, temperature, and humidity in Colombo from 2000–2025.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "01-chap1.html#spatial-data",
+    "href": "01-chap1.html#spatial-data",
+    "title": "1  Introduction",
+    "section": "1.3 Spatial data",
+    "text": "1.3 Spatial data\nData linked to a geographical location or space.\nExample: soil pH levels measured across different districts in Sri Lanka.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "01-chap1.html#spatio-temporal-data",
+    "href": "01-chap1.html#spatio-temporal-data",
+    "title": "1  Introduction",
+    "section": "1.4 Spatio-temporal data",
+    "text": "1.4 Spatio-temporal data\nData that varies across both space and time.\nExample: daily dengue cases recorded across different districts over several years.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "01-chap1.html#longitudinal-data-repeated-cross-sections",
+    "href": "01-chap1.html#longitudinal-data-repeated-cross-sections",
+    "title": "1  Introduction",
+    "section": "1.5 Longitudinal data (Repeated cross-sections)",
+    "text": "1.5 Longitudinal data (Repeated cross-sections)\nLongitudinal data refer to data collected through repeated measurements over time. The measurements may be taken on the same units (e.g., following the same households each year) or on different units at different time points (e.g., different random samples of households each year).\nExample (different random samples of households each year)\nSuppose a national health survey is conducted every 5 years (2000, 2005, 2010, 2015, 2020). Each time, a new random sample of 5,000 households is selected.\nIn 2000 → Households A, B, C, …\nIn 2005 → Households X, Y, Z, …\nIn 2010 → Households P, Q, R, …\nHere, the same households are not followed across time, but the survey is still longitudinal, since measurements are taken repeatedly over time to study population-level changes (e.g., trends in obesity, smoking rates, or income inequality).",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "01-chap1.html#panel-data",
+    "href": "01-chap1.html#panel-data",
+    "title": "1  Introduction",
+    "section": "1.6 Panel data",
+    "text": "1.6 Panel data\nPanel data are a special case of longitudinal data, where the same units are observed consistently across multiple time periods. This allows analysts to study both within-unit dynamics (how a given unit changes over time) and between-unit differences.\nIn finance and econometric modelling, panel data is widely used because it captures both the cross-sectional dimension (different firms, individuals, or markets) and the time dimension (repeated observations).\nIn Panel data and Longitudinal data, which combines cross-sectional and time-series data, allows for the examination of both “within-behavior” and “between-behavior” effects.\nExample (Country-level Panel Data)\nSuppose you collect data on GDP growth rates for 50 countries from 2000–2020.\n1. Country-specific behavior (within a country over time)\nYou can see how Sri Lanka’s GDP growth changed year by year.\nExample:\n\nwas there a slowdown after the 2008 global crisis, followed by recovery?\n\n2. cross-country and temporal effects (Between countries over time)\nYou can compare trends across countries.\nExample:\n\nDid most countries experience a dip in 2008–2009 due to the financial crisis?\nDo developing countries generally grow faster than developed countries over these 20 years?",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "02-chap2.html",
+    "href": "02-chap2.html",
+    "title": "\n2  Visualising Time Series Data\n",
+    "section": "",
+    "text": "2.1 Time series\nA time series is a sequence of observations recorded in time order. The time intervals between observations can be regular (e.g., daily, monthly, yearly) or irregular (e.g., magnitude of a earthquake at a particular location).",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Visualising Time Series Data</span>"
+    ]
+  },
+  {
+    "objectID": "02-chap2.html#frequency-of-a-time-series-seasonal-periods",
+    "href": "02-chap2.html#frequency-of-a-time-series-seasonal-periods",
+    "title": "\n2  Visualising Time Series Data\n",
+    "section": "\n2.2 Frequency of a time series (Seasonal periods)",
+    "text": "2.2 Frequency of a time series (Seasonal periods)\nNumber of observations per natural time interval (Usually year, but sometimes a week, a day, an hour)\nSingle Seasonality\nThe time series exhibits one repeating pattern at a fixed frequency.\nExample:\nMonthly sales that peak every December (annual seasonality).\n\n\n\n\nData\nFrequency\n\n\n\nAnnual\n1\n\n\nQuarterly\n4\n\n\nMonthly\n12\n\n\nWeekly\n52\n\n\n\n\n\nMultiple Seasonality\nThe time series exhibits more than one repeating pattern at different frequencies simultaneously.\nExample:\nHourly electricity demand with a daily pattern (peaks every day at certain hours), a weekly pattern (weekdays vs weekends).\nWebsite traffic with hourly variation and seasonal holiday peaks.\n\n\n\nTime Unit Frequencies\n\nData\nMinute\nHour\nDay\nWeek\nYear\n\n\n\nDaily\nNA\nNA\nNA\n7\n365.25\n\n\nHourly\nNA\nNA\n24\n168\n8766.00\n\n\nHalf-hourly\nNA\nNA\n48\n336\n17532.00\n\n\nMinutes\n60\n1440\n1440\n10080\n525960.00\n\n\nSeconds\n60\n3600\n86400\n604800\n31557600.00",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Visualising Time Series Data</span>"
+    ]
+  },
+  {
+    "objectID": "02-chap2.html#dataframe-for-time-series-data",
+    "href": "02-chap2.html#dataframe-for-time-series-data",
+    "title": "\n2  Visualising Time Series Data\n",
+    "section": "\n2.3 DataFrame for time series data",
+    "text": "2.3 DataFrame for time series data\nWhen your DataFrame represents a time series, the index is usually the date or time, allowing pandas to:\n\nPlot time series easily\nResample or aggregate data by time\nCompute rolling statistics\n\n\n# Import pandas\n#py -m pip install pandas\nimport pandas as pd\n\n# Define data\nvalue = [100, 250, 78, 300, 500]\ntime = list(range(2015, 2020))\n\n# Create DataFrame\ndf = pd.DataFrame({\"Year\": time, \"Observation\": value})\n\n# Set 'Year' as index\ndf.set_index(\"Year\", inplace=True)\n\n# Display the DataFrame\nprint(df)\n\n      Observation\nYear             \n2015          100\n2016          250\n2017           78\n2018          300\n2019          500\n\n\nFor data collected more often than once a year (e.g., monthly, weekly, or daily), it’s important to tell the computer that the index represents time. We do this by converting the index to a time or date type using a time-class function. This helps us sort, select, and analyze the data correctly over time.\n\n# Sample monthly data\ndata = {\n    \"Month\": pd.date_range(start=\"2025-01-01\", periods=6, freq=\"M\"),  # 6 months\n    \"Sales\": [120, 150, 170, 130, 180, 200]\n}\n\n# Create DataFrame\nz = pd.DataFrame(data)\n\n# Format Month as \"Year Month\" (e.g., \"2025 Jan\")\nz[\"Month\"] = z[\"Month\"].dt.strftime(\"%Y %b\")\n\n# Set Month as index\nz.set_index(\"Month\", inplace=True)\n\n# Display the DataFrame\nprint(z)\n\n          Sales\nMonth          \n2025 Jan    120\n2025 Feb    150\n2025 Mar    170\n2025 Apr    130\n2025 May    180\n2025 Jun    200",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Visualising Time Series Data</span>"
+    ]
+  }
+]

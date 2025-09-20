@@ -1,0 +1,125 @@
+# Visualising Time Series Data
+
+```{r}
+library(reticulate)
+use_python("C:/Users/DELL/AppData/Local/Programs/Python/Python313/python.exe", required = TRUE)
+
+```
+
+## Time series
+
+A time series is a sequence of observations recorded in time order. The time intervals between observations can be regular (e.g., daily, monthly, yearly) or irregular (e.g., magnitude of a earthquake at a particular location).
+
+## Frequency of a time series (Seasonal periods)
+
+Number of observations per natural time interval (Usually year, but sometimes a week, a day, an hour)
+
+### Single Seasonality
+
+The time series exhibits one repeating pattern at a fixed frequency.
+
+Example:
+
+Monthly sales that peak every December (annual seasonality).
+
+```{r}
+# Create the dataframe
+data_frequency <- data.frame(
+  Data = c("Annual", "Quarterly", "Monthly", "Weekly"),
+  Frequency = c(1, 4, 12, 52)
+)
+
+# View the dataframe
+data_frequency |> knitr::kable()
+```
+
+### Multiple Seasonality
+
+The time series exhibits more than one repeating pattern at different frequencies simultaneously.
+
+Example:
+
+Hourly electricity demand with a daily pattern (peaks every day at certain hours), a weekly pattern (weekdays vs weekends).
+
+Website traffic with hourly variation and seasonal holiday peaks.
+
+```{r}
+# Load knitr
+library(knitr)
+
+# Create the dataframe
+frequencies <- data.frame(
+  Data = c("Daily", "Hourly", "Half-hourly", "Minutes", "Seconds"),
+  Minute = c(NA, NA, NA, 60, 60),
+  Hour = c(NA, NA, NA, 1440, 3600),
+  Day = c(NA, 24, 48, 1440, 86400),
+  Week = c(7, 168, 336, 10080, 604800),
+  Year = c(365.25, 8766, 17532, 525960, 31557600)
+)
+
+# Display as kable
+kable(frequencies, align = "c", caption = "Time Unit Frequencies")
+
+```
+
+## `DataFrame` for time series data
+
+When your DataFrame represents a time series, the index is usually the date or time, allowing pandas to:
+
+ - Plot time series easily
+
+ - Resample or aggregate data by time
+
+ - Compute rolling statistics
+
+```{python}
+#| echo: true
+# Import pandas
+#py -m pip install pandas
+import pandas as pd
+
+# Define data
+value = [100, 250, 78, 300, 500]
+time = list(range(2015, 2020))
+
+# Create DataFrame
+df = pd.DataFrame({"Year": time, "Observation": value})
+
+# Set 'Year' as index
+df.set_index("Year", inplace=True)
+
+# Display the DataFrame
+print(df)
+
+```
+
+For data collected more often than once a year (e.g., monthly, weekly, or daily), it’s important to tell the computer that the index represents time. We do this by converting the index to a time or date type using a time-class function. This helps us sort, select, and analyze the data correctly over time.
+
+```{python}
+#| echo: true
+# Sample monthly data
+data = {
+    "Month": pd.date_range(start="2025-01-01", periods=6, freq="M"),  # 6 months
+    "Sales": [120, 150, 170, 130, 180, 200]
+}
+
+# Create DataFrame
+z = pd.DataFrame(data)
+
+# Format Month as "Year Month" (e.g., "2025 Jan")
+z["Month"] = z["Month"].dt.strftime("%Y %b")
+
+# Set Month as index
+z.set_index("Month", inplace=True)
+
+# Display the DataFrame
+print(z)
+
+```
+
+## Time series visualisation using grammar of graphics
+
+### Introduction to "grammar of graphics" with plotnine
+
+
+

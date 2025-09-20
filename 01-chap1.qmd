@@ -1,0 +1,89 @@
+# Introduction {#sec-intro}
+
+In statistics and data science, datasets can take different forms depending on how they are collected and organized. Understanding the type of data is crucial because it guides the choice of appropriate analytical methods.
+
+## Cross-sectional data
+
+Data collected at a single point in time across multiple units (e.g., households, firms, individuals). 
+
+**Example:** household income survey conducted in 2025.
+
+**Assumption:** Each observation (e.g., each household, individual, firm) is assumed to be unrelated to the others.
+
+
+In practice, this assumption can be violated if:
+
+- There’s clustering (e.g., individuals from the same village may be correlated).
+
+- There’s spatial correlation (e.g., nearby locations may be similar).
+
+- There’s hidden time effects (if data were not truly collected at the same time).
+
+
+## Time series data
+
+A time series is a sequence of observations taken sequentially in time. The data may consist of one variable (univariate time series) or multiple variables (multivariate time series) observed over regular or irregular time intervals.
+
+**Examples:**
+
+Univariate: Monthly rainfall in Colombo from 2000–2025.
+
+Multivariate: Monthly rainfall, temperature, and humidity in Colombo from 2000–2025.
+
+## Spatial data
+
+Data linked to a geographical location or space.
+
+Example: soil pH levels measured across different districts in Sri Lanka.
+
+## Spatio-temporal data
+
+Data that varies across both space and time. 
+
+Example: daily dengue cases recorded across different districts over several years.
+
+## Longitudinal data (Repeated cross-sections)
+
+Longitudinal data  refer to data collected through repeated measurements over time. The measurements may be taken on the same units (e.g., following the same households each year) or on different units at different time points (e.g., different random samples of households each year).
+
+**Example (different random samples of households each year)**
+
+Suppose a national health survey is conducted every 5 years (2000, 2005, 2010, 2015, 2020). Each time, a new random sample of 5,000 households is selected.
+
+In 2000 → Households A, B, C, …
+
+In 2005 → Households X, Y, Z, …
+
+In 2010 → Households P, Q, R, …
+
+Here, the same households are not followed across time, but the survey is still longitudinal, since measurements are taken repeatedly over time to study population-level changes (e.g., trends in obesity, smoking rates, or income inequality).
+
+## Panel data
+
+Panel data are a special case of longitudinal data, where the same units are observed consistently across multiple time periods. This allows analysts to study both within-unit dynamics (how a given unit changes over time) and between-unit differences.
+
+In finance and econometric modelling, panel data is widely used because it captures both the cross-sectional dimension (different firms, individuals, or markets) and the time dimension (repeated observations). 
+
+In Panel data and Longitudinal data, which combines cross-sectional and time-series data, allows for the examination of both "within-behavior" and "between-behavior" effects.
+
+**Example (Country-level Panel Data)**
+
+Suppose you collect data on GDP growth rates for 50 countries from 2000–2020.
+
+  **1. Country-specific behavior (within a country over time)**
+
+  You can see how Sri Lanka’s GDP growth changed year by year.
+
+  Example: 
+  
+  - was there a slowdown after the 2008 global crisis, followed by recovery?
+
+  **2. cross-country and temporal effects (Between countries over time)**
+
+  You can compare trends across countries.
+
+  Example: 
+  
+  - Did most countries experience a dip in 2008–2009 due to the financial crisis?
+
+ - Do developing countries generally grow faster than developed countries over these 20 years?
