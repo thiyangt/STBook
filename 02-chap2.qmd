@@ -2,13 +2,36 @@
 
 ```{r}
 library(reticulate)
+##py_config()
 use_python("C:/Users/DELL/AppData/Local/Programs/Python/Python313/python.exe", required = TRUE)
 
 ```
 
+
 ## Time series
 
 A time series is a sequence of observations recorded in time order. The time intervals between observations can be regular (e.g., daily, monthly, yearly) or irregular (e.g., magnitude of a earthquake at a particular location).
+
+## Main Time Series Patterns
+
+
+### Trend
+
+Long-term increase or decrease in the data.
+
+### Seasonal
+
+-   A seasonal pattern exists when a series is influenced by seasonal factors (e.g., the quarter of the year, the month, or day of the week).
+
+-   Seasonality is always of a fixed and known period.
+
+### Cyclic
+
+-   A cyclic pattern exists when data exhibit rises and falls that are not of fixed period.
+
+-   The duration of these fluctuations is usually of at least 2 years.
+
+-   The average length of cycles is longer than the length of a seasonal pattern.
 
 ## Frequency of a time series (Seasonal periods)
 
@@ -62,7 +85,7 @@ kable(frequencies, align = "c", caption = "Time Unit Frequencies")
 
 ```
 
-## `DataFrame` for time series data
+## `DataFrame` for time series data: Python
 
 When your DataFrame represents a time series, the index is usually the date or time, allowing pandas to:
 
@@ -117,9 +140,365 @@ print(z)
 
 ```
 
-## Time series visualisation using grammar of graphics
+## `DataFrame` for time series data: R
 
-### Introduction to "grammar of graphics" with plotnine
+We use tsibbles to store data.
+
+```{r}
+#| echo: true
+library(tidyverse)
+library(tsibble)
+library(lubridate)
+library(feasts)
+library(denguedatahub)
+# install.packages("devtools")
+#devtools::install_github("thiyangt/TourSriLanka")
+library(TourSriLanka)
+```
+
+```{r}
+#| echo: true
+y.tsibble <- tsibble(
+  Year = 2020:2023,
+  Earnings = c(682.4, 506.9, 1136.3, 2068.0),
+  index = Year)
+y.tsibble
+```
+
+## Dataset: R
+
+```{r}
+#| echo: true
+library(TourSriLanka)
+data(earnings)
+earnings
+```
+
+```{r}
+#| echo: true
+earnings <- earnings |>
+  arrange(Year, match(Month, month.name) )
+earnings
+```
+
+```{r}
+#| echo: true
+y.earnings <- earnings |> mutate(Date = seq(ymd_hm("2009-1-1 0:00"), ymd_hm("2023-12-1 12:00"), by = "month"))
+y.earnings
+```
+
+```{r}
+#| echo: true
+y.earnings <- y.earnings |>
+  select(Earnings, Date) |> mutate(Time = yearmonth(Date))
+y.earnings
+```
+
+```{r}
+#| echo: true
+ts.earnings <- y.earnings |>
+  select(Earnings, Time) |> as_tsibble(index=Time)
+ts.earnings
+```
+
+```{r}
+#| echo: true
+ggts <- ts.earnings |>
+  ggplot(aes(x = Time, y = Earnings)) +
+  geom_point() +
+  labs(y = "Earnings from tourism (USD Mn)", x="Time")  
+ggts
+```
 
 
+```{r}
+#| echo: true
+ts.earnings <- y.earnings |>
+  select(Earnings, Time) |> as_tsibble(index=Time)
+ts.earnings
+```
+
+## Time series visualisation using grammar of graphics: R
+
+
+The grammar of graphics is a way of thinking about plots as layers. Each plot is built from components like:
+
+**Data** – the dataset you are plotting.
+
+**Aesthetics (aes)** – how variables map to visual properties like x, y, color, or size.
+
+**Geometries (geom)** – the type of plot (points, lines, bars, etc.).
+
+**Facets** – split the plot into subplots based on a variable.
+
+**Statistics (stat)** – summary computations like regression lines or counts.
+
+**Scales** – control axis limits, colors, or sizes.
+
+**Coordinates (coord)** – control coordinate system (Cartesian, polar).
+
+**Theme** – control visual appearance like text, background, and grid.
+
+```{r}
+#| echo: true
+ggts <- ts.earnings |>
+  ggplot(aes(x = Time, y = Earnings)) +
+  geom_point() +
+  labs(y = "Earnings from tourism (USD Mn)", x="Time")  
+ggts
+```
+
+
+```{r}
+#| echo: true
+ggts <- ts.earnings |>
+  ggplot(aes(x = Time, y = Earnings)) +
+  geom_line() +
+  labs(y = "Earnings from tourism (USD Mn)", x="Time")  
+ggts
+```
+
+```{r}
+#| echo: true
+ts.earnings |>
+    mutate(Time = as_date(yearmonth(Time))) |>
+  ggplot(aes(x = Time, y = Earnings)) +
+  geom_line() +
+  scale_x_date(date_breaks = "1 year", date_labels = "%Y") + 
+  labs(y = "Earnings from tourism (USD Mn)", x="Time") 
+```
+
+```{r}
+#| echo: true
+library(viridis)
+ts.earnings |>
+  gg_season(Earnings, period = "1 year",  pal = scales::viridis_pal()(15))  + geom_point()  
+```
+
+## Dataset: Python
+
+
+
+```{python}
+#| echo: true
+import plotnine as p9
+from plotnine.data import economics
+```
+
+## Working with Built-in Data Set
+
+
+```{python}
+#| echo: true
+import pandas as pd
+import plotnine as p9 
+from plotnine import *
+from plotnine.data import *
+import numpy as np
+economics
+```
+
+
+
+```{python}
+#| echo: true
+economics.info()
+```
+
+
+### Create `year` and `month` columns
+
+```{python}
+#| echo: true
+economics['year'] = economics['date'].dt.year
+economics['month'] = economics['date'].dt.month
+economics
+```
+
+## Time series visualisation using grammar of graphics: Python
+
+
+The grammar of graphics is a way of thinking about plots as layers. Each plot is built from components like:
+
+**Data** – the dataset you are plotting.
+
+**Aesthetics (aes)** – how variables map to visual properties like x, y, color, or size.
+
+**Geometries (geom)** – the type of plot (points, lines, bars, etc.).
+
+**Facets** – split the plot into subplots based on a variable.
+
+**Statistics (stat)** – summary computations like regression lines or counts.
+
+**Scales** – control axis limits, colors, or sizes.
+
+**Coordinates (coord)** – control coordinate system (Cartesian, polar).
+
+**Theme** – control visual appearance like text, background, and grid.
+
+
+[*](https://thiyangt.github.io/spts_python_practical/Practical1/)
+
+## What is a lag value?
+
+In time series analysis, a lag represents the number of time steps by which a series is shifted backward to compare it with itself.
+
+Lag 1: Compare each value with the previous observation.
+
+Lag 2: Compare each value with the value two steps before.
+
+Lag k: Compare each value with the value k steps earlier.
+
+```{python}
+#| echo: true
+import pandas as pd
+
+# Small time series with 5 points
+data = [10, 12, 13, 15, 14]
+dates = pd.date_range(start='2025-01-01', periods=5, freq='D')
+
+df = pd.DataFrame({'Date': dates, 'Value': data})
+df.set_index('Date', inplace=True)
+
+# Create lagged series
+df['Lag1'] = df['Value'].shift(1)  # lag 1
+df['Lag2'] = df['Value'].shift(2)  # lag 2
+
+# Show the result
+print(df)
+
+```
+
+## Correlation vs Autocorrelation
+
+### Correlation
+
+Measures the strength of the linear relationship between two variables
+
+$$r = \frac{\sum_{i=1}^{n} (x_i -\bar{x})(y_i-\bar{y})}{\sqrt{\sum_{i=1}^{n} (x_i -\bar{x})^2 \sum_{i=1}^{n} (y_i -\bar{y})^2}}$$
+
+### Autocorrelation
+
+Measures the strength of linear relationship between lagged values of time series.
+
+$$r_k = \frac{\sum (y_t -\bar{y})(y_{t-k}-\bar{y})}{\sum (y_t -\bar{y})^2}$$
+
+## Your turn: why different values?
+
+```{python}
+#| echo: true
+# Correlation (autocorrelation) between original series and lagged series
+autocorr_lag1 = df['Value'].corr(df['Lag1'])
+autocorr_lag2 = df['Value'].corr(df['Lag2'])
+
+print(f"Autocorrelation at lag 1: {autocorr_lag1:.3f}")
+print(f"Autocorrelation at lag 2: {autocorr_lag2:.3f}")
+
+```
+
+```{python}
+#| echo: true
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from statsmodels.tsa.stattools import acf
+
+# Small time series with 5 points
+data = [10, 12, 13, 15, 14]
+dates = pd.date_range(start='2025-01-01', periods=5, freq='D')
+
+df = pd.DataFrame({'Date': dates, 'Value': data})
+df.set_index('Date', inplace=True)
+
+print(df)
+
+
+```
+
+```{python}
+#| echo: true
+# Compute autocorrelation for lags 1 to 4 (max lag = n-1)
+autocorr_values = acf(df['Value'], nlags=4, fft=False)
+
+# Show autocorrelation values
+for lag, val in enumerate(autocorr_values):
+    print(f"Lag {lag}: {val:.3f}")
+
+```
+
+## Autocorrelation plots (ACF)
+
+The ACF measures the correlation between a time series and lagged versions of itself. It tells us how past values influence current values.
+
+### Example 1
+
+Time series plot
+
+```{r}
+#| echo: true
+library(fable)
+library(fpp2)
+autoplot(beer)
+```
+
+Seasonal plot
+
+
+```{r}
+#| echo: true
+ggseasonplot(beer, year.labels=TRUE, year.labels.left=TRUE)
+```
+
+ACF
+
+```{r}
+#| echo: true
+ggAcf(beer)
+```
+
+```{r}
+#| echo: true
+ggseasonplot(beer, year.labels=TRUE, year.labels.left=TRUE)
+```
+
+
+## Example 2
+
+```{r, echo=FALSE}
+#| echo: true
+aelec <- window(elec, start=1980)
+autoplot(aelec) + xlab("Year") + ylab("GWh")
+```
+
+
+Seasonal plots
+
+```{r}
+#| echo: true
+ggseasonplot(aelec, year.labels=TRUE, year.labels.left=TRUE)
+```
+
+
+```{r, echo=FALSE}
+#| echo: true
+ggAcf(aelec, lag=48)
+```
+
+## Example 3
+
+```{r}
+#| echo: true
+set.seed(3)
+y <- ts(rnorm(50))
+autoplot(y) + ggtitle("White noise")
+```
+
+```{r}
+#| echo: true
+ggAcf(y)
+```
+
+## Exercise
+
+Question 6 at <https://otexts.com/fpp2/graphics-exercises.html>
 

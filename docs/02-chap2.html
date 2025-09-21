@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.42">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>2&nbsp; Visualising Time Series Data – Spatio-Temporal Data Analysis</title>
+<title>2&nbsp; Introduction to Time Series Analysis – Spatio-Temporal Data Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -60,7 +60,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./refs.html" rel="next">
+<link href="./03-chap3.html" rel="next">
 <link href="./01-chap1.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -97,6 +97,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script><link href="https://fonts.googleapis.com/css?family=Fira+Sans|Merriweather|Source%20Code%20Pro" rel="stylesheet">
+<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 </head>
 <body class="nav-sidebar docked">
 
@@ -105,7 +145,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-chap2.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Visualising Time Series Data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-chap2.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to Time Series Analysis</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -141,7 +181,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-chap2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Visualising Time Series Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to Time Series Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-chap3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to Time Series Forecasting</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -159,15 +205,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul class="collapse">
 <li><a href="#time-series" id="toc-time-series" class="nav-link active" data-scroll-target="#time-series"><span class="header-section-number">2.1</span> Time series</a></li>
-  <li><a href="#frequency-of-a-time-series-seasonal-periods" id="toc-frequency-of-a-time-series-seasonal-periods" class="nav-link" data-scroll-target="#frequency-of-a-time-series-seasonal-periods"><span class="header-section-number">2.2</span> Frequency of a time series (Seasonal periods)</a></li>
-  <li><a href="#dataframe-for-time-series-data" id="toc-dataframe-for-time-series-data" class="nav-link" data-scroll-target="#dataframe-for-time-series-data"><span class="header-section-number">2.3</span> <code>DataFrame</code> for time series data</a></li>
-  <li><a href="#time-series-visualisation-using-grammar-of-graphics" id="toc-time-series-visualisation-using-grammar-of-graphics" class="nav-link" data-scroll-target="#time-series-visualisation-using-grammar-of-graphics"><span class="header-section-number">2.4</span> Time series visualisation using grammar of graphics</a></li>
+  <li><a href="#main-time-series-patterns" id="toc-main-time-series-patterns" class="nav-link" data-scroll-target="#main-time-series-patterns"><span class="header-section-number">2.2</span> Main Time Series Patterns</a></li>
+  <li><a href="#frequency-of-a-time-series-seasonal-periods" id="toc-frequency-of-a-time-series-seasonal-periods" class="nav-link" data-scroll-target="#frequency-of-a-time-series-seasonal-periods"><span class="header-section-number">2.3</span> Frequency of a time series (Seasonal periods)</a></li>
+  <li><a href="#dataframe-for-time-series-data-python" id="toc-dataframe-for-time-series-data-python" class="nav-link" data-scroll-target="#dataframe-for-time-series-data-python"><span class="header-section-number">2.4</span> <code>DataFrame</code> for time series data: Python</a></li>
+  <li><a href="#dataframe-for-time-series-data-r" id="toc-dataframe-for-time-series-data-r" class="nav-link" data-scroll-target="#dataframe-for-time-series-data-r"><span class="header-section-number">2.5</span> <code>DataFrame</code> for time series data: R</a></li>
+  <li><a href="#dataset-r" id="toc-dataset-r" class="nav-link" data-scroll-target="#dataset-r"><span class="header-section-number">2.6</span> Dataset: R</a></li>
+  <li><a href="#time-series-visualisation-using-grammar-of-graphics-r" id="toc-time-series-visualisation-using-grammar-of-graphics-r" class="nav-link" data-scroll-target="#time-series-visualisation-using-grammar-of-graphics-r"><span class="header-section-number">2.7</span> Time series visualisation using grammar of graphics: R</a></li>
+  <li><a href="#dataset-python" id="toc-dataset-python" class="nav-link" data-scroll-target="#dataset-python"><span class="header-section-number">2.8</span> Dataset: Python</a></li>
+  <li><a href="#working-with-built-in-data-set" id="toc-working-with-built-in-data-set" class="nav-link" data-scroll-target="#working-with-built-in-data-set"><span class="header-section-number">2.9</span> Working with Built-in Data Set</a></li>
+  <li><a href="#time-series-visualisation-using-grammar-of-graphics-python" id="toc-time-series-visualisation-using-grammar-of-graphics-python" class="nav-link" data-scroll-target="#time-series-visualisation-using-grammar-of-graphics-python"><span class="header-section-number">2.10</span> Time series visualisation using grammar of graphics: Python</a></li>
+  <li><a href="#what-is-a-lag-value" id="toc-what-is-a-lag-value" class="nav-link" data-scroll-target="#what-is-a-lag-value"><span class="header-section-number">2.11</span> What is a lag value?</a></li>
+  <li><a href="#correlation-vs-autocorrelation" id="toc-correlation-vs-autocorrelation" class="nav-link" data-scroll-target="#correlation-vs-autocorrelation"><span class="header-section-number">2.12</span> Correlation vs Autocorrelation</a></li>
+  <li><a href="#your-turn-why-different-values" id="toc-your-turn-why-different-values" class="nav-link" data-scroll-target="#your-turn-why-different-values"><span class="header-section-number">2.13</span> Your turn: why different values?</a></li>
+  <li><a href="#autocorrelation-plots-acf" id="toc-autocorrelation-plots-acf" class="nav-link" data-scroll-target="#autocorrelation-plots-acf"><span class="header-section-number">2.14</span> Autocorrelation plots (ACF)</a></li>
+  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2"><span class="header-section-number">2.15</span> Example 2</a></li>
+  <li><a href="#example-3" id="toc-example-3" class="nav-link" data-scroll-target="#example-3"><span class="header-section-number">2.16</span> Example 3</a></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise"><span class="header-section-number">2.17</span> Exercise</a></li>
   </ul></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">
-<span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Visualising Time Series Data</span>
+<span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to Time Series Analysis</span>
 </h1>
 </div>
 
@@ -185,8 +244,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header><section id="time-series" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="time-series">
 <span class="header-section-number">2.1</span> Time series</h2>
 <p>A time series is a sequence of observations recorded in time order. The time intervals between observations can be regular (e.g., daily, monthly, yearly) or irregular (e.g., magnitude of a earthquake at a particular location).</p>
-</section><section id="frequency-of-a-time-series-seasonal-periods" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="frequency-of-a-time-series-seasonal-periods">
-<span class="header-section-number">2.2</span> Frequency of a time series (Seasonal periods)</h2>
+</section><section id="main-time-series-patterns" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="main-time-series-patterns">
+<span class="header-section-number">2.2</span> Main Time Series Patterns</h2>
+<section id="trend" class="level3"><h3 class="anchored" data-anchor-id="trend">Trend</h3>
+<p>Long-term increase or decrease in the data.</p>
+</section><section id="seasonal" class="level3"><h3 class="anchored" data-anchor-id="seasonal">Seasonal</h3>
+<ul>
+<li><p>A seasonal pattern exists when a series is influenced by seasonal factors (e.g., the quarter of the year, the month, or day of the week).</p></li>
+<li><p>Seasonality is always of a fixed and known period.</p></li>
+</ul></section><section id="cyclic" class="level3"><h3 class="anchored" data-anchor-id="cyclic">Cyclic</h3>
+<ul>
+<li><p>A cyclic pattern exists when data exhibit rises and falls that are not of fixed period.</p></li>
+<li><p>The duration of these fluctuations is usually of at least 2 years.</p></li>
+<li><p>The average length of cycles is longer than the length of a seasonal pattern.</p></li>
+</ul></section></section><section id="frequency-of-a-time-series-seasonal-periods" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="frequency-of-a-time-series-seasonal-periods">
+<span class="header-section-number">2.3</span> Frequency of a time series (Seasonal periods)</h2>
 <p>Number of observations per natural time interval (Usually year, but sometimes a week, a day, an hour)</p>
 <section id="single-seasonality" class="level3"><h3 class="anchored" data-anchor-id="single-seasonality">Single Seasonality</h3>
 <p>The time series exhibits one repeating pattern at a fixed frequency.</p>
@@ -282,8 +354,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-</section></section><section id="dataframe-for-time-series-data" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="dataframe-for-time-series-data">
-<span class="header-section-number">2.3</span> <code>DataFrame</code> for time series data</h2>
+</section></section><section id="dataframe-for-time-series-data-python" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="dataframe-for-time-series-data-python">
+<span class="header-section-number">2.4</span> <code>DataFrame</code> for time series data: Python</h2>
 <p>When your DataFrame represents a time series, the index is usually the date or time, allowing pandas to:</p>
 <ul>
 <li><p>Plot time series easily</p></li>
@@ -347,12 +419,520 @@ Month
 2025 Jun    200</code></pre>
 </div>
 </div>
-</section><section id="time-series-visualisation-using-grammar-of-graphics" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="time-series-visualisation-using-grammar-of-graphics">
-<span class="header-section-number">2.4</span> Time series visualisation using grammar of graphics</h2>
-<section id="introduction-to-grammar-of-graphics-with-plotnine" class="level3"><h3 class="anchored" data-anchor-id="introduction-to-grammar-of-graphics-with-plotnine">Introduction to “grammar of graphics” with plotnine</h3>
+</section><section id="dataframe-for-time-series-data-r" class="level2" data-number="2.5"><h2 data-number="2.5" class="anchored" data-anchor-id="dataframe-for-time-series-data-r">
+<span class="header-section-number">2.5</span> <code>DataFrame</code> for time series data: R</h2>
+<p>We use tsibbles to store data.</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tsibble.tidyverts.org">tsibble</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://feasts.tidyverts.org/">feasts</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://denguedatahub.netlify.app/">denguedatahub</a></span><span class="op">)</span></span>
+<span><span class="co"># install.packages("devtools")</span></span>
+<span><span class="co">#devtools::install_github("thiyangt/TourSriLanka")</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">TourSriLanka</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">y.tsibble</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tsibble.tidyverts.org/reference/tsibble.html">tsibble</a></span><span class="op">(</span></span>
+<span>  Year <span class="op">=</span> <span class="fl">2020</span><span class="op">:</span><span class="fl">2023</span>,</span>
+<span>  Earnings <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">682.4</span>, <span class="fl">506.9</span>, <span class="fl">1136.3</span>, <span class="fl">2068.0</span><span class="op">)</span>,</span>
+<span>  index <span class="op">=</span> <span class="va">Year</span><span class="op">)</span></span>
+<span><span class="va">y.tsibble</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tsibble: 4 x 2 [1Y]
+   Year Earnings
+  &lt;int&gt;    &lt;dbl&gt;
+1  2020     682.
+2  2021     507.
+3  2022    1136.
+4  2023    2068 </code></pre>
+</div>
+</div>
+</section><section id="dataset-r" class="level2" data-number="2.6"><h2 data-number="2.6" class="anchored" data-anchor-id="dataset-r">
+<span class="header-section-number">2.6</span> Dataset: R</h2>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">TourSriLanka</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">earnings</span><span class="op">)</span></span>
+<span><span class="va">earnings</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 180 × 3
+   Month   Year  Earnings
+   &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt;
+ 1 January 2009      30  
+ 2 January 2010      44.7
+ 3 January 2011      72  
+ 4 January 2012      88.9
+ 5 January 2013     149. 
+ 6 January 2014     233. 
+ 7 January 2015     259  
+ 8 January 2016     333. 
+ 9 January 2017     407. 
+10 January 2018     448. 
+# ℹ 170 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">earnings</span> <span class="op">&lt;-</span> <span class="va">earnings</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">Year</span>, <span class="fu"><a href="https://rdrr.io/r/base/match.html">match</a></span><span class="op">(</span><span class="va">Month</span>, <span class="va">month.name</span><span class="op">)</span> <span class="op">)</span></span>
+<span><span class="va">earnings</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 180 × 3
+   Month     Year  Earnings
+   &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;
+ 1 January   2009      30  
+ 2 February  2009      26.7
+ 3 March     2009      26.6
+ 4 April     2009      20.3
+ 5 May       2009      19.3
+ 6 June      2009      23.6
+ 7 July      2009      33  
+ 8 August    2009      32.2
+ 9 September 2009      29.6
+10 October   2009      29.3
+# ℹ 170 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">y.earnings</span> <span class="op">&lt;-</span> <span class="va">earnings</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>Date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd_hms.html">ymd_hm</a></span><span class="op">(</span><span class="st">"2009-1-1 0:00"</span><span class="op">)</span>, <span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd_hms.html">ymd_hm</a></span><span class="op">(</span><span class="st">"2023-12-1 12:00"</span><span class="op">)</span>, by <span class="op">=</span> <span class="st">"month"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">y.earnings</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 180 × 4
+   Month     Year  Earnings Date               
+   &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt; &lt;dttm&gt;             
+ 1 January   2009      30   2009-01-01 00:00:00
+ 2 February  2009      26.7 2009-02-01 00:00:00
+ 3 March     2009      26.6 2009-03-01 00:00:00
+ 4 April     2009      20.3 2009-04-01 00:00:00
+ 5 May       2009      19.3 2009-05-01 00:00:00
+ 6 June      2009      23.6 2009-06-01 00:00:00
+ 7 July      2009      33   2009-07-01 00:00:00
+ 8 August    2009      32.2 2009-08-01 00:00:00
+ 9 September 2009      29.6 2009-09-01 00:00:00
+10 October   2009      29.3 2009-10-01 00:00:00
+# ℹ 170 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">y.earnings</span> <span class="op">&lt;-</span> <span class="va">y.earnings</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Earnings</span>, <span class="va">Date</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>Time <span class="op">=</span> <span class="fu"><a href="https://tsibble.tidyverts.org/reference/year-month.html">yearmonth</a></span><span class="op">(</span><span class="va">Date</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">y.earnings</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 180 × 3
+   Earnings Date                    Time
+      &lt;dbl&gt; &lt;dttm&gt;                 &lt;mth&gt;
+ 1     30   2009-01-01 00:00:00 2009 Jan
+ 2     26.7 2009-02-01 00:00:00 2009 Feb
+ 3     26.6 2009-03-01 00:00:00 2009 Mar
+ 4     20.3 2009-04-01 00:00:00 2009 Apr
+ 5     19.3 2009-05-01 00:00:00 2009 May
+ 6     23.6 2009-06-01 00:00:00 2009 Jun
+ 7     33   2009-07-01 00:00:00 2009 Jul
+ 8     32.2 2009-08-01 00:00:00 2009 Aug
+ 9     29.6 2009-09-01 00:00:00 2009 Sep
+10     29.3 2009-10-01 00:00:00 2009 Oct
+# ℹ 170 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ts.earnings</span> <span class="op">&lt;-</span> <span class="va">y.earnings</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Earnings</span>, <span class="va">Time</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tsibble.tidyverts.org/reference/as-tsibble.html">as_tsibble</a></span><span class="op">(</span>index<span class="op">=</span><span class="va">Time</span><span class="op">)</span></span>
+<span><span class="va">ts.earnings</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tsibble: 180 x 2 [1M]
+   Earnings     Time
+      &lt;dbl&gt;    &lt;mth&gt;
+ 1     30   2009 Jan
+ 2     26.7 2009 Feb
+ 3     26.6 2009 Mar
+ 4     20.3 2009 Apr
+ 5     19.3 2009 May
+ 6     23.6 2009 Jun
+ 7     33   2009 Jul
+ 8     32.2 2009 Aug
+ 9     29.6 2009 Sep
+10     29.3 2009 Oct
+# ℹ 170 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ggts</span> <span class="op">&lt;-</span> <span class="va">ts.earnings</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Time</span>, y <span class="op">=</span> <span class="va">Earnings</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Earnings from tourism (USD Mn)"</span>, x<span class="op">=</span><span class="st">"Time"</span><span class="op">)</span>  </span>
+<span><span class="va">ggts</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02-chap2_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ts.earnings</span> <span class="op">&lt;-</span> <span class="va">y.earnings</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Earnings</span>, <span class="va">Time</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tsibble.tidyverts.org/reference/as-tsibble.html">as_tsibble</a></span><span class="op">(</span>index<span class="op">=</span><span class="va">Time</span><span class="op">)</span></span>
+<span><span class="va">ts.earnings</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tsibble: 180 x 2 [1M]
+   Earnings     Time
+      &lt;dbl&gt;    &lt;mth&gt;
+ 1     30   2009 Jan
+ 2     26.7 2009 Feb
+ 3     26.6 2009 Mar
+ 4     20.3 2009 Apr
+ 5     19.3 2009 May
+ 6     23.6 2009 Jun
+ 7     33   2009 Jul
+ 8     32.2 2009 Aug
+ 9     29.6 2009 Sep
+10     29.3 2009 Oct
+# ℹ 170 more rows</code></pre>
+</div>
+</div>
+</section><section id="time-series-visualisation-using-grammar-of-graphics-r" class="level2" data-number="2.7"><h2 data-number="2.7" class="anchored" data-anchor-id="time-series-visualisation-using-grammar-of-graphics-r">
+<span class="header-section-number">2.7</span> Time series visualisation using grammar of graphics: R</h2>
+<p>The grammar of graphics is a way of thinking about plots as layers. Each plot is built from components like:</p>
+<p><strong>Data</strong> – the dataset you are plotting.</p>
+<p><strong>Aesthetics (aes)</strong> – how variables map to visual properties like x, y, color, or size.</p>
+<p><strong>Geometries (geom)</strong> – the type of plot (points, lines, bars, etc.).</p>
+<p><strong>Facets</strong> – split the plot into subplots based on a variable.</p>
+<p><strong>Statistics (stat)</strong> – summary computations like regression lines or counts.</p>
+<p><strong>Scales</strong> – control axis limits, colors, or sizes.</p>
+<p><strong>Coordinates (coord)</strong> – control coordinate system (Cartesian, polar).</p>
+<p><strong>Theme</strong> – control visual appearance like text, background, and grid.</p>
+<div class="cell">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ggts</span> <span class="op">&lt;-</span> <span class="va">ts.earnings</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Time</span>, y <span class="op">=</span> <span class="va">Earnings</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Earnings from tourism (USD Mn)"</span>, x<span class="op">=</span><span class="st">"Time"</span><span class="op">)</span>  </span>
+<span><span class="va">ggts</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02-chap2_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ggts</span> <span class="op">&lt;-</span> <span class="va">ts.earnings</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Time</span>, y <span class="op">=</span> <span class="va">Earnings</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Earnings from tourism (USD Mn)"</span>, x<span class="op">=</span><span class="st">"Time"</span><span class="op">)</span>  </span>
+<span><span class="va">ggts</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02-chap2_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ts.earnings</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>Time <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_date</a></span><span class="op">(</span><span class="fu"><a href="https://tsibble.tidyverts.org/reference/year-month.html">yearmonth</a></span><span class="op">(</span><span class="va">Time</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Time</span>, y <span class="op">=</span> <span class="va">Earnings</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_date.html">scale_x_date</a></span><span class="op">(</span>date_breaks <span class="op">=</span> <span class="st">"1 year"</span>, date_labels <span class="op">=</span> <span class="st">"%Y"</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Earnings from tourism (USD Mn)"</span>, x<span class="op">=</span><span class="st">"Time"</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02-chap2_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://sjmgarnier.github.io/viridis/">viridis</a></span><span class="op">)</span></span>
+<span><span class="va">ts.earnings</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://feasts.tidyverts.org/reference/gg_season.html">gg_season</a></span><span class="op">(</span><span class="va">Earnings</span>, period <span class="op">=</span> <span class="st">"1 year"</span>,  pal <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/pal_viridis.html">viridis_pal</a></span><span class="op">(</span><span class="op">)</span><span class="op">(</span><span class="fl">15</span><span class="op">)</span><span class="op">)</span>  <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02-chap2_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="dataset-python" class="level2" data-number="2.8"><h2 data-number="2.8" class="anchored" data-anchor-id="dataset-python">
+<span class="header-section-number">2.8</span> Dataset: Python</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotnine <span class="im">as</span> p9</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> economics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="working-with-built-in-data-set" class="level2" data-number="2.9"><h2 data-number="2.9" class="anchored" data-anchor-id="working-with-built-in-data-set">
+<span class="header-section-number">2.9</span> Working with Built-in Data Set</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotnine <span class="im">as</span> p9 </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine.data <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>economics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          date      pce     pop  psavert  uempmed  unemploy
+0   1967-07-01    507.4  198712     12.5      4.5      2944
+1   1967-08-01    510.5  198911     12.5      4.7      2945
+2   1967-09-01    516.3  199113     11.7      4.6      2958
+3   1967-10-01    512.9  199311     12.5      4.9      3143
+4   1967-11-01    518.1  199498     12.5      4.7      3066
+..         ...      ...     ...      ...      ...       ...
+569 2014-12-01  12122.0  320201      5.0     12.6      8688
+570 2015-01-01  12080.8  320367      5.5     13.4      8979
+571 2015-02-01  12095.9  320534      5.7     13.1      8705
+572 2015-03-01  12161.5  320707      5.2     12.2      8575
+573 2015-04-01  12158.9  320887      5.6     11.7      8549
+
+[574 rows x 6 columns]</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>economics.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 574 entries, 0 to 573
+Data columns (total 6 columns):
+ #   Column    Non-Null Count  Dtype         
+---  ------    --------------  -----         
+ 0   date      574 non-null    datetime64[ns]
+ 1   pce       574 non-null    float64       
+ 2   pop       574 non-null    int64         
+ 3   psavert   574 non-null    float64       
+ 4   uempmed   574 non-null    float64       
+ 5   unemploy  574 non-null    int64         
+dtypes: datetime64[ns](1), float64(3), int64(2)
+memory usage: 27.0 KB</code></pre>
+</div>
+</div>
+<section id="create-year-and-month-columns" class="level3"><h3 class="anchored" data-anchor-id="create-year-and-month-columns">Create <code>year</code> and <code>month</code> columns</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>economics[<span class="st">'year'</span>] <span class="op">=</span> economics[<span class="st">'date'</span>].dt.year</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>economics[<span class="st">'month'</span>] <span class="op">=</span> economics[<span class="st">'date'</span>].dt.month</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>economics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          date      pce     pop  psavert  uempmed  unemploy  year  month
+0   1967-07-01    507.4  198712     12.5      4.5      2944  1967      7
+1   1967-08-01    510.5  198911     12.5      4.7      2945  1967      8
+2   1967-09-01    516.3  199113     11.7      4.6      2958  1967      9
+3   1967-10-01    512.9  199311     12.5      4.9      3143  1967     10
+4   1967-11-01    518.1  199498     12.5      4.7      3066  1967     11
+..         ...      ...     ...      ...      ...       ...   ...    ...
+569 2014-12-01  12122.0  320201      5.0     12.6      8688  2014     12
+570 2015-01-01  12080.8  320367      5.5     13.4      8979  2015      1
+571 2015-02-01  12095.9  320534      5.7     13.1      8705  2015      2
+572 2015-03-01  12161.5  320707      5.2     12.2      8575  2015      3
+573 2015-04-01  12158.9  320887      5.6     11.7      8549  2015      4
+
+[574 rows x 8 columns]</code></pre>
+</div>
+</div>
+</section></section><section id="time-series-visualisation-using-grammar-of-graphics-python" class="level2" data-number="2.10"><h2 data-number="2.10" class="anchored" data-anchor-id="time-series-visualisation-using-grammar-of-graphics-python">
+<span class="header-section-number">2.10</span> Time series visualisation using grammar of graphics: Python</h2>
+<p>The grammar of graphics is a way of thinking about plots as layers. Each plot is built from components like:</p>
+<p><strong>Data</strong> – the dataset you are plotting.</p>
+<p><strong>Aesthetics (aes)</strong> – how variables map to visual properties like x, y, color, or size.</p>
+<p><strong>Geometries (geom)</strong> – the type of plot (points, lines, bars, etc.).</p>
+<p><strong>Facets</strong> – split the plot into subplots based on a variable.</p>
+<p><strong>Statistics (stat)</strong> – summary computations like regression lines or counts.</p>
+<p><strong>Scales</strong> – control axis limits, colors, or sizes.</p>
+<p><strong>Coordinates (coord)</strong> – control coordinate system (Cartesian, polar).</p>
+<p><strong>Theme</strong> – control visual appearance like text, background, and grid.</p>
+<p><a href="https://thiyangt.github.io/spts_python_practical/Practical1/">*</a></p>
+</section><section id="what-is-a-lag-value" class="level2" data-number="2.11"><h2 data-number="2.11" class="anchored" data-anchor-id="what-is-a-lag-value">
+<span class="header-section-number">2.11</span> What is a lag value?</h2>
+<p>In time series analysis, a lag represents the number of time steps by which a series is shifted backward to compare it with itself.</p>
+<p>Lag 1: Compare each value with the previous observation.</p>
+<p>Lag 2: Compare each value with the value two steps before.</p>
+<p>Lag k: Compare each value with the value k steps earlier.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Small time series with 5 points</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">15</span>, <span class="dv">14</span>]</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>dates <span class="op">=</span> pd.date_range(start<span class="op">=</span><span class="st">'2025-01-01'</span>, periods<span class="op">=</span><span class="dv">5</span>, freq<span class="op">=</span><span class="st">'D'</span>)</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'Date'</span>: dates, <span class="st">'Value'</span>: data})</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>df.set_index(<span class="st">'Date'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create lagged series</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Lag1'</span>] <span class="op">=</span> df[<span class="st">'Value'</span>].shift(<span class="dv">1</span>)  <span class="co"># lag 1</span></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Lag2'</span>] <span class="op">=</span> df[<span class="st">'Value'</span>].shift(<span class="dv">2</span>)  <span class="co"># lag 2</span></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the result</span></span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            Value  Lag1  Lag2
+Date                         
+2025-01-01     10   NaN   NaN
+2025-01-02     12  10.0   NaN
+2025-01-03     13  12.0  10.0
+2025-01-04     15  13.0  12.0
+2025-01-05     14  15.0  13.0</code></pre>
+</div>
+</div>
+</section><section id="correlation-vs-autocorrelation" class="level2" data-number="2.12"><h2 data-number="2.12" class="anchored" data-anchor-id="correlation-vs-autocorrelation">
+<span class="header-section-number">2.12</span> Correlation vs Autocorrelation</h2>
+<section id="correlation" class="level3"><h3 class="anchored" data-anchor-id="correlation">Correlation</h3>
+<p>Measures the strength of the linear relationship between two variables</p>
+<p><span class="math display">r = \frac{\sum_{i=1}^{n} (x_i -\bar{x})(y_i-\bar{y})}{\sqrt{\sum_{i=1}^{n} (x_i -\bar{x})^2 \sum_{i=1}^{n} (y_i -\bar{y})^2}}</span></p>
+</section><section id="autocorrelation" class="level3"><h3 class="anchored" data-anchor-id="autocorrelation">Autocorrelation</h3>
+<p>Measures the strength of linear relationship between lagged values of time series.</p>
+<p><span class="math display">r_k = \frac{\sum (y_t -\bar{y})(y_{t-k}-\bar{y})}{\sum (y_t -\bar{y})^2}</span></p>
+</section></section><section id="your-turn-why-different-values" class="level2" data-number="2.13"><h2 data-number="2.13" class="anchored" data-anchor-id="your-turn-why-different-values">
+<span class="header-section-number">2.13</span> Your turn: why different values?</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation (autocorrelation) between original series and lagged series</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>autocorr_lag1 <span class="op">=</span> df[<span class="st">'Value'</span>].corr(df[<span class="st">'Lag1'</span>])</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>autocorr_lag2 <span class="op">=</span> df[<span class="st">'Value'</span>].corr(df[<span class="st">'Lag2'</span>])</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Autocorrelation at lag 1: </span><span class="sc">{</span>autocorr_lag1<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Autocorrelation at lag 1: 0.744</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Autocorrelation at lag 2: </span><span class="sc">{</span>autocorr_lag2<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Autocorrelation at lag 2: 0.655</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.tsa.stattools <span class="im">import</span> acf</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Small time series with 5 points</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">15</span>, <span class="dv">14</span>]</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>dates <span class="op">=</span> pd.date_range(start<span class="op">=</span><span class="st">'2025-01-01'</span>, periods<span class="op">=</span><span class="dv">5</span>, freq<span class="op">=</span><span class="st">'D'</span>)</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'Date'</span>: dates, <span class="st">'Value'</span>: data})</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>df.set_index(<span class="st">'Date'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            Value
+Date             
+2025-01-01     10
+2025-01-02     12
+2025-01-03     13
+2025-01-04     15
+2025-01-05     14</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute autocorrelation for lags 1 to 4 (max lag = n-1)</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>autocorr_values <span class="op">=</span> acf(df[<span class="st">'Value'</span>], nlags<span class="op">=</span><span class="dv">4</span>, fft<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Show autocorrelation values</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> lag, val <span class="kw">in</span> <span class="bu">enumerate</span>(autocorr_values):</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Lag </span><span class="sc">{</span>lag<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>val<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Lag 0: 1.000
+Lag 1: 0.349
+Lag 2: -0.141
+Lag 3: -0.481
+Lag 4: -0.227</code></pre>
+</div>
+</div>
+</section><section id="autocorrelation-plots-acf" class="level2" data-number="2.14"><h2 data-number="2.14" class="anchored" data-anchor-id="autocorrelation-plots-acf">
+<span class="header-section-number">2.14</span> Autocorrelation plots (ACF)</h2>
+<p>The ACF measures the correlation between a time series and lagged versions of itself. It tells us how past values influence current values.</p>
+<section id="example-1" class="level3"><h3 class="anchored" data-anchor-id="example-1">Example 1</h3>
+<p>Time series plot</p>
+<div class="cell">
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://fable.tidyverts.org">fable</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://pkg.robjhyndman.com/fpp2-package/">fpp2</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">beer</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02-chap2_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Seasonal plot</p>
+<div class="cell">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggseasonplot</span><span class="op">(</span><span class="va">beer</span>, year.labels<span class="op">=</span><span class="cn">TRUE</span>, year.labels.left<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02-chap2_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>ACF</p>
+<div class="cell">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggAcf</span><span class="op">(</span><span class="va">beer</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02-chap2_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggseasonplot</span><span class="op">(</span><span class="va">beer</span>, year.labels<span class="op">=</span><span class="cn">TRUE</span>, year.labels.left<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02-chap2_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</section></section><section id="example-2" class="level2" data-number="2.15"><h2 data-number="2.15" class="anchored" data-anchor-id="example-2">
+<span class="header-section-number">2.15</span> Example 2</h2>
+<div class="cell">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">aelec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/window.html">window</a></span><span class="op">(</span><span class="va">elec</span>, start<span class="op">=</span><span class="fl">1980</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">aelec</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Year"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"GWh"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02-chap2_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Seasonal plots</p>
+<div class="cell">
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggseasonplot</span><span class="op">(</span><span class="va">aelec</span>, year.labels<span class="op">=</span><span class="cn">TRUE</span>, year.labels.left<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02-chap2_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggAcf</span><span class="op">(</span><span class="va">aelec</span>, lag<span class="op">=</span><span class="fl">48</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02-chap2_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="example-3" class="level2" data-number="2.16"><h2 data-number="2.16" class="anchored" data-anchor-id="example-3">
+<span class="header-section-number">2.16</span> Example 3</h2>
+<div class="cell">
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/ts.html">ts</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"White noise"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02-chap2_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggAcf</span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02-chap2_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="exercise" class="level2" data-number="2.17"><h2 data-number="2.17" class="anchored" data-anchor-id="exercise">
+<span class="header-section-number">2.17</span> Exercise</h2>
+<p>Question 6 at <a href="https://otexts.com/fpp2/graphics-exercises.html" class="uri">https://otexts.com/fpp2/graphics-exercises.html</a></p>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -774,8 +1354,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./refs.html" class="pagination-link" aria-label="Bibliography">
-        <span class="nav-page-text">Bibliography</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./03-chap3.html" class="pagination-link" aria-label="Introduction to Time Series Forecasting">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to Time Series Forecasting</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
