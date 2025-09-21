@@ -578,5 +578,45 @@
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
+  },
+  {
+    "objectID": "04-chap4.html",
+    "href": "04-chap4.html",
+    "title": "4  Forecasting with Linear Time Series Models",
+    "section": "",
+    "text": "4.1 Autoregressive Models\nY_t = \\alpha + \\phi_1 Y_{t-1} + \\phi_2 Y_{t-2} + \\dots + \\phi_p Y_{t-p} + \\epsilon_t\nWhere:\nY_t is the value at time t\n\\alpha is a constant,\n\\phi_1, \\phi_2,...\\phi_p are the parameters,\n\\epsilon_t is white noise (error term),\np is the order of the AR model.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Forecasting with Linear Time Series Models</span>"
+    ]
+  },
+  {
+    "objectID": "04-chap4.html#in-class-properties-of-ar1-process",
+    "href": "04-chap4.html#in-class-properties-of-ar1-process",
+    "title": "4  Forecasting with Linear Time Series Models",
+    "section": "4.2 In-class: Properties of AR(1) process",
+    "text": "4.2 In-class: Properties of AR(1) process\nDerive\n\nMean\nVariance\nCovariance\nAutocorrelation function of an AR(1) process",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Forecasting with Linear Time Series Models</span>"
+    ]
+  },
+  {
+    "objectID": "04-chap4.html#in-class-properties-of-ar2-process",
+    "href": "04-chap4.html#in-class-properties-of-ar2-process",
+    "title": "4  Forecasting with Linear Time Series Models",
+    "section": "4.3 In-class: Properties of AR(2) process",
+    "text": "4.3 In-class: Properties of AR(2) process\nDerive\n\nMean\nVariance\nCovariance\nAutocorrelation function of an AR(1) process",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Forecasting with Linear Time Series Models</span>"
+    ]
+  },
+  {
+    "objectID": "04-chap4.html#in-class-properties-of-arp-process",
+    "href": "04-chap4.html#in-class-properties-of-arp-process",
+    "title": "4  Forecasting with Linear Time Series Models",
+    "section": "4.4 In-class: Properties of AR(P) process",
+    "text": "4.4 In-class: Properties of AR(P) process\nDerive\n\nMean\nVariance\nCovariance\nAutocorrelation function of an AR(P) process",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Forecasting with Linear Time Series Models</span>"
+    ]
   }
 ]
