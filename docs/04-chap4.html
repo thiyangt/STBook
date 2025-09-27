@@ -197,10 +197,11 @@ window.Quarto = {
    
   <ul class="collapse">
   <li><a href="#general-linear-process" id="toc-general-linear-process" class="nav-link active" data-scroll-target="#general-linear-process"><span class="header-section-number">4.1</span> General Linear Process</a></li>
-  <li><a href="#autoregressive-models" id="toc-autoregressive-models" class="nav-link" data-scroll-target="#autoregressive-models"><span class="header-section-number">4.2</span> Autoregressive Models</a></li>
-  <li><a href="#in-class-properties-of-ar1-process" id="toc-in-class-properties-of-ar1-process" class="nav-link" data-scroll-target="#in-class-properties-of-ar1-process"><span class="header-section-number">4.3</span> In-class: Properties of AR(1) process</a></li>
-  <li><a href="#in-class-properties-of-ar2-process" id="toc-in-class-properties-of-ar2-process" class="nav-link" data-scroll-target="#in-class-properties-of-ar2-process"><span class="header-section-number">4.4</span> In-class: Properties of AR(2) process</a></li>
-  <li><a href="#in-class-properties-of-arp-process" id="toc-in-class-properties-of-arp-process" class="nav-link" data-scroll-target="#in-class-properties-of-arp-process"><span class="header-section-number">4.5</span> In-class: Properties of AR(P) process</a></li>
+  <li><a href="#moving-average-processes" id="toc-moving-average-processes" class="nav-link" data-scroll-target="#moving-average-processes"><span class="header-section-number">4.2</span> Moving Average Processes</a></li>
+  <li><a href="#autoregressive-processes" id="toc-autoregressive-processes" class="nav-link" data-scroll-target="#autoregressive-processes"><span class="header-section-number">4.3</span> Autoregressive Processes</a></li>
+  <li><a href="#in-class-properties-of-ar1-process" id="toc-in-class-properties-of-ar1-process" class="nav-link" data-scroll-target="#in-class-properties-of-ar1-process"><span class="header-section-number">4.4</span> In-class: Properties of AR(1) process</a></li>
+  <li><a href="#in-class-properties-of-ar2-process" id="toc-in-class-properties-of-ar2-process" class="nav-link" data-scroll-target="#in-class-properties-of-ar2-process"><span class="header-section-number">4.5</span> In-class: Properties of AR(2) process</a></li>
+  <li><a href="#in-class-properties-of-arp-process" id="toc-in-class-properties-of-arp-process" class="nav-link" data-scroll-target="#in-class-properties-of-arp-process"><span class="header-section-number">4.6</span> In-class: Properties of AR(P) process</a></li>
   </ul>
 </nav>
     </div>
@@ -236,8 +237,16 @@ window.Quarto = {
 <p><span class="math inline">\{\psi_j\}</span> are coefficients (weights)</p>
 <p><span class="math inline">\varepsilon_t \sim \text{i.i.d. } (0, \sigma^2)</span> are white noise shocks.</p>
 </section>
-<section id="autoregressive-models" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="autoregressive-models"><span class="header-section-number">4.2</span> Autoregressive Models</h2>
+<section id="moving-average-processes" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="moving-average-processes"><span class="header-section-number">4.2</span> Moving Average Processes</h2>
+<p>If only finitely many coefficients <span class="math inline">\psi_j</span> are nonzero, say up to lag <span class="math inline">q</span>, then we have an MA(<span class="math inline">q</span>) process:</p>
+<p>[ X_t = + _t + <em>1 </em>{t-1} + + <em>q </em>{t-q}, ]</p>
+<p>where: - <span class="math inline">\mu</span> is the mean, - <span class="math inline">\varepsilon_t \sim \text{i.i.d. }(0, \sigma^2)</span> are white noise shocks, - <span class="math inline">\theta_1, \dots, \theta_q</span> are the MA coefficients.</p>
+<p>So we can write:</p>
+<p>[ (q) . ]</p>
+</section>
+<section id="autoregressive-processes" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="autoregressive-processes"><span class="header-section-number">4.3</span> Autoregressive Processes</h2>
 <p><span class="math inline">Y_t = \alpha + \phi_1 Y_{t-1} + \phi_2 Y_{t-2} + \dots + \phi_p Y_{t-p} + \epsilon_t</span></p>
 <p>Where:</p>
 <p><span class="math inline">Y_t</span> is the value at time <span class="math inline">t</span></p>
@@ -246,8 +255,8 @@ window.Quarto = {
 <p><span class="math inline">\epsilon_t</span> is white noise (error term),</p>
 <p><span class="math inline">p</span> is the order of the AR model.</p>
 </section>
-<section id="in-class-properties-of-ar1-process" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="in-class-properties-of-ar1-process"><span class="header-section-number">4.3</span> In-class: Properties of AR(1) process</h2>
+<section id="in-class-properties-of-ar1-process" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="in-class-properties-of-ar1-process"><span class="header-section-number">4.4</span> In-class: Properties of AR(1) process</h2>
 <p>Derive</p>
 <ul>
 <li><p>Mean</p></li>
@@ -256,8 +265,8 @@ window.Quarto = {
 <li><p>Autocorrelation function of an AR(1) process</p></li>
 </ul>
 </section>
-<section id="in-class-properties-of-ar2-process" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="in-class-properties-of-ar2-process"><span class="header-section-number">4.4</span> In-class: Properties of AR(2) process</h2>
+<section id="in-class-properties-of-ar2-process" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="in-class-properties-of-ar2-process"><span class="header-section-number">4.5</span> In-class: Properties of AR(2) process</h2>
 <p>Derive</p>
 <ul>
 <li><p>Mean</p></li>
@@ -266,8 +275,8 @@ window.Quarto = {
 <li><p>Autocorrelation function of an AR(1) process</p></li>
 </ul>
 </section>
-<section id="in-class-properties-of-arp-process" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="in-class-properties-of-arp-process"><span class="header-section-number">4.5</span> In-class: Properties of AR(P) process</h2>
+<section id="in-class-properties-of-arp-process" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="in-class-properties-of-arp-process"><span class="header-section-number">4.6</span> In-class: Properties of AR(P) process</h2>
 <p>Derive</p>
 <ul>
 <li><p>Mean</p></li>
