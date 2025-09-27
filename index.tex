@@ -2005,7 +2005,30 @@ where,
 \(\varepsilon_t \sim \text{i.i.d. } (0, \sigma^2)\) are white noise
 shocks.
 
-\section{Autoregressive Models}\label{autoregressive-models}
+\section{Moving Average Processes}\label{moving-average-processes}
+
+If only finitely many coefficients \(\psi_j\) are nonzero, say up to lag
+\(q\), then we have an MA(\(q\)) process:
+
+\[X_t = \mu + \varepsilon_t + \theta_1 \varepsilon_{t-1} + \dots + \theta_q \varepsilon_{t-q},\]
+
+where:
+
+\begin{itemize}
+\item
+  \(\mu\) is the mean,
+\item
+  \(\varepsilon_t \sim \text{i.i.d. }(0, \sigma^2)\) are white noise
+  shocks,
+\item
+  \(\theta_1, \dots, \theta_q\) are the MA coefficients.
+\end{itemize}
+
+So we can write:
+
+\[\text{MA}(q) \subset \text{Linear Process}.\]
+
+\section{Autoregressive Processes}\label{autoregressive-processes}
 
 \(Y_t = \alpha + \phi_1 Y_{t-1} + \phi_2 Y_{t-2} + \dots + \phi_p Y_{t-p} + \epsilon_t\)
 
@@ -2020,6 +2043,75 @@ Where:
 \(\epsilon_t\) is white noise (error term),
 
 \(p\) is the order of the AR model.
+
+\section{AR processes are also just special cases of the general linear
+process}\label{ar-processes-are-also-just-special-cases-of-the-general-linear-process}
+
+If the AR process is causal (i.e., roots of the characteristic
+polynomial lie outside the unit circle), then it can be written as an
+infinite linear process:
+
+\[X_t = \sum_{j=0}^{\infty} \psi_j \, \varepsilon_{t-j},\]
+
+where:
+
+\begin{itemize}
+\item
+  \(\varepsilon_t \sim \text{i.i.d. }(0, \sigma^2)\) are white noise
+  shocks,
+\item
+  \(\psi_j\) are coefficients determined from the AR parameters.
+\end{itemize}
+
+\subsection{AR(p) Process as an Infinite Linear Process Using Backshift
+Operator}\label{arp-process-as-an-infinite-linear-process-using-backshift-operator}
+
+Start with the AR(p) process:
+
+\[X_t = \phi_1 X_{t-1} + \phi_2 X_{t-2} + \dots + \phi_p X_{t-p} + \varepsilon_t,\]
+
+where \(\varepsilon_t \sim \text{i.i.d. }(0, \sigma^2)\) are white noise
+shocks.
+
+\subsubsection{1. Define the backshift operator
+(B)}\label{define-the-backshift-operator-b}
+
+\[B X_t = X_{t-1}, \quad B^2 X_t = X_{t-2}, \dots, B^p X_t = X_{t-p}.\]
+
+\subsubsection{2. Rewrite the AR(p) process using
+(B)}\label{rewrite-the-arp-process-using-b}
+
+\[X_t - \phi_1 B X_t - \phi_2 B^2 X_t - \dots - \phi_p B^p X_t = \varepsilon_t\]
+
+Factor out (X\_t):
+
+\[(1 - \phi_1 B - \phi_2 B^2 - \dots - \phi_p B^p) X_t = \varepsilon_t\]
+
+Define the AR polynomial:
+
+\[\phi(B) = 1 - \phi_1 B - \phi_2 B^2 - \dots - \phi_p B^p\]
+
+Then the AR(p) process becomes:
+
+\[\phi(B) X_t = \varepsilon_t\]
+
+\subsubsection{3. Express as an infinite linear
+process}\label{express-as-an-infinite-linear-process}
+
+If the AR process is \textbf{causal} (roots of \(\phi(z)=0\) lie outside
+the unit circle), we can invert the operator:
+
+\[X_t = \phi(B)^{-1} \varepsilon_t\]
+
+Expanding gives:
+
+\[X_t = \sum_{j=0}^{\infty} \psi_j \, \varepsilon_{t-j},\]
+
+where the coefficients \(\psi_j\) are determined recursively from the AR
+parameters \(\phi_1, \dots, \phi_p\).
+
+This shows that causal AR processes are \textbf{special cases of the
+general linear process}.
 
 \section{In-class: Properties of AR(1)
 process}\label{in-class-properties-of-ar1-process}

@@ -199,9 +199,10 @@ window.Quarto = {
   <li><a href="#general-linear-process" id="toc-general-linear-process" class="nav-link active" data-scroll-target="#general-linear-process"><span class="header-section-number">4.1</span> General Linear Process</a></li>
   <li><a href="#moving-average-processes" id="toc-moving-average-processes" class="nav-link" data-scroll-target="#moving-average-processes"><span class="header-section-number">4.2</span> Moving Average Processes</a></li>
   <li><a href="#autoregressive-processes" id="toc-autoregressive-processes" class="nav-link" data-scroll-target="#autoregressive-processes"><span class="header-section-number">4.3</span> Autoregressive Processes</a></li>
-  <li><a href="#in-class-properties-of-ar1-process" id="toc-in-class-properties-of-ar1-process" class="nav-link" data-scroll-target="#in-class-properties-of-ar1-process"><span class="header-section-number">4.4</span> In-class: Properties of AR(1) process</a></li>
-  <li><a href="#in-class-properties-of-ar2-process" id="toc-in-class-properties-of-ar2-process" class="nav-link" data-scroll-target="#in-class-properties-of-ar2-process"><span class="header-section-number">4.5</span> In-class: Properties of AR(2) process</a></li>
-  <li><a href="#in-class-properties-of-arp-process" id="toc-in-class-properties-of-arp-process" class="nav-link" data-scroll-target="#in-class-properties-of-arp-process"><span class="header-section-number">4.6</span> In-class: Properties of AR(P) process</a></li>
+  <li><a href="#ar-processes-are-also-just-special-cases-of-the-general-linear-process" id="toc-ar-processes-are-also-just-special-cases-of-the-general-linear-process" class="nav-link" data-scroll-target="#ar-processes-are-also-just-special-cases-of-the-general-linear-process"><span class="header-section-number">4.4</span> AR processes are also just special cases of the general linear process</a></li>
+  <li><a href="#in-class-properties-of-ar1-process" id="toc-in-class-properties-of-ar1-process" class="nav-link" data-scroll-target="#in-class-properties-of-ar1-process"><span class="header-section-number">4.5</span> In-class: Properties of AR(1) process</a></li>
+  <li><a href="#in-class-properties-of-ar2-process" id="toc-in-class-properties-of-ar2-process" class="nav-link" data-scroll-target="#in-class-properties-of-ar2-process"><span class="header-section-number">4.6</span> In-class: Properties of AR(2) process</a></li>
+  <li><a href="#in-class-properties-of-arp-process" id="toc-in-class-properties-of-arp-process" class="nav-link" data-scroll-target="#in-class-properties-of-arp-process"><span class="header-section-number">4.7</span> In-class: Properties of AR(P) process</a></li>
   </ul>
 </nav>
     </div>
@@ -240,10 +241,15 @@ window.Quarto = {
 <section id="moving-average-processes" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="moving-average-processes"><span class="header-section-number">4.2</span> Moving Average Processes</h2>
 <p>If only finitely many coefficients <span class="math inline">\psi_j</span> are nonzero, say up to lag <span class="math inline">q</span>, then we have an MA(<span class="math inline">q</span>) process:</p>
-<p>[ X_t = + _t + <em>1 </em>{t-1} + + <em>q </em>{t-q}, ]</p>
-<p>where: - <span class="math inline">\mu</span> is the mean, - <span class="math inline">\varepsilon_t \sim \text{i.i.d. }(0, \sigma^2)</span> are white noise shocks, - <span class="math inline">\theta_1, \dots, \theta_q</span> are the MA coefficients.</p>
+<p><span class="math display">X_t = \mu + \varepsilon_t + \theta_1 \varepsilon_{t-1} + \dots + \theta_q \varepsilon_{t-q},</span></p>
+<p>where:</p>
+<ul>
+<li><p><span class="math inline">\mu</span> is the mean,</p></li>
+<li><p><span class="math inline">\varepsilon_t \sim \text{i.i.d. }(0, \sigma^2)</span> are white noise shocks,</p></li>
+<li><p><span class="math inline">\theta_1, \dots, \theta_q</span> are the MA coefficients.</p></li>
+</ul>
 <p>So we can write:</p>
-<p>[ (q) . ]</p>
+<p><span class="math display">\text{MA}(q) \subset \text{Linear Process}.</span></p>
 </section>
 <section id="autoregressive-processes" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="autoregressive-processes"><span class="header-section-number">4.3</span> Autoregressive Processes</h2>
@@ -255,8 +261,47 @@ window.Quarto = {
 <p><span class="math inline">\epsilon_t</span> is white noise (error term),</p>
 <p><span class="math inline">p</span> is the order of the AR model.</p>
 </section>
-<section id="in-class-properties-of-ar1-process" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="in-class-properties-of-ar1-process"><span class="header-section-number">4.4</span> In-class: Properties of AR(1) process</h2>
+<section id="ar-processes-are-also-just-special-cases-of-the-general-linear-process" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="ar-processes-are-also-just-special-cases-of-the-general-linear-process"><span class="header-section-number">4.4</span> AR processes are also just special cases of the general linear process</h2>
+<p>If the AR process is causal (i.e., roots of the characteristic polynomial lie outside the unit circle), then it can be written as an infinite linear process:</p>
+<p><span class="math display">X_t = \sum_{j=0}^{\infty} \psi_j \, \varepsilon_{t-j},</span></p>
+<p>where:</p>
+<ul>
+<li><p><span class="math inline">\varepsilon_t \sim \text{i.i.d. }(0, \sigma^2)</span> are white noise shocks,</p></li>
+<li><p><span class="math inline">\psi_j</span> are coefficients determined from the AR parameters.</p></li>
+</ul>
+<section id="arp-process-as-an-infinite-linear-process-using-backshift-operator" class="level3">
+<h3 class="anchored" data-anchor-id="arp-process-as-an-infinite-linear-process-using-backshift-operator">AR(p) Process as an Infinite Linear Process Using Backshift Operator</h3>
+<p>Start with the AR(p) process:</p>
+<p><span class="math display">X_t = \phi_1 X_{t-1} + \phi_2 X_{t-2} + \dots + \phi_p X_{t-p} + \varepsilon_t,</span></p>
+<p>where <span class="math inline">\varepsilon_t \sim \text{i.i.d. }(0, \sigma^2)</span> are white noise shocks.</p>
+<section id="define-the-backshift-operator-b" class="level4">
+<h4 class="anchored" data-anchor-id="define-the-backshift-operator-b">1. Define the backshift operator (B)</h4>
+<p><span class="math display">B X_t = X_{t-1}, \quad B^2 X_t = X_{t-2}, \dots, B^p X_t = X_{t-p}.</span></p>
+</section>
+<section id="rewrite-the-arp-process-using-b" class="level4">
+<h4 class="anchored" data-anchor-id="rewrite-the-arp-process-using-b">2. Rewrite the AR(p) process using (B)</h4>
+<p><span class="math display">X_t - \phi_1 B X_t - \phi_2 B^2 X_t - \dots - \phi_p B^p X_t = \varepsilon_t</span></p>
+<p>Factor out (X_t):</p>
+<p><span class="math display">(1 - \phi_1 B - \phi_2 B^2 - \dots - \phi_p B^p) X_t = \varepsilon_t</span></p>
+<p>Define the AR polynomial:</p>
+<p><span class="math display">\phi(B) = 1 - \phi_1 B - \phi_2 B^2 - \dots - \phi_p B^p</span></p>
+<p>Then the AR(p) process becomes:</p>
+<p><span class="math display">\phi(B) X_t = \varepsilon_t</span></p>
+</section>
+<section id="express-as-an-infinite-linear-process" class="level4">
+<h4 class="anchored" data-anchor-id="express-as-an-infinite-linear-process">3. Express as an infinite linear process</h4>
+<p>If the AR process is <strong>causal</strong> (roots of <span class="math inline">\phi(z)=0</span> lie outside the unit circle), we can invert the operator:</p>
+<p><span class="math display">X_t = \phi(B)^{-1} \varepsilon_t</span></p>
+<p>Expanding gives:</p>
+<p><span class="math display">X_t = \sum_{j=0}^{\infty} \psi_j \, \varepsilon_{t-j},</span></p>
+<p>where the coefficients <span class="math inline">\psi_j</span> are determined recursively from the AR parameters <span class="math inline">\phi_1, \dots, \phi_p</span>.</p>
+<p>This shows that causal AR processes are <strong>special cases of the general linear process</strong>.</p>
+</section>
+</section>
+</section>
+<section id="in-class-properties-of-ar1-process" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="in-class-properties-of-ar1-process"><span class="header-section-number">4.5</span> In-class: Properties of AR(1) process</h2>
 <p>Derive</p>
 <ul>
 <li><p>Mean</p></li>
@@ -265,8 +310,8 @@ window.Quarto = {
 <li><p>Autocorrelation function of an AR(1) process</p></li>
 </ul>
 </section>
-<section id="in-class-properties-of-ar2-process" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="in-class-properties-of-ar2-process"><span class="header-section-number">4.5</span> In-class: Properties of AR(2) process</h2>
+<section id="in-class-properties-of-ar2-process" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="in-class-properties-of-ar2-process"><span class="header-section-number">4.6</span> In-class: Properties of AR(2) process</h2>
 <p>Derive</p>
 <ul>
 <li><p>Mean</p></li>
@@ -275,8 +320,8 @@ window.Quarto = {
 <li><p>Autocorrelation function of an AR(1) process</p></li>
 </ul>
 </section>
-<section id="in-class-properties-of-arp-process" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="in-class-properties-of-arp-process"><span class="header-section-number">4.6</span> In-class: Properties of AR(P) process</h2>
+<section id="in-class-properties-of-arp-process" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="in-class-properties-of-arp-process"><span class="header-section-number">4.7</span> In-class: Properties of AR(P) process</h2>
 <p>Derive</p>
 <ul>
 <li><p>Mean</p></li>

@@ -55,6 +55,65 @@ $\epsilon_t$ is white noise (error term),
 
 $p$ is the order of the AR model.
 
+## AR processes are also just special cases of the general linear process
+
+If the AR process is causal (i.e., roots of the characteristic polynomial lie outside the unit circle), then it can be written as an infinite linear process:
+
+$$X_t = \sum_{j=0}^{\infty} \psi_j \, \varepsilon_{t-j},$$
+
+where:
+
+- $\varepsilon_t \sim \text{i.i.d. }(0, \sigma^2)$ are white noise shocks,
+
+- $\psi_j$ are coefficients determined from the AR parameters.
+
+### AR(p) Process as an Infinite Linear Process Using Backshift Operator
+
+Start with the AR(p) process:
+
+$$X_t = \phi_1 X_{t-1} + \phi_2 X_{t-2} + \dots + \phi_p X_{t-p} + \varepsilon_t,$$
+
+where $\varepsilon_t \sim \text{i.i.d. }(0, \sigma^2)$ are white noise shocks.
+
+
+#### 1. Define the backshift operator \(B\)
+
+
+$$B X_t = X_{t-1}, \quad B^2 X_t = X_{t-2}, \dots, B^p X_t = X_{t-p}.$$
+
+#### 2. Rewrite the AR(p) process using \(B\)
+
+$$X_t - \phi_1 B X_t - \phi_2 B^2 X_t - \dots - \phi_p B^p X_t = \varepsilon_t$$
+
+Factor out \(X_t\):
+
+$$(1 - \phi_1 B - \phi_2 B^2 - \dots - \phi_p B^p) X_t = \varepsilon_t$$
+
+Define the AR polynomial:
+
+$$\phi(B) = 1 - \phi_1 B - \phi_2 B^2 - \dots - \phi_p B^p$$
+
+Then the AR(p) process becomes:
+
+$$\phi(B) X_t = \varepsilon_t$$
+
+
+
+#### 3. Express as an infinite linear process
+
+If the AR process is **causal** (roots of $\phi(z)=0$ lie outside the unit circle), we can invert the operator:
+
+$$X_t = \phi(B)^{-1} \varepsilon_t$$
+
+Expanding gives:
+
+$$X_t = \sum_{j=0}^{\infty} \psi_j \, \varepsilon_{t-j},$$
+
+where the coefficients $\psi_j$ are determined recursively from the AR parameters $\phi_1, \dots, \phi_p$.
+
+This shows that causal AR processes are **special cases of the general linear process**.
+
+
 ## In-class: Properties of AR(1) process
 
 Derive
