@@ -639,7 +639,7 @@ In general for $AR(p)$ precess, the partial autocorrelation function $\phi_{kk}$
 
 
 
-# Moving average (MA) models
+## Moving average (MA) models
 
 
 We first derive the properties of $MA(1)$ and $MA(2)$ models and then give the results for the general $MA(q)$ model. 
@@ -951,6 +951,6 @@ p9 <- ggAcf(ARMA1acf, type = "partial") + ggtitle("PACF: ARMA(1,1), \n theta1 = 
 (t1|p1|p3)/(t2|p5|p7)/(t3|p8|p9)
 ```
 
-# References
+## References
 
 Box, G. E., Jenkins, G. M., Reinsel, G. C., & Ljung, G. M. (2015). Time series analysis: forecasting and control.
