@@ -9,14 +9,12 @@ A \textbf{linear process} is a time series written as an infinite linear combina
 
 $$X_t = \mu + \sum_{j=0}^{\infty} \psi_j \, \varepsilon_{t-j},$$
 
-where,
-
-  $\mu$ is the mean
-  
-  $\{\psi_j\}$ are coefficients (weights)
-  
-  $\varepsilon_t \sim \text{i.i.d. } (0, \sigma^2)$ are white noise shocks.
-
+where:
+\begin{itemize}
+    \item $\mu$ is the mean,
+    \item $\{\psi_j\}$ are coefficients (weights),
+    \item $\varepsilon_t \sim \text{i.i.d. } (0, \sigma^2)$ are white noise shocks.
+\end{itemize}
 
 ## Autoregressive Models
 
@@ -70,6 +68,3 @@ Derive
 -   Covariance
 
 -   Autocorrelation function of an AR(P) process
-
-
-

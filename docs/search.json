@@ -1,245 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Spatio-Temporal Data Analysis",
-    "section": "",
-    "text": "Copyright notice\nProduced on 21 September 2025.\n© Thiyanga S. Talagala (2025).",
-    "crumbs": [
-      "Front matter"
-    ]
-  },
-  {
-    "objectID": "02-chap2.html",
-    "href": "02-chap2.html",
-    "title": "\n2  Introduction to Time Series Analysis\n",
-    "section": "",
-    "text": "2.1 Time series\nA time series is a sequence of observations recorded in time order. The time intervals between observations can be regular (e.g., daily, monthly, yearly) or irregular (e.g., magnitude of a earthquake at a particular location).",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Time Series Analysis</span>"
-    ]
-  },
-  {
-    "objectID": "02-chap2.html#frequency-of-a-time-series-seasonal-periods",
-    "href": "02-chap2.html#frequency-of-a-time-series-seasonal-periods",
-    "title": "\n2  Introduction to Time Series Analysis\n",
-    "section": "\n2.3 Frequency of a time series (Seasonal periods)",
-    "text": "2.3 Frequency of a time series (Seasonal periods)\nNumber of observations per natural time interval (Usually year, but sometimes a week, a day, an hour)\nSingle Seasonality\nThe time series exhibits one repeating pattern at a fixed frequency.\nExample:\nMonthly sales that peak every December (annual seasonality).\n\n\n\n\nData\nFrequency\n\n\n\nAnnual\n1\n\n\nQuarterly\n4\n\n\nMonthly\n12\n\n\nWeekly\n52\n\n\n\n\n\nMultiple Seasonality\nThe time series exhibits more than one repeating pattern at different frequencies simultaneously.\nExample:\nHourly electricity demand with a daily pattern (peaks every day at certain hours), a weekly pattern (weekdays vs weekends).\nWebsite traffic with hourly variation and seasonal holiday peaks.\n\n\n\nTime Unit Frequencies\n\nData\nMinute\nHour\nDay\nWeek\nYear\n\n\n\nDaily\nNA\nNA\nNA\n7\n365.25\n\n\nHourly\nNA\nNA\n24\n168\n8766.00\n\n\nHalf-hourly\nNA\nNA\n48\n336\n17532.00\n\n\nMinutes\n60\n1440\n1440\n10080\n525960.00\n\n\nSeconds\n60\n3600\n86400\n604800\n31557600.00",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Time Series Analysis</span>"
-    ]
-  },
-  {
-    "objectID": "02-chap2.html#dataframe-for-time-series-data",
-    "href": "02-chap2.html#dataframe-for-time-series-data",
-    "title": "\n2  Introduction to Time Series Analysis\n",
-    "section": "\n2.4 DataFrame for time series data",
-    "text": "2.4 DataFrame for time series data\nWhen your DataFrame represents a time series, the index is usually the date or time, allowing pandas to:\n\nPlot time series easily\nResample or aggregate data by time\nCompute rolling statistics\n\n\n# Import pandas\n#py -m pip install pandas\nimport pandas as pd\n\n# Define data\nvalue = [100, 250, 78, 300, 500]\ntime = list(range(2015, 2020))\n\n# Create DataFrame\ndf = pd.DataFrame({\"Year\": time, \"Observation\": value})\n\n# Set 'Year' as index\ndf.set_index(\"Year\", inplace=True)\n\n# Display the DataFrame\nprint(df)\n\n      Observation\nYear             \n2015          100\n2016          250\n2017           78\n2018          300\n2019          500\n\n\nFor data collected more often than once a year (e.g., monthly, weekly, or daily), it’s important to tell the computer that the index represents time. We do this by converting the index to a time or date type using a time-class function. This helps us sort, select, and analyze the data correctly over time.\n\n# Sample monthly data\ndata = {\n    \"Month\": pd.date_range(start=\"2025-01-01\", periods=6, freq=\"M\"),  # 6 months\n    \"Sales\": [120, 150, 170, 130, 180, 200]\n}\n\n# Create DataFrame\nz = pd.DataFrame(data)\n\n# Format Month as \"Year Month\" (e.g., \"2025 Jan\")\nz[\"Month\"] = z[\"Month\"].dt.strftime(\"%Y %b\")\n\n# Set Month as index\nz.set_index(\"Month\", inplace=True)\n\n# Display the DataFrame\nprint(z)\n\n          Sales\nMonth          \n2025 Jan    120\n2025 Feb    150\n2025 Mar    170\n2025 Apr    130\n2025 May    180\n2025 Jun    200",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Time Series Analysis</span>"
-    ]
-  },
-  {
-    "objectID": "02-chap2.html#time-series-visualisation-using-grammar-of-graphics",
-    "href": "02-chap2.html#time-series-visualisation-using-grammar-of-graphics",
-    "title": "\n2  Introduction to Time Series Analysis\n",
-    "section": "\n2.7 Time series visualisation using grammar of graphics",
-    "text": "2.7 Time series visualisation using grammar of graphics\nThe grammar of graphics is a way of thinking about plots as layers. Each plot is built from components like:\nData – the dataset you are plotting.\nAesthetics (aes) – how variables map to visual properties like x, y, color, or size.\nGeometries (geom) – the type of plot (points, lines, bars, etc.).\nFacets – split the plot into subplots based on a variable.\nStatistics (stat) – summary computations like regression lines or counts.\nScales – control axis limits, colors, or sizes.\nCoordinates (coord) – control coordinate system (Cartesian, polar).\nTheme – control visual appearance like text, background, and grid.\n*",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Time Series Analysis</span>"
-    ]
-  },
-  {
-    "objectID": "02-chap2.html#economics-data-set",
-    "href": "02-chap2.html#economics-data-set",
-    "title": "\n2  Introduction to Time Series Analysis\n",
-    "section": "\n3.1 economics data set",
-    "text": "3.1 economics data set\n\n\n          date      pce     pop  psavert  uempmed  unemploy\n0   1967-07-01    507.4  198712     12.5      4.5      2944\n1   1967-08-01    510.5  198911     12.5      4.7      2945\n2   1967-09-01    516.3  199113     11.7      4.6      2958\n3   1967-10-01    512.9  199311     12.5      4.9      3143\n4   1967-11-01    518.1  199498     12.5      4.7      3066\n..         ...      ...     ...      ...      ...       ...\n569 2014-12-01  12122.0  320201      5.0     12.6      8688\n570 2015-01-01  12080.8  320367      5.5     13.4      8979\n571 2015-02-01  12095.9  320534      5.7     13.1      8705\n572 2015-03-01  12161.5  320707      5.2     12.2      8575\n573 2015-04-01  12158.9  320887      5.6     11.7      8549\n\n[574 rows x 6 columns]\n\n\n\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 574 entries, 0 to 573\nData columns (total 6 columns):\n #   Column    Non-Null Count  Dtype         \n---  ------    --------------  -----         \n 0   date      574 non-null    datetime64[ns]\n 1   pce       574 non-null    float64       \n 2   pop       574 non-null    int64         \n 3   psavert   574 non-null    float64       \n 4   uempmed   574 non-null    float64       \n 5   unemploy  574 non-null    int64         \ndtypes: datetime64[ns](1), float64(3), int64(2)\nmemory usage: 27.0 KB\n\n\nCreate year and month columns\n\n\n          date      pce     pop  psavert  uempmed  unemploy  year  month\n0   1967-07-01    507.4  198712     12.5      4.5      2944  1967      7\n1   1967-08-01    510.5  198911     12.5      4.7      2945  1967      8\n2   1967-09-01    516.3  199113     11.7      4.6      2958  1967      9\n3   1967-10-01    512.9  199311     12.5      4.9      3143  1967     10\n4   1967-11-01    518.1  199498     12.5      4.7      3066  1967     11\n..         ...      ...     ...      ...      ...       ...   ...    ...\n569 2014-12-01  12122.0  320201      5.0     12.6      8688  2014     12\n570 2015-01-01  12080.8  320367      5.5     13.4      8979  2015      1\n571 2015-02-01  12095.9  320534      5.7     13.1      8705  2015      2\n572 2015-03-01  12161.5  320707      5.2     12.2      8575  2015      3\n573 2015-04-01  12158.9  320887      5.6     11.7      8549  2015      4\n\n[574 rows x 8 columns]\n\n\n\n\n&lt;ggplot: (640 x 480)&gt;",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Time Series Analysis</span>"
-    ]
-  },
-  {
-    "objectID": "02-chap2.html#dataset",
-    "href": "02-chap2.html#dataset",
-    "title": "\n2  Introduction to Time Series Analysis\n",
-    "section": "\n2.5 Dataset",
-    "text": "2.5 Dataset\n\nimport plotnine as p9\nfrom plotnine.data import economics",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Time Series Analysis</span>"
-    ]
-  },
-  {
-    "objectID": "02-chap2.html#working-with-built-in-data-set",
-    "href": "02-chap2.html#working-with-built-in-data-set",
-    "title": "\n2  Introduction to Time Series Analysis\n",
-    "section": "\n2.9 Working with Built-in Data Set",
-    "text": "2.9 Working with Built-in Data Set\n\nimport pandas as pd\nimport plotnine as p9 \nfrom plotnine import *\nfrom plotnine.data import *\nimport numpy as np\neconomics\n\n          date      pce     pop  psavert  uempmed  unemploy\n0   1967-07-01    507.4  198712     12.5      4.5      2944\n1   1967-08-01    510.5  198911     12.5      4.7      2945\n2   1967-09-01    516.3  199113     11.7      4.6      2958\n3   1967-10-01    512.9  199311     12.5      4.9      3143\n4   1967-11-01    518.1  199498     12.5      4.7      3066\n..         ...      ...     ...      ...      ...       ...\n569 2014-12-01  12122.0  320201      5.0     12.6      8688\n570 2015-01-01  12080.8  320367      5.5     13.4      8979\n571 2015-02-01  12095.9  320534      5.7     13.1      8705\n572 2015-03-01  12161.5  320707      5.2     12.2      8575\n573 2015-04-01  12158.9  320887      5.6     11.7      8549\n\n[574 rows x 6 columns]\n\n\n\neconomics.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 574 entries, 0 to 573\nData columns (total 6 columns):\n #   Column    Non-Null Count  Dtype         \n---  ------    --------------  -----         \n 0   date      574 non-null    datetime64[ns]\n 1   pce       574 non-null    float64       \n 2   pop       574 non-null    int64         \n 3   psavert   574 non-null    float64       \n 4   uempmed   574 non-null    float64       \n 5   unemploy  574 non-null    int64         \ndtypes: datetime64[ns](1), float64(3), int64(2)\nmemory usage: 27.0 KB\n\n\nCreate year and month columns\n\neconomics['year'] = economics['date'].dt.year\neconomics['month'] = economics['date'].dt.month\neconomics\n\n          date      pce     pop  psavert  uempmed  unemploy  year  month\n0   1967-07-01    507.4  198712     12.5      4.5      2944  1967      7\n1   1967-08-01    510.5  198911     12.5      4.7      2945  1967      8\n2   1967-09-01    516.3  199113     11.7      4.6      2958  1967      9\n3   1967-10-01    512.9  199311     12.5      4.9      3143  1967     10\n4   1967-11-01    518.1  199498     12.5      4.7      3066  1967     11\n..         ...      ...     ...      ...      ...       ...   ...    ...\n569 2014-12-01  12122.0  320201      5.0     12.6      8688  2014     12\n570 2015-01-01  12080.8  320367      5.5     13.4      8979  2015      1\n571 2015-02-01  12095.9  320534      5.7     13.1      8705  2015      2\n572 2015-03-01  12161.5  320707      5.2     12.2      8575  2015      3\n573 2015-04-01  12158.9  320887      5.6     11.7      8549  2015      4\n\n[574 rows x 8 columns]",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Time Series Analysis</span>"
-    ]
-  },
-  {
-    "objectID": "02-chap2.html#main-time-series-patterns",
-    "href": "02-chap2.html#main-time-series-patterns",
-    "title": "\n2  Introduction to Time Series Analysis\n",
-    "section": "\n2.2 Main Time Series Patterns",
-    "text": "2.2 Main Time Series Patterns\nTrend\nLong-term increase or decrease in the data.\nSeasonal\n\nA seasonal pattern exists when a series is influenced by seasonal factors (e.g., the quarter of the year, the month, or day of the week).\nSeasonality is always of a fixed and known period.\nCyclic\n\nA cyclic pattern exists when data exhibit rises and falls that are not of fixed period.\nThe duration of these fluctuations is usually of at least 2 years.\nThe average length of cycles is longer than the length of a seasonal pattern.",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Time Series Analysis</span>"
-    ]
-  },
-  {
-    "objectID": "02-chap2.html#correlation-vs-autocorrelation",
-    "href": "02-chap2.html#correlation-vs-autocorrelation",
-    "title": "\n2  Introduction to Time Series Analysis\n",
-    "section": "\n2.12 Correlation vs Autocorrelation",
-    "text": "2.12 Correlation vs Autocorrelation\nCorrelation\nMeasures the strength of the linear relationship between two variables\nr = \\frac{\\sum_{i=1}^{n} (x_i -\\bar{x})(y_i-\\bar{y})}{\\sqrt{\\sum_{i=1}^{n} (x_i -\\bar{x})^2 \\sum_{i=1}^{n} (y_i -\\bar{y})^2}}\nAutocorrelation\nMeasures the strength of linear relationship between lagged values of time series.\nr_k = \\frac{\\sum (y_t -\\bar{y})(y_{t-k}-\\bar{y})}{\\sum (y_t -\\bar{y})^2}",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Time Series Analysis</span>"
-    ]
-  },
-  {
-    "objectID": "02-chap2.html#what-is-a-lag-value",
-    "href": "02-chap2.html#what-is-a-lag-value",
-    "title": "\n2  Introduction to Time Series Analysis\n",
-    "section": "\n2.11 What is a lag value?",
-    "text": "2.11 What is a lag value?\nIn time series analysis, a lag represents the number of time steps by which a series is shifted backward to compare it with itself.\nLag 1: Compare each value with the previous observation.\nLag 2: Compare each value with the value two steps before.\nLag k: Compare each value with the value k steps earlier.\n\nimport pandas as pd\n\n# Small time series with 5 points\ndata = [10, 12, 13, 15, 14]\ndates = pd.date_range(start='2025-01-01', periods=5, freq='D')\n\ndf = pd.DataFrame({'Date': dates, 'Value': data})\ndf.set_index('Date', inplace=True)\n\n# Create lagged series\ndf['Lag1'] = df['Value'].shift(1)  # lag 1\ndf['Lag2'] = df['Value'].shift(2)  # lag 2\n\n# Show the result\nprint(df)\n\n            Value  Lag1  Lag2\nDate                         \n2025-01-01     10   NaN   NaN\n2025-01-02     12  10.0   NaN\n2025-01-03     13  12.0  10.0\n2025-01-04     15  13.0  12.0\n2025-01-05     14  15.0  13.0",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Time Series Analysis</span>"
-    ]
-  },
-  {
-    "objectID": "02-chap2.html#your-turn-why-different-values",
-    "href": "02-chap2.html#your-turn-why-different-values",
-    "title": "\n2  Introduction to Time Series Analysis\n",
-    "section": "\n2.13 Your turn: why different values?",
-    "text": "2.13 Your turn: why different values?\n\n# Correlation (autocorrelation) between original series and lagged series\nautocorr_lag1 = df['Value'].corr(df['Lag1'])\nautocorr_lag2 = df['Value'].corr(df['Lag2'])\n\nprint(f\"Autocorrelation at lag 1: {autocorr_lag1:.3f}\")\n\nAutocorrelation at lag 1: 0.744\n\nprint(f\"Autocorrelation at lag 2: {autocorr_lag2:.3f}\")\n\nAutocorrelation at lag 2: 0.655\n\n\n\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom statsmodels.tsa.stattools import acf\n\n# Small time series with 5 points\ndata = [10, 12, 13, 15, 14]\ndates = pd.date_range(start='2025-01-01', periods=5, freq='D')\n\ndf = pd.DataFrame({'Date': dates, 'Value': data})\ndf.set_index('Date', inplace=True)\n\nprint(df)\n\n            Value\nDate             \n2025-01-01     10\n2025-01-02     12\n2025-01-03     13\n2025-01-04     15\n2025-01-05     14\n\n\n\n# Compute autocorrelation for lags 1 to 4 (max lag = n-1)\nautocorr_values = acf(df['Value'], nlags=4, fft=False)\n\n# Show autocorrelation values\nfor lag, val in enumerate(autocorr_values):\n    print(f\"Lag {lag}: {val:.3f}\")\n\nLag 0: 1.000\nLag 1: 0.349\nLag 2: -0.141\nLag 3: -0.481\nLag 4: -0.227",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Time Series Analysis</span>"
-    ]
-  },
-  {
-    "objectID": "02-chap2.html#autocorrelation-plots-acf-plots",
-    "href": "02-chap2.html#autocorrelation-plots-acf-plots",
-    "title": "\n2  Introduction to Time Series Analysis\n",
-    "section": "\n2.11 Autocorrelation plots (ACF plots)",
-    "text": "2.11 Autocorrelation plots (ACF plots)\nExample 1",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Time Series Analysis</span>"
-    ]
-  },
-  {
-    "objectID": "02-chap2.html#autocorrelation-plots-acf",
-    "href": "02-chap2.html#autocorrelation-plots-acf",
-    "title": "\n2  Introduction to Time Series Analysis\n",
-    "section": "\n2.14 Autocorrelation plots (ACF)",
-    "text": "2.14 Autocorrelation plots (ACF)\nThe ACF measures the correlation between a time series and lagged versions of itself. It tells us how past values influence current values.\nExample 1\nTime series plot\n\nlibrary(fable)\nlibrary(fpp2)\nautoplot(beer)\n\n\n\n\n\n\n\nSeasonal plot\n\nggseasonplot(beer, year.labels=TRUE, year.labels.left=TRUE)\n\n\n\n\n\n\n\nACF\n\nggAcf(beer)\n\n\n\n\n\n\n\n\nggseasonplot(beer, year.labels=TRUE, year.labels.left=TRUE)",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Time Series Analysis</span>"
-    ]
-  },
-  {
-    "objectID": "02-chap2.html#section",
-    "href": "02-chap2.html#section",
-    "title": "\n2  Introduction to Time Series Analysis\n",
-    "section": "\n2.12 ",
-    "text": "2.12",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Time Series Analysis</span>"
-    ]
-  },
-  {
-    "objectID": "02-chap2.html#example-2",
-    "href": "02-chap2.html#example-2",
-    "title": "\n2  Introduction to Time Series Analysis\n",
-    "section": "\n2.15 Example 2",
-    "text": "2.15 Example 2\n\naelec &lt;- window(elec, start=1980)\nautoplot(aelec) + xlab(\"Year\") + ylab(\"GWh\")\n\n\n\n\n\n\n\nSeasonal plots\n\nggseasonplot(aelec, year.labels=TRUE, year.labels.left=TRUE)\n\n\n\n\n\n\n\n\nggAcf(aelec, lag=48)",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Time Series Analysis</span>"
-    ]
-  },
-  {
-    "objectID": "02-chap2.html#example-3",
-    "href": "02-chap2.html#example-3",
-    "title": "\n2  Introduction to Time Series Analysis\n",
-    "section": "\n2.16 Example 3",
-    "text": "2.16 Example 3\n\nset.seed(3)\ny &lt;- ts(rnorm(50))\nautoplot(y) + ggtitle(\"White noise\")\n\n\n\n\n\n\n\n\nggAcf(y)",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Time Series Analysis</span>"
-    ]
-  },
-  {
-    "objectID": "02-chap2.html#exercise",
-    "href": "02-chap2.html#exercise",
-    "title": "\n2  Introduction to Time Series Analysis\n",
-    "section": "\n2.17 Exercise",
-    "text": "2.17 Exercise\nQuestion 6 at https://otexts.com/fpp2/graphics-exercises.html",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Time Series Analysis</span>"
-    ]
-  },
-  {
-    "objectID": "02-chap2.html#dataframe-for-time-series-data-python",
-    "href": "02-chap2.html#dataframe-for-time-series-data-python",
-    "title": "\n2  Introduction to Time Series Analysis\n",
-    "section": "\n2.4 DataFrame for time series data: Python",
-    "text": "2.4 DataFrame for time series data: Python\nWhen your DataFrame represents a time series, the index is usually the date or time, allowing pandas to:\n\nPlot time series easily\nResample or aggregate data by time\nCompute rolling statistics\n\n\n# Import pandas\n#py -m pip install pandas\nimport pandas as pd\n\n# Define data\nvalue = [100, 250, 78, 300, 500]\ntime = list(range(2015, 2020))\n\n# Create DataFrame\ndf = pd.DataFrame({\"Year\": time, \"Observation\": value})\n\n# Set 'Year' as index\ndf.set_index(\"Year\", inplace=True)\n\n# Display the DataFrame\nprint(df)\n\n      Observation\nYear             \n2015          100\n2016          250\n2017           78\n2018          300\n2019          500\n\n\nFor data collected more often than once a year (e.g., monthly, weekly, or daily), it’s important to tell the computer that the index represents time. We do this by converting the index to a time or date type using a time-class function. This helps us sort, select, and analyze the data correctly over time.\n\n# Sample monthly data\ndata = {\n    \"Month\": pd.date_range(start=\"2025-01-01\", periods=6, freq=\"M\"),  # 6 months\n    \"Sales\": [120, 150, 170, 130, 180, 200]\n}\n\n# Create DataFrame\nz = pd.DataFrame(data)\n\n# Format Month as \"Year Month\" (e.g., \"2025 Jan\")\nz[\"Month\"] = z[\"Month\"].dt.strftime(\"%Y %b\")\n\n# Set Month as index\nz.set_index(\"Month\", inplace=True)\n\n# Display the DataFrame\nprint(z)\n\n          Sales\nMonth          \n2025 Jan    120\n2025 Feb    150\n2025 Mar    170\n2025 Apr    130\n2025 May    180\n2025 Jun    200",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Time Series Analysis</span>"
-    ]
-  },
-  {
-    "objectID": "02-chap2.html#dataframe-for-time-series-data-r",
-    "href": "02-chap2.html#dataframe-for-time-series-data-r",
-    "title": "\n2  Introduction to Time Series Analysis\n",
-    "section": "\n2.5 DataFrame for time series data: R",
-    "text": "2.5 DataFrame for time series data: R\nWe use tsibbles to store data.\n\nlibrary(tidyverse)\nlibrary(tsibble)\nlibrary(lubridate)\nlibrary(feasts)\nlibrary(denguedatahub)\n# install.packages(\"devtools\")\n#devtools::install_github(\"thiyangt/TourSriLanka\")\nlibrary(TourSriLanka)\n\n\ny.tsibble &lt;- tsibble(\n  Year = 2020:2023,\n  Earnings = c(682.4, 506.9, 1136.3, 2068.0),\n  index = Year)\ny.tsibble\n\n# A tsibble: 4 x 2 [1Y]\n   Year Earnings\n  &lt;int&gt;    &lt;dbl&gt;\n1  2020     682.\n2  2021     507.\n3  2022    1136.\n4  2023    2068",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Time Series Analysis</span>"
-    ]
-  },
-  {
-    "objectID": "02-chap2.html#dataset-r",
-    "href": "02-chap2.html#dataset-r",
-    "title": "\n2  Introduction to Time Series Analysis\n",
-    "section": "\n2.6 Dataset: R",
-    "text": "2.6 Dataset: R\n\nlibrary(TourSriLanka)\ndata(earnings)\nearnings\n\n# A tibble: 180 × 3\n   Month   Year  Earnings\n   &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt;\n 1 January 2009      30  \n 2 January 2010      44.7\n 3 January 2011      72  \n 4 January 2012      88.9\n 5 January 2013     149. \n 6 January 2014     233. \n 7 January 2015     259  \n 8 January 2016     333. \n 9 January 2017     407. \n10 January 2018     448. \n# ℹ 170 more rows\n\n\n\nearnings &lt;- earnings |&gt;\n  arrange(Year, match(Month, month.name) )\nearnings\n\n# A tibble: 180 × 3\n   Month     Year  Earnings\n   &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;\n 1 January   2009      30  \n 2 February  2009      26.7\n 3 March     2009      26.6\n 4 April     2009      20.3\n 5 May       2009      19.3\n 6 June      2009      23.6\n 7 July      2009      33  \n 8 August    2009      32.2\n 9 September 2009      29.6\n10 October   2009      29.3\n# ℹ 170 more rows\n\n\n\ny.earnings &lt;- earnings |&gt; mutate(Date = seq(ymd_hm(\"2009-1-1 0:00\"), ymd_hm(\"2023-12-1 12:00\"), by = \"month\"))\ny.earnings\n\n# A tibble: 180 × 4\n   Month     Year  Earnings Date               \n   &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt; &lt;dttm&gt;             \n 1 January   2009      30   2009-01-01 00:00:00\n 2 February  2009      26.7 2009-02-01 00:00:00\n 3 March     2009      26.6 2009-03-01 00:00:00\n 4 April     2009      20.3 2009-04-01 00:00:00\n 5 May       2009      19.3 2009-05-01 00:00:00\n 6 June      2009      23.6 2009-06-01 00:00:00\n 7 July      2009      33   2009-07-01 00:00:00\n 8 August    2009      32.2 2009-08-01 00:00:00\n 9 September 2009      29.6 2009-09-01 00:00:00\n10 October   2009      29.3 2009-10-01 00:00:00\n# ℹ 170 more rows\n\n\n\ny.earnings &lt;- y.earnings |&gt;\n  select(Earnings, Date) |&gt; mutate(Time = yearmonth(Date))\ny.earnings\n\n# A tibble: 180 × 3\n   Earnings Date                    Time\n      &lt;dbl&gt; &lt;dttm&gt;                 &lt;mth&gt;\n 1     30   2009-01-01 00:00:00 2009 Jan\n 2     26.7 2009-02-01 00:00:00 2009 Feb\n 3     26.6 2009-03-01 00:00:00 2009 Mar\n 4     20.3 2009-04-01 00:00:00 2009 Apr\n 5     19.3 2009-05-01 00:00:00 2009 May\n 6     23.6 2009-06-01 00:00:00 2009 Jun\n 7     33   2009-07-01 00:00:00 2009 Jul\n 8     32.2 2009-08-01 00:00:00 2009 Aug\n 9     29.6 2009-09-01 00:00:00 2009 Sep\n10     29.3 2009-10-01 00:00:00 2009 Oct\n# ℹ 170 more rows\n\n\n\nts.earnings &lt;- y.earnings |&gt;\n  select(Earnings, Time) |&gt; as_tsibble(index=Time)\nts.earnings\n\n# A tsibble: 180 x 2 [1M]\n   Earnings     Time\n      &lt;dbl&gt;    &lt;mth&gt;\n 1     30   2009 Jan\n 2     26.7 2009 Feb\n 3     26.6 2009 Mar\n 4     20.3 2009 Apr\n 5     19.3 2009 May\n 6     23.6 2009 Jun\n 7     33   2009 Jul\n 8     32.2 2009 Aug\n 9     29.6 2009 Sep\n10     29.3 2009 Oct\n# ℹ 170 more rows\n\n\n\nggts &lt;- ts.earnings |&gt;\n  ggplot(aes(x = Time, y = Earnings)) +\n  geom_point() +\n  labs(y = \"Earnings from tourism (USD Mn)\", x=\"Time\")  \nggts\n\n\n\n\n\n\n\n\nts.earnings &lt;- y.earnings |&gt;\n  select(Earnings, Time) |&gt; as_tsibble(index=Time)\nts.earnings\n\n# A tsibble: 180 x 2 [1M]\n   Earnings     Time\n      &lt;dbl&gt;    &lt;mth&gt;\n 1     30   2009 Jan\n 2     26.7 2009 Feb\n 3     26.6 2009 Mar\n 4     20.3 2009 Apr\n 5     19.3 2009 May\n 6     23.6 2009 Jun\n 7     33   2009 Jul\n 8     32.2 2009 Aug\n 9     29.6 2009 Sep\n10     29.3 2009 Oct\n# ℹ 170 more rows",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Time Series Analysis</span>"
-    ]
-  },
-  {
-    "objectID": "02-chap2.html#time-series-visualisation-using-grammar-of-graphics-r",
-    "href": "02-chap2.html#time-series-visualisation-using-grammar-of-graphics-r",
-    "title": "\n2  Introduction to Time Series Analysis\n",
-    "section": "\n2.7 Time series visualisation using grammar of graphics: R",
-    "text": "2.7 Time series visualisation using grammar of graphics: R\nThe grammar of graphics is a way of thinking about plots as layers. Each plot is built from components like:\nData – the dataset you are plotting.\nAesthetics (aes) – how variables map to visual properties like x, y, color, or size.\nGeometries (geom) – the type of plot (points, lines, bars, etc.).\nFacets – split the plot into subplots based on a variable.\nStatistics (stat) – summary computations like regression lines or counts.\nScales – control axis limits, colors, or sizes.\nCoordinates (coord) – control coordinate system (Cartesian, polar).\nTheme – control visual appearance like text, background, and grid.\n\nggts &lt;- ts.earnings |&gt;\n  ggplot(aes(x = Time, y = Earnings)) +\n  geom_point() +\n  labs(y = \"Earnings from tourism (USD Mn)\", x=\"Time\")  \nggts\n\n\n\n\n\n\n\n\nggts &lt;- ts.earnings |&gt;\n  ggplot(aes(x = Time, y = Earnings)) +\n  geom_line() +\n  labs(y = \"Earnings from tourism (USD Mn)\", x=\"Time\")  \nggts\n\n\n\n\n\n\n\n\nts.earnings |&gt;\n    mutate(Time = as_date(yearmonth(Time))) |&gt;\n  ggplot(aes(x = Time, y = Earnings)) +\n  geom_line() +\n  scale_x_date(date_breaks = \"1 year\", date_labels = \"%Y\") + \n  labs(y = \"Earnings from tourism (USD Mn)\", x=\"Time\") \n\n\n\n\n\n\n\n\nlibrary(viridis)\nts.earnings |&gt;\n  gg_season(Earnings, period = \"1 year\",  pal = scales::viridis_pal()(15))  + geom_point()",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Time Series Analysis</span>"
-    ]
-  },
-  {
-    "objectID": "02-chap2.html#dataset-python",
-    "href": "02-chap2.html#dataset-python",
-    "title": "\n2  Introduction to Time Series Analysis\n",
-    "section": "\n2.8 Dataset: Python",
-    "text": "2.8 Dataset: Python\n\nimport plotnine as p9\nfrom plotnine.data import economics",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Time Series Analysis</span>"
-    ]
-  },
-  {
-    "objectID": "02-chap2.html#time-series-visualisation-using-grammar-of-graphics-python",
-    "href": "02-chap2.html#time-series-visualisation-using-grammar-of-graphics-python",
-    "title": "\n2  Introduction to Time Series Analysis\n",
-    "section": "\n2.10 Time series visualisation using grammar of graphics: Python",
-    "text": "2.10 Time series visualisation using grammar of graphics: Python\nThe grammar of graphics is a way of thinking about plots as layers. Each plot is built from components like:\nData – the dataset you are plotting.\nAesthetics (aes) – how variables map to visual properties like x, y, color, or size.\nGeometries (geom) – the type of plot (points, lines, bars, etc.).\nFacets – split the plot into subplots based on a variable.\nStatistics (stat) – summary computations like regression lines or counts.\nScales – control axis limits, colors, or sizes.\nCoordinates (coord) – control coordinate system (Cartesian, polar).\nTheme – control visual appearance like text, background, and grid.\n*",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Time Series Analysis</span>"
-    ]
-  },
-  {
     "objectID": "03-chap3.html",
     "href": "03-chap3.html",
     "title": "\n3  Introduction to Time Series Forecasting\n",
@@ -270,11 +30,21 @@
     ]
   },
   {
+    "objectID": "03-chap3.html#time-series-and-stochastic-processes",
+    "href": "03-chap3.html#time-series-and-stochastic-processes",
+    "title": "\n3  Introduction to Time Series Forecasting\n",
+    "section": "\n3.4 Time Series and Stochastic Processes",
+    "text": "3.4 Time Series and Stochastic Processes\nThe terms stochastic processes and time series are closely related but not the same.\nA is a collection of random variables indexed by time (or space).\n\\{X_t : t \\in T\\},\nwhere T is the index set (e.g., discrete or continuous time).\nA is a single realization (observed data) of a stochastic process. It is the actual sequence of observations collected over time.\nIn short:\nStochastic process = model/theory (all possible sequences). The probability mechanism (all possible paths).\nTime series = observed data (one sequence). One observed path (the single trajectory we actually have).",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introduction to Time Series Forecasting</span>"
+    ]
+  },
+  {
     "objectID": "03-chap3.html#statistical-properties",
     "href": "03-chap3.html#statistical-properties",
     "title": "\n3  Introduction to Time Series Forecasting\n",
-    "section": "\n3.4 Statistical Properties",
-    "text": "3.4 Statistical Properties\nMean function\nLet {X_1, X_2, ...} be a sequence of time index random variables.\nThe mean function of {X_t} is\n\\mu_X(t)=E(X_t).\nCovariance function\nThe covariance function of {X_t} is\n\\gamma_X(r, s)=Cov(X_r, X_s)=E[(X_r-\\mu_X(r))(X_s-\\mu_X(s))]\nfor all integers (r) and (s).\nAutocovariance function\nThe autocovariance function of {X_t} at lag (h) is defined by \\gamma_X(h):=\\gamma_X(h, 0)=\\gamma(t+h, t)=Cov(X_{t+h}, X_t).\nor\nThe autocovariance function of {X_t} at lag (h) is\n\\gamma_X(h)=Cov(X_{t+h}, X_t).\nAutocorrelation function\nThe autocorrelation function of {X_t} at lag (h) is\n\\rho_X(h)=\\frac{\\gamma_X(h)}{\\gamma_X(0)}=Cor(X_{t+h}, X_t).",
+    "section": "\n3.5 Statistical Properties",
+    "text": "3.5 Statistical Properties\nMean function\nLet {X_1, X_2, ...} be a sequence of time index random variables.\nThe mean function of {X_t} is\n\\mu_X(t)=E(X_t).\nCovariance function\nThe covariance function of {X_t} is\n\\gamma_X(r, s)=Cov(X_r, X_s)=E[(X_r-\\mu_X(r))(X_s-\\mu_X(s))]\nfor all integers (r) and (s).\nAutocovariance function\nThe autocovariance function of {X_t} at lag (h) is defined by \\gamma_X(h):=\\gamma_X(h, 0)=\\gamma(t+h, t)=Cov(X_{t+h}, X_t).\nor\nThe autocovariance function of {X_t} at lag (h) is\n\\gamma_X(h)=Cov(X_{t+h}, X_t).\nAutocorrelation function\nThe autocorrelation function of {X_t} at lag (h) is\n\\rho_X(h)=\\frac{\\gamma_X(h)}{\\gamma_X(0)}=Cor(X_{t+h}, X_t).",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introduction to Time Series Forecasting</span>"
     ]
@@ -283,8 +53,8 @@
     "objectID": "03-chap3.html#weekly-stationary",
     "href": "03-chap3.html#weekly-stationary",
     "title": "\n3  Introduction to Time Series Forecasting\n",
-    "section": "\n3.5 Weekly stationary",
-    "text": "3.5 Weekly stationary\nA time series {X_t} is called weekly stationary if\n\n\\mu_X(t) is independent of t.\n\\gamma_X(t+h, t) is independent of (t) for each (h).\n\nIn other words the statistical properties of the time series (mean, variance, autocorrelation, etc.) do not depend on the time at which the series is observed, that is no trend or seasonality. However, a time series with cyclic behaviour (but with no trend or seasonality) is stationary.",
+    "section": "\n3.6 Weekly stationary",
+    "text": "3.6 Weekly stationary\nA time series {X_t} is called weekly stationary if\n\n\\mu_X(t) is independent of t.\nVar(X_t) = \\sigma^2, Variance is constant. 2\n\\gamma_X(t+h, t) is independent of (t) for each (h). The autocovariance depends only on the lag (\\gamma(h) depends only on how far apart two points are (h), and not on the actual time t.\n\nIn other words the statistical properties of the time series (mean, variance, autocorrelation, etc.) do not depend on the time at which the series is observed, that is no trend or seasonality. However, a time series with cyclic behaviour (but with no trend or seasonality) is stationary.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introduction to Time Series Forecasting</span>"
     ]
@@ -293,48 +63,8 @@
     "objectID": "03-chap3.html#strict-stationarity-of-a-time-series",
     "href": "03-chap3.html#strict-stationarity-of-a-time-series",
     "title": "\n3  Introduction to Time Series Forecasting\n",
-    "section": "\n3.6 Strict stationarity of a time series",
-    "text": "3.6 Strict stationarity of a time series\nA time series \\{X_t\\} is called weekly stationary if the random vector [X_1, X_2..., X_n] and [X_{1+h}, X_{2+h}..., X_{n+h}] have the same joint distribution for all integers (h) and (n &gt; 0).",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introduction to Time Series Forecasting</span>"
-    ]
-  },
-  {
-    "objectID": "03-chap3.html#simple-time-series-patterns",
-    "href": "03-chap3.html#simple-time-series-patterns",
-    "title": "\n3  Time Series Forecasting\n",
-    "section": "\n3.7 Simple time series patterns",
-    "text": "3.7 Simple time series patterns\n1. independent and identically distributed (iid) noise\n\nno trend or seasonal component\nobservations are independent and identically distributed (iid) random variables with zero mean.\nNotation: {X_t} \\sim IID(0, \\sigma^2)\nplays an important role as a building block for more complicated time series.\n2. White noise\nIf {X_t} is a sequence of uncorrelated random variables, each with zero mean and variance \\sigma^2, then such a sequence is referred to as white noise.",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Time Series Forecasting</span>"
-    ]
-  },
-  {
-    "objectID": "03-chap3.html#every-iid0-sigma2-sequence-is-wn0-sigma2-but-not-conversely.-why",
-    "href": "03-chap3.html#every-iid0-sigma2-sequence-is-wn0-sigma2-but-not-conversely.-why",
-    "title": "\n3  Introduction to Time Series Forecasting\n",
-    "section": "\n3.9 Every (IID(0, \\sigma^2) sequence is (WN(0, \\sigma^2) but not conversely. Why?",
-    "text": "3.9 Every (IID(0, \\sigma^2) sequence is (WN(0, \\sigma^2) but not conversely. Why?\n1. White Noise (WN)\nA sequence \\{X_t\\} is called white noise with mean 0 and variance \\sigma^2, written WN(0, \\sigma^2), if:\n\n\n\\mathbb{E}[X_t] = 0 for all t.\n\n\n\\mathrm{Var}(X_t) = \\sigma^2 for all t.\n\n\n\\mathrm{Cov}(X_t, X_s) = 0 for all t \\neq s (uncorrelated across time).\n\nNotice: uncorrelated \\neq independent.\n2. i.i.d. (0, \\sigma^2)\n\nA sequence \\{X_t\\} is IID(0, \\sigma^2) if:\n\n\n\\mathbb{E}[X_t] = 0.\n\n\n\\mathrm{Var}(X_t) = \\sigma^2.\n\n\nX_t are independent and identically distributed.\n3. Why every IID(0, \\sigma^2) is WN(0, \\sigma^2)\n\n\nIndependence \\;\\Rightarrow\\; zero correlation.\n\nSo, an i.i.d. sequence automatically satisfies the white noise conditions (same mean, same variance, no correlation).\n\nTherefore:\n\nIID(0, \\sigma^2) \\;\\;\\Rightarrow\\;\\; WN(0, \\sigma^2).\n\n4. Why not conversely?\nThe reverse is not always true, because white noise only requires uncorrelatedness, not full independence.\nThat means a sequence could be white noise but still have dependence in higher moments (nonlinear dependence).",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introduction to Time Series Forecasting</span>"
-    ]
-  },
-  {
-    "objectID": "03-chap3.html#example-of-wn-but-not-iid",
-    "href": "03-chap3.html#example-of-wn-but-not-iid",
-    "title": "\n3  Introduction to Time Series Forecasting\n",
-    "section": "\n3.10 5. Example of WN but not IID",
-    "text": "3.10 5. Example of WN but not IID\nLet \\{Z_t\\} be i.i.d. N(0,1). Define\n\nX_t = Z_t \\cdot Z_{t-1}.\n\nThen:\n\n\n\\mathbb{E}[X_t] = 0,\n\n\n\\mathrm{Var}(X_t) = 1,\n\nFor t \\neq s, \\mathrm{Cov}(X_t, X_s) = 0. ✅ So it’s white noise.\n\nBut the sequence is not independent (because X_t depends on Z_{t-1}, which also appears in X_{t-1}).\nThus,\n\nX_t \\sim WN(0,1) \\quad \\text{but not} \\quad IID(0,1).",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introduction to Time Series Forecasting</span>"
-    ]
-  },
-  {
-    "objectID": "03-chap3.html#simulation-example",
-    "href": "03-chap3.html#simulation-example",
-    "title": "\n3  Introduction to Time Series Forecasting\n",
-    "section": "\n3.11 Simulation example",
-    "text": "3.11 Simulation example\nIID series\n\nset.seed(123)\n\n# Parameters\nn &lt;- 200        # length of series\nsigma &lt;- 1      # standard deviation\n\n# IID(0, sigma^2) ~ Normal(0, sigma^2)\niid_seq &lt;- rnorm(n, mean = 0, sd = sigma)\n\n# Quick check\nmean(iid_seq)      # should be ~0\n\n[1] -0.008570445\n\nvar(iid_seq)       # should be ~sigma^2\n\n[1] 0.8895506\n\nacf(iid_seq)       # autocorrelations ~ 0\n\n\n\n\n\n\n\nWhite noise\n\nset.seed(123)\n\nn &lt;- 200\nZ &lt;- rnorm(n, mean = 0, sd = 1)\n\n# Construct WN but not IID\nwn_not_iid &lt;- Z[-1] * Z[-n]   # X_t = Z_t * Z_{t-1}, length n-1\n\n# Quick check\nmean(wn_not_iid)        # ~0\n\n[1] -0.05650406\n\nvar(wn_not_iid)         # ~1\n\n[1] 0.8196189\n\nacf(wn_not_iid)         # uncorrelated -&gt; ACF ~ 0\n\n\n\n\n\n\n\nSide-by-side visualisation",
+    "section": "\n3.7 Strict stationarity of a time series",
+    "text": "3.7 Strict stationarity of a time series\nA time series \\{X_t\\} is called strictly stationary if the random vector [X_1, X_2..., X_n] and [X_{1+h}, X_{2+h}..., X_{n+h}] have the same joint distribution for all integers (h) and (n &gt; 0).",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introduction to Time Series Forecasting</span>"
     ]
@@ -343,8 +73,8 @@
     "objectID": "03-chap3.html#independent-and-identically-distributed-iid-noise",
     "href": "03-chap3.html#independent-and-identically-distributed-iid-noise",
     "title": "\n3  Introduction to Time Series Forecasting\n",
-    "section": "\n3.7 1. independent and identically distributed (iid) noise",
-    "text": "3.7 1. independent and identically distributed (iid) noise\n\nno trend or seasonal component\nobservations are independent and identically distributed (iid) random variables with zero mean.\nNotation: {X_t} \\sim IID(0, \\sigma^2)\nplays an important role as a building block for more complicated time series.",
+    "section": "\n3.8 1. independent and identically distributed (iid) noise",
+    "text": "3.8 1. independent and identically distributed (iid) noise\n\nno trend or seasonal component\nobservations are independent and identically distributed (iid) random variables with zero mean.\nNotation: {X_t} \\sim IID(0, \\sigma^2)\nplays an important role as a building block for more complicated time series.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introduction to Time Series Forecasting</span>"
     ]
@@ -353,8 +83,38 @@
     "objectID": "03-chap3.html#white-noise",
     "href": "03-chap3.html#white-noise",
     "title": "\n3  Introduction to Time Series Forecasting\n",
-    "section": "\n3.8 2. White noise",
-    "text": "3.8 2. White noise\nIf {X_t} is a sequence of uncorrelated random variables, each with zero mean and variance \\sigma^2, then such a sequence is referred to as white noise.",
+    "section": "\n3.9 2. White noise",
+    "text": "3.9 2. White noise\nIf {X_t} is a sequence of uncorrelated random variables, each with zero mean and variance \\sigma^2, then such a sequence is referred to as white noise.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introduction to Time Series Forecasting</span>"
+    ]
+  },
+  {
+    "objectID": "03-chap3.html#every-iid0-sigma2-sequence-is-wn0-sigma2-but-not-conversely.-why",
+    "href": "03-chap3.html#every-iid0-sigma2-sequence-is-wn0-sigma2-but-not-conversely.-why",
+    "title": "\n3  Introduction to Time Series Forecasting\n",
+    "section": "\n3.10 Every (IID(0, \\sigma^2) sequence is (WN(0, \\sigma^2) but not conversely. Why?",
+    "text": "3.10 Every (IID(0, \\sigma^2) sequence is (WN(0, \\sigma^2) but not conversely. Why?\n1. White Noise (WN)\nA sequence \\{X_t\\} is called white noise with mean 0 and variance \\sigma^2, written WN(0, \\sigma^2), if:\n\n\n\\mathbb{E}[X_t] = 0 for all t.\n\n\n\\mathrm{Var}(X_t) = \\sigma^2 for all t.\n\n\n\\mathrm{Cov}(X_t, X_s) = 0 for all t \\neq s (uncorrelated across time).\n\nNotice: uncorrelated \\neq independent.\n2. i.i.d. (0, \\sigma^2)\n\nA sequence \\{X_t\\} is IID(0, \\sigma^2) if:\n\n\n\\mathbb{E}[X_t] = 0.\n\n\n\\mathrm{Var}(X_t) = \\sigma^2.\n\n\nX_t are independent and identically distributed.\n3. Why every IID(0, \\sigma^2) is WN(0, \\sigma^2)\n\n\nIndependence \\;\\Rightarrow\\; zero correlation.\n\nSo, an i.i.d. sequence automatically satisfies the white noise conditions (same mean, same variance, no correlation).\n\nTherefore:\n\nIID(0, \\sigma^2) \\;\\;\\Rightarrow\\;\\; WN(0, \\sigma^2).\n\n4. Why not conversely?\nThe reverse is not always true, because white noise only requires uncorrelatedness, not full independence.\nThat means a sequence could be white noise but still have dependence in higher moments (nonlinear dependence).",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introduction to Time Series Forecasting</span>"
+    ]
+  },
+  {
+    "objectID": "03-chap3.html#example-of-wn-but-not-iid",
+    "href": "03-chap3.html#example-of-wn-but-not-iid",
+    "title": "\n3  Introduction to Time Series Forecasting\n",
+    "section": "\n3.11 5. Example of WN but not IID",
+    "text": "3.11 5. Example of WN but not IID\nLet \\{Z_t\\} be i.i.d. N(0,1). Define\n\nX_t = Z_t \\cdot Z_{t-1}.\n\nThen:\n\n\n\\mathbb{E}[X_t] = 0,\n\n\n\\mathrm{Var}(X_t) = 1,\n\nFor t \\neq s, \\mathrm{Cov}(X_t, X_s) = 0. ✅ So it’s white noise.\n\nBut the sequence is not independent (because X_t depends on Z_{t-1}, which also appears in X_{t-1}).\nThus,\n\nX_t \\sim WN(0,1) \\quad \\text{but not} \\quad IID(0,1).",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introduction to Time Series Forecasting</span>"
+    ]
+  },
+  {
+    "objectID": "03-chap3.html#simulation-example",
+    "href": "03-chap3.html#simulation-example",
+    "title": "\n3  Introduction to Time Series Forecasting\n",
+    "section": "\n3.12 Simulation example",
+    "text": "3.12 Simulation example\nIID series\n\nset.seed(123)\n\n# Parameters\nn &lt;- 200        # length of series\nsigma &lt;- 1      # standard deviation\n\n# IID(0, sigma^2) ~ Normal(0, sigma^2)\niid_seq &lt;- rnorm(n, mean = 0, sd = sigma)\n\n# Quick check\nmean(iid_seq)      # should be ~0\n\n[1] -0.008570445\n\nvar(iid_seq)       # should be ~sigma^2\n\n[1] 0.8895506\n\nacf(iid_seq)       # autocorrelations ~ 0\n\n\n\n\n\n\n\nWhite noise\n\nset.seed(123)\n\nn &lt;- 200\nZ &lt;- rnorm(n, mean = 0, sd = 1)\n\n# Construct WN but not IID\nwn_not_iid &lt;- Z[-1] * Z[-n]   # X_t = Z_t * Z_{t-1}, length n-1\n\n# Quick check\nmean(wn_not_iid)        # ~0\n\n[1] -0.05650406\n\nvar(wn_not_iid)         # ~1\n\n[1] 0.8196189\n\nacf(wn_not_iid)         # uncorrelated -&gt; ACF ~ 0\n\n\n\n\n\n\n\nSide-by-side visualisation",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introduction to Time Series Forecasting</span>"
     ]
@@ -363,8 +123,8 @@
     "objectID": "03-chap3.html#random-walk",
     "href": "03-chap3.html#random-walk",
     "title": "\n3  Introduction to Time Series Forecasting\n",
-    "section": "\n3.12 3. Random walk",
-    "text": "3.12 3. Random walk\nA random walk process is obtained by cumulatively summing iid random variables. If {S_t, t=0, 1, 2, ...} is a random walk process, then S_0 =0\nS_1=0+X_1\nS_2=0+X_1+X_2\n...\nS_t=X_1+X_2+...+X_t.\nQuestion\nIs {S_t, t=0, 1, 2, ...} a weak stationary process?",
+    "section": "\n3.13 3. Random walk",
+    "text": "3.13 3. Random walk\nA random walk process is obtained by cumulatively summing iid random variables. If {S_t, t=0, 1, 2, ...} is a random walk process, then S_0 =0\nS_1=0+X_1\nS_2=0+X_1+X_2\n...\nS_t=X_1+X_2+...+X_t.\nQuestion\nIs {S_t, t=0, 1, 2, ...} a weak stationary process?",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introduction to Time Series Forecasting</span>"
     ]
@@ -373,28 +133,18 @@
     "objectID": "03-chap3.html#identifying-non-stationarity-in-the-mean",
     "href": "03-chap3.html#identifying-non-stationarity-in-the-mean",
     "title": "\n3  Introduction to Time Series Forecasting\n",
-    "section": "\n3.13 Identifying non-stationarity in the mean",
-    "text": "3.13 Identifying non-stationarity in the mean\n\nUsing time series plot\n\nACF plot\n\nACF of stationary time series will drop to relatively quickly.\nThe ACF of non-stationary series decreases slowly.\nFor non-stationary series, the ACF at lag 1 is often large and positive.",
+    "section": "\n3.14 Identifying non-stationarity in the mean",
+    "text": "3.14 Identifying non-stationarity in the mean\n\nUsing time series plot\n\nACF plot\n\nACF of stationary time series will drop to relatively quickly.\nThe ACF of non-stationary series decreases slowly.\nFor non-stationary series, the ACF at lag 1 is often large and positive.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introduction to Time Series Forecasting</span>"
-    ]
-  },
-  {
-    "objectID": "03-chap3.html#elimination-of-trend-and-seasonality-by-differencing",
-    "href": "03-chap3.html#elimination-of-trend-and-seasonality-by-differencing",
-    "title": "\n3  Time Series Forecasting\n",
-    "section": "\n3.14 Elimination of Trend and Seasonality by Differencing",
-    "text": "3.14 Elimination of Trend and Seasonality by Differencing\n\nDifferencing helps to stabilize the mean.",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Time Series Forecasting</span>"
     ]
   },
   {
     "objectID": "03-chap3.html#backshift-notation",
     "href": "03-chap3.html#backshift-notation",
     "title": "\n3  Introduction to Time Series Forecasting\n",
-    "section": "\n3.14 Backshift notation:",
-    "text": "3.14 Backshift notation:\nBX_t=X_{t-1}",
+    "section": "\n3.15 Backshift notation:",
+    "text": "3.15 Backshift notation:\nBX_t=X_{t-1}",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introduction to Time Series Forecasting</span>"
     ]
@@ -403,8 +153,8 @@
     "objectID": "03-chap3.html#ordinary-differencing",
     "href": "03-chap3.html#ordinary-differencing",
     "title": "\n3  Introduction to Time Series Forecasting\n",
-    "section": "\n3.15 Ordinary differencing",
-    "text": "3.15 Ordinary differencing\nThe first-order differencing can be defined as\n\\nabla X_t = X_t-X_{t-1}=X_t-BX_t=(1-B)X_t where \\nabla=1-B.\nThe second-order differencing\n\\nabla^2X_t=\\nabla(\\nabla X_t)=\\nabla(X_t-X_{t-1})=\\nabla X_t - \\nabla X_{t-1}\n\\nabla X_t - \\nabla X_{t-1}=(X_t-X_{t-1})-(X_{t-1}-X_{t-2})\nIn practice, we seldom need to go beyond second order differencing.",
+    "section": "\n3.16 Ordinary differencing",
+    "text": "3.16 Ordinary differencing\nThe first-order differencing can be defined as\n\\nabla X_t = X_t-X_{t-1}=X_t-BX_t=(1-B)X_t where \\nabla=1-B.\nThe second-order differencing\n\\nabla^2X_t=\\nabla(\\nabla X_t)=\\nabla(X_t-X_{t-1})=\\nabla X_t - \\nabla X_{t-1}\n\\nabla X_t - \\nabla X_{t-1}=(X_t-X_{t-1})-(X_{t-1}-X_{t-2})\nIn practice, we seldom need to go beyond second order differencing.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introduction to Time Series Forecasting</span>"
     ]
@@ -413,8 +163,8 @@
     "objectID": "03-chap3.html#seasonal-differencing",
     "href": "03-chap3.html#seasonal-differencing",
     "title": "\n3  Introduction to Time Series Forecasting\n",
-    "section": "\n3.16 Seasonal differencing",
-    "text": "3.16 Seasonal differencing\nDifferencing between an observation and the corresponding observation from the previous year.\n\\nabla_mX_t=X_t-X_{t-m}=(1-B^m)X_t where (m) is the number of seasons. For monthly, (m=12), for quarterly (m=4).\nFor monthly series\n\\nabla_{12}X_t=X_t-X_{t-12}",
+    "section": "\n3.17 Seasonal differencing",
+    "text": "3.17 Seasonal differencing\nDifferencing between an observation and the corresponding observation from the previous year.\n\\nabla_mX_t=X_t-X_{t-m}=(1-B^m)X_t where (m) is the number of seasons. For monthly, (m=12), for quarterly (m=4).\nFor monthly series\n\\nabla_{12}X_t=X_t-X_{t-12}",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introduction to Time Series Forecasting</span>"
     ]
@@ -423,8 +173,8 @@
     "objectID": "03-chap3.html#twice-differenced-series",
     "href": "03-chap3.html#twice-differenced-series",
     "title": "\n3  Introduction to Time Series Forecasting\n",
-    "section": "\n3.17 Twice-differenced series",
-    "text": "3.17 Twice-differenced series\n\\nabla^2_{12}X_t=\\nabla_{12}X_t-\\nabla_{12}X_{t-1} \\nabla_{12}X_t-\\nabla_{12}X_{t-1}=(X_t-X_{t-12})-(X_{t-1}-X_{t-13}) If seasonality is strong, the seasonal differencing should be done first.",
+    "section": "\n3.18 Twice-differenced series",
+    "text": "3.18 Twice-differenced series\n\\nabla^2_{12}X_t=\\nabla_{12}X_t-\\nabla_{12}X_{t-1} \\nabla_{12}X_t-\\nabla_{12}X_{t-1}=(X_t-X_{t-12})-(X_{t-1}-X_{t-13}) If seasonality is strong, the seasonal differencing should be done first.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introduction to Time Series Forecasting</span>"
     ]
@@ -433,8 +183,8 @@
     "objectID": "03-chap3.html#deterministic-trend-vs-stochastic-trend",
     "href": "03-chap3.html#deterministic-trend-vs-stochastic-trend",
     "title": "\n3  Introduction to Time Series Forecasting\n",
-    "section": "\n3.18 Deterministic trend vs Stochastic trend",
-    "text": "3.18 Deterministic trend vs Stochastic trend\nDeterministic trend\nY_t  = f(t) + \\epsilon_t\nwhere \\epsilon_t \\sim iid(0, \\sigma^2), t = 1, 2, ...T\nMean of the process is time dependent, but the variance of the process is constant.\nA trend is deterministic if it is a nonrandom function of time.\nStochastic trend\n1. Random walk\nY_t = Y_{t-1} + \\epsilon_t\n\nRandom walk has a stochastic trend.\nModel behind naive method.\n\nA trend is said to be stochastic if it is a random function of time.\n2. Random walk with drift\nY_t = \\alpha+  Y_{t-1} + \\epsilon_t\n\nRandom walk with drift has a stochastic trend and a deterministic trend.\nModel behind drift method.",
+    "section": "\n3.19 Deterministic trend vs Stochastic trend",
+    "text": "3.19 Deterministic trend vs Stochastic trend\nDeterministic trend\nY_t  = f(t) + \\epsilon_t\nwhere \\epsilon_t \\sim iid(0, \\sigma^2), t = 1, 2, ...T\nMean of the process is time dependent, but the variance of the process is constant.\nA trend is deterministic if it is a nonrandom function of time. A deterministic trend is a predictable, fixed function of time. If you know the form of the function, you can determine the trend exactly.\nStochastic trend\nA stochastic trend is driven by random shocks that accumulate over time. A stochastic trend is driven by random shocks (also called innovations, disturbances, or error terms) that accumulate over time.\n1. Random walk\nY_t = Y_{t-1} + \\epsilon_t\n\nRandom walk has a stochastic trend.\nModel behind naive method.\n\nA trend is said to be stochastic if it is a random function of time.\n2. Random walk with drift\nY_t = \\alpha +  Y_{t-1} + \\epsilon_t\n\nRandom walk with drift has a stochastic trend and a deterministic trend.\nModel behind drift method.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introduction to Time Series Forecasting</span>"
     ]
@@ -443,8 +193,8 @@
     "objectID": "03-chap3.html#random-walk-1",
     "href": "03-chap3.html#random-walk-1",
     "title": "\n3  Introduction to Time Series Forecasting\n",
-    "section": "\n3.19 Random walk",
-    "text": "3.19 Random walk\n\n\\begin{aligned}\n  Y_t &= Y_{t-1} + \\epsilon_t \\\\\n     Y_1    &= Y_0 + \\epsilon_1 \\\\\n         Y_2 &=  Y_1 + \\epsilon_2=Y_0 + \\epsilon_1 + \\epsilon_2\\\\\n          Y_3 &=  Y_2 + \\epsilon_3=Y_0 + \\epsilon_1 + \\epsilon_2 +\\epsilon_3\\\\\n          .   \\\\\n          Y_t &=Y_{t-1} + \\epsilon_t=Y_0 + \\epsilon_1 + \\epsilon_2 + \\epsilon_3 +...+ \\epsilon_t = Y_0 + \\sum_{i=1}^{t} \\epsilon_t\n\\end{aligned}\n\nMean: E(Y_t) = Y_0.\nVariance: Var(Y_t)=t \\sigma^2.",
+    "section": "\n3.20 Random walk",
+    "text": "3.20 Random walk\n\n\\begin{aligned}\n  Y_t &= Y_{t-1} + \\epsilon_t \\\\\n     Y_1    &= Y_0 + \\epsilon_1 \\\\\n         Y_2 &=  Y_1 + \\epsilon_2=Y_0 + \\epsilon_1 + \\epsilon_2\\\\\n          Y_3 &=  Y_2 + \\epsilon_3=Y_0 + \\epsilon_1 + \\epsilon_2 +\\epsilon_3\\\\\n          .   \\\\\n          Y_t &=Y_{t-1} + \\epsilon_t=Y_0 + \\epsilon_1 + \\epsilon_2 + \\epsilon_3 +...+ \\epsilon_t = Y_0 + \\sum_{i=1}^{t} \\epsilon_t\n\\end{aligned}\n\nMean: E(Y_t) = Y_0.\nVariance: Var(Y_t)=t \\sigma^2.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introduction to Time Series Forecasting</span>"
     ]
@@ -453,8 +203,8 @@
     "objectID": "03-chap3.html#random-walk-with-drift",
     "href": "03-chap3.html#random-walk-with-drift",
     "title": "\n3  Introduction to Time Series Forecasting\n",
-    "section": "\n3.20 Random walk with drift",
-    "text": "3.20 Random walk with drift\n\n\\begin{aligned}\n  Y_t &= Y_{t-1} + \\epsilon_t \\\\\n     Y_1    &= \\alpha+Y_0 + \\epsilon_1 \\\\\n         Y_2 &= \\alpha+ Y_1 + \\epsilon_2=2 \\alpha+Y_0 + \\epsilon_1 + \\epsilon_2\\\\\n          Y_3 &= \\alpha+ Y_2 + \\epsilon_3= 3 \\alpha+ Y_0 + \\epsilon_1 + \\epsilon_2 +\\epsilon_3\\\\\n          .   \\\\\n          Y_t &= \\alpha+Y_{t-1} + \\epsilon_t= t \\alpha+ Y_0 + \\epsilon_1 + \\epsilon_2 + \\epsilon_3 +...+ \\epsilon_t \\\\\n          Y_t &= t \\alpha + Y_0 + \\sum_{i=1}^{t} \\epsilon_t\n\\end{aligned}\n\nIt has a deterministic trend (Y_0 + t \\alpha) and a stochastic trend \\sum_{i=1}^{t} \\epsilon_t.\nMean: E(Y_t) = Y_0 + t\\alpha\nVariance: Var(Y_t) = t\\sigma^2.\nThere is a trend in both mean and variance.",
+    "section": "\n3.21 Random walk with drift",
+    "text": "3.21 Random walk with drift\n\n\\begin{aligned}\n  Y_t &= \\alpha + Y_{t-1} + \\epsilon_t \\\\\n     Y_1    &= \\alpha+Y_0 + \\epsilon_1 \\\\\n         Y_2 &= \\alpha+ Y_1 + \\epsilon_2=2 \\alpha+Y_0 + \\epsilon_1 + \\epsilon_2\\\\\n          Y_3 &= \\alpha+ Y_2 + \\epsilon_3= 3 \\alpha+ Y_0 + \\epsilon_1 + \\epsilon_2 +\\epsilon_3\\\\\n          .   \\\\\n          Y_t &= \\alpha+Y_{t-1} + \\epsilon_t= t \\alpha+ Y_0 + \\epsilon_1 + \\epsilon_2 + \\epsilon_3 +...+ \\epsilon_t \\\\\n          Y_t &= t \\alpha + Y_0 + \\sum_{i=1}^{t} \\epsilon_t\n\\end{aligned}\n\nIt has a deterministic trend (Y_0 + t \\alpha) and a stochastic trend \\sum_{i=1}^{t} \\epsilon_t.\nMean: E(Y_t) = Y_0 + t\\alpha\nVariance: Var(Y_t) = t\\sigma^2.\nThere is a trend in both mean and variance.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introduction to Time Series Forecasting</span>"
     ]
@@ -463,18 +213,8 @@
     "objectID": "03-chap3.html#common-trend-removal-de-trending-procedures",
     "href": "03-chap3.html#common-trend-removal-de-trending-procedures",
     "title": "\n3  Introduction to Time Series Forecasting\n",
-    "section": "\n3.21 Common trend removal (de-trending) procedures",
-    "text": "3.21 Common trend removal (de-trending) procedures\n\n\nDeterministic trend: Time-trend regression\nThe trend can be removed by fitting a deterministic polynomial time trend. The residual series after removing the trend will give us the de-trended series.\n\n\nStochastic trend: Differencing\nThe process is also known as a Difference-stationary process.",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introduction to Time Series Forecasting</span>"
-    ]
-  },
-  {
-    "objectID": "03-chap3.html#notation-id",
-    "href": "03-chap3.html#notation-id",
-    "title": "\n3  Introduction to Time Series Forecasting\n",
-    "section": "\n3.24 Notation: I(d)",
-    "text": "3.24 Notation: I(d)\nIntegrated to order d: Series can be made stationary by differencing d times.\n\nKnown as I(d) process.\n\nQuestion: Show that random walk process is an I(1) process.\nThe random walk process is called a unit root process. (If one of the roots turns out to be one, then the process is called unit root process.)",
+    "section": "\n3.22 Common trend removal (de-trending) procedures",
+    "text": "3.22 Common trend removal (de-trending) procedures\n\n\nDeterministic trend: Time-trend regression\nThe trend can be removed by fitting a deterministic polynomial time trend. The residual series after removing the trend will give us the de-trended series.\n\n\nStochastic trend: Differencing\nThe process is also known as a Difference-stationary process.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introduction to Time Series Forecasting</span>"
     ]
@@ -483,8 +223,8 @@
     "objectID": "03-chap3.html#remove-seasonality",
     "href": "03-chap3.html#remove-seasonality",
     "title": "\n3  Introduction to Time Series Forecasting\n",
-    "section": "\n3.22 Remove seasonality",
-    "text": "3.22 Remove seasonality\nTake seasonal differencing",
+    "section": "\n3.23 Remove seasonality",
+    "text": "3.23 Remove seasonality\nTake seasonal differencing",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introduction to Time Series Forecasting</span>"
     ]
@@ -493,8 +233,18 @@
     "objectID": "03-chap3.html#example-differencing-on-airpassengers-data",
     "href": "03-chap3.html#example-differencing-on-airpassengers-data",
     "title": "\n3  Introduction to Time Series Forecasting\n",
-    "section": "\n3.23 Example: Differencing on AirPassengers Data",
-    "text": "3.23 Example: Differencing on AirPassengers Data\nThe built-in AirPassengers dataset (monthly airline passengers, 1949–1960) has trend + seasonality.\n\n# Load data\ndata(\"AirPassengers\")\nts_data &lt;- AirPassengers\n\n#par(mfrow = c(3,2))\n\n# 1. Original series\nplot(ts_data, main = \"Original Series\", ylab = \"Passengers\")\n\n\n\n\n\n\nacf(ts_data, main = \"ACF: Original Series\")\n\n\n\n\n\n\n# 2. First difference (remove trend)\ndiff1 &lt;- diff(ts_data, differences = 1)\nplot(diff1, main = \"1st Difference (Remove Trend)\", ylab = \"Difference\")\n\n\n\n\n\n\nacf(diff1, main = \"ACF: 1st Difference\")\n\n\n\n\n\n\n# 3. Seasonal difference (lag = 12, remove seasonality)\ndiff_seasonal &lt;- diff(diff1, lag = 12)\nplot(diff_seasonal, main = \"Seasonal Difference (Remove Seasonality)\", ylab = \"Difference\")\n\n\n\n\n\n\nacf(diff_seasonal, main = \"ACF: Seasonal Difference\")\n\n\n\n\n\n\n# 3. Seasonal difference (lag = 12, remove seasonality from the original series)\ndiff_seasonal_only &lt;- diff(ts_data, lag = 12)\nplot(diff_seasonal_only, main = \"Seasonal Difference (Remove Seasonality)\", ylab = \"Difference\")\n\n\n\n\n\n\nacf(diff_seasonal_only, main = \"ACF: Seasonal Difference\")\n\n\n\n\n\n\n\n\nhead(ts_data, 14)\n\n     Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec\n1949 112 118 132 129 121 135 148 148 136 119 104 118\n1950 115 126                                        \n\nhead(diff1, 14)\n\n     Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec\n1949       6  14  -3  -8  14  13   0 -12 -17 -15  14\n1950  -3  11  15                                    \n\nhead(diff_seasonal, 14)\n\n     Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec\n1950       5   1  -3  -2  10   8   0   0  -8  -4  12\n1951   8  -6  13                                    \n\nhead(diff_seasonal_only, 14)\n\n     Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec\n1950   3   8   9   6   4  14  22  22  22  14  10  22\n1951  30  24",
+    "section": "\n3.24 Example: Differencing on AirPassengers Data",
+    "text": "3.24 Example: Differencing on AirPassengers Data\nThe built-in AirPassengers dataset (monthly airline passengers, 1949–1960) has trend + seasonality.\n\n# Load data\ndata(\"AirPassengers\")\nts_data &lt;- AirPassengers\n\n#par(mfrow = c(3,2))\n\n# 1. Original series\nplot(ts_data, main = \"Original Series\", ylab = \"Passengers\")\n\n\n\n\n\n\nacf(ts_data, main = \"ACF: Original Series\")\n\n\n\n\n\n\n# 2. First difference (remove trend)\ndiff1 &lt;- diff(ts_data, differences = 1)\nplot(diff1, main = \"1st Difference (Remove Trend)\", ylab = \"Difference\")\n\n\n\n\n\n\nacf(diff1, main = \"ACF: 1st Difference\")\n\n\n\n\n\n\n# 3. Seasonal difference (lag = 12, remove seasonality)\ndiff_seasonal &lt;- diff(diff1, lag = 12)\nplot(diff_seasonal, main = \"Seasonal Difference (Remove Seasonality)\", ylab = \"Difference\")\n\n\n\n\n\n\nacf(diff_seasonal, main = \"ACF: Seasonal Difference\")\n\n\n\n\n\n\n# 3. Seasonal difference (lag = 12, remove seasonality from the original series)\ndiff_seasonal_only &lt;- diff(ts_data, lag = 12)\nplot(diff_seasonal_only, main = \"Seasonal Difference (Remove Seasonality)\", ylab = \"Difference\")\n\n\n\n\n\n\nacf(diff_seasonal_only, main = \"ACF: Seasonal Difference\")\n\n\n\n\n\n\n\n\nhead(ts_data, 14)\n\n     Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec\n1949 112 118 132 129 121 135 148 148 136 119 104 118\n1950 115 126                                        \n\nhead(diff1, 14)\n\n     Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec\n1949       6  14  -3  -8  14  13   0 -12 -17 -15  14\n1950  -3  11  15                                    \n\nhead(diff_seasonal, 14)\n\n     Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec\n1950       5   1  -3  -2  10   8   0   0  -8  -4  12\n1951   8  -6  13                                    \n\nhead(diff_seasonal_only, 14)\n\n     Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec\n1950   3   8   9   6   4  14  22  22  22  14  10  22\n1951  30  24",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introduction to Time Series Forecasting</span>"
+    ]
+  },
+  {
+    "objectID": "03-chap3.html#notation-id",
+    "href": "03-chap3.html#notation-id",
+    "title": "\n3  Introduction to Time Series Forecasting\n",
+    "section": "\n3.25 Notation: I(d)",
+    "text": "3.25 Notation: I(d)\nIntegrated to order d: Series can be made stationary by differencing d times.\n\nKnown as I(d) process.\n\nQuestion: Show that random walk process is an I(1) process.\nThe random walk process is called a unit root process. (If one of the roots turns out to be one, then the process is called unit root process.)",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introduction to Time Series Forecasting</span>"
     ]
@@ -503,120 +253,70 @@
     "objectID": "03-chap3.html#variance-stabilization",
     "href": "03-chap3.html#variance-stabilization",
     "title": "\n3  Introduction to Time Series Forecasting\n",
-    "section": "\n3.25 Variance stabilization",
-    "text": "3.25 Variance stabilization\nTransform the series.\nEg:\n\nSquare root: W_t = \\sqrt{Y_t}\n\nLogarithm: W_t = log({Y_t})\n\nThis very useful.\nInterpretable: Changes in a log value are relative (percent) changes on the original sclae.\n\n\n\n\nlog_ts &lt;- log(ts_data)\nplot(log_ts, main = \"Log-Transformed Series\", ylab = \"log(Passengers)\", col = \"steelblue\")",
+    "section": "\n3.26 Variance stabilization",
+    "text": "3.26 Variance stabilization\nTransform the series.\nEg:\n\nSquare root: W_t = \\sqrt{Y_t}\n\nLogarithm: W_t = log({Y_t})\n\nThis very useful.\nInterpretable: Changes in a log value are relative (percent) changes on the original sclae.\n\n\n\n\nlog_ts &lt;- log(ts_data)\nplot(log_ts, main = \"Log-Transformed Series\", ylab = \"log(Passengers)\", col = \"steelblue\")",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Introduction to Time Series Forecasting</span>"
     ]
   },
   {
-    "objectID": "01-chap1.html",
-    "href": "01-chap1.html",
-    "title": "1  Introduction",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Spatio-Temporal Data Analysis",
     "section": "",
-    "text": "1.1 Cross-sectional data\nIn statistics and data science, datasets can take different forms depending on how they are collected and organized. Understanding the type of data is crucial because it guides the choice of appropriate analytical methods.\nData collected at a single point in time across multiple units (e.g., households, firms, individuals).\nExample: household income survey conducted in 2025.\nAssumption: Each observation (e.g., each household, individual, firm) is assumed to be unrelated to the others.\nIn practice, this assumption can be violated if:",
+    "text": "Copyright notice\nProduced on 27 September 2025.\n© Thiyanga S. Talagala (2025).",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "01-chap1.html#cross-sectional-data",
-    "href": "01-chap1.html#cross-sectional-data",
-    "title": "1  Introduction",
-    "section": "",
-    "text": "There’s clustering (e.g., individuals from the same village may be correlated).\nThere’s spatial correlation (e.g., nearby locations may be similar).\nThere’s hidden time effects (if data were not truly collected at the same time).",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "01-chap1.html#time-series-data",
-    "href": "01-chap1.html#time-series-data",
-    "title": "1  Introduction",
-    "section": "1.2 Time series data",
-    "text": "1.2 Time series data\nA time series is a sequence of observations taken sequentially in time. The data may consist of one variable (univariate time series) or multiple variables (multivariate time series) observed over regular or irregular time intervals.\nExamples:\nUnivariate: Monthly rainfall in Colombo from 2000–2025.\nMultivariate: Monthly rainfall, temperature, and humidity in Colombo from 2000–2025.",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "01-chap1.html#spatial-data",
-    "href": "01-chap1.html#spatial-data",
-    "title": "1  Introduction",
-    "section": "1.3 Spatial data",
-    "text": "1.3 Spatial data\nData linked to a geographical location or space.\nExample: soil pH levels measured across different districts in Sri Lanka.",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "01-chap1.html#spatio-temporal-data",
-    "href": "01-chap1.html#spatio-temporal-data",
-    "title": "1  Introduction",
-    "section": "1.4 Spatio-temporal data",
-    "text": "1.4 Spatio-temporal data\nData that varies across both space and time.\nExample: daily dengue cases recorded across different districts over several years.",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "01-chap1.html#longitudinal-data-repeated-cross-sections",
-    "href": "01-chap1.html#longitudinal-data-repeated-cross-sections",
-    "title": "1  Introduction",
-    "section": "1.5 Longitudinal data (Repeated cross-sections)",
-    "text": "1.5 Longitudinal data (Repeated cross-sections)\nLongitudinal data refer to data collected through repeated measurements over time. The measurements may be taken on the same units (e.g., following the same households each year) or on different units at different time points (e.g., different random samples of households each year).\nExample (different random samples of households each year)\nSuppose a national health survey is conducted every 5 years (2000, 2005, 2010, 2015, 2020). Each time, a new random sample of 5,000 households is selected.\nIn 2000 → Households A, B, C, …\nIn 2005 → Households X, Y, Z, …\nIn 2010 → Households P, Q, R, …\nHere, the same households are not followed across time, but the survey is still longitudinal, since measurements are taken repeatedly over time to study population-level changes (e.g., trends in obesity, smoking rates, or income inequality).",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
-    "objectID": "01-chap1.html#panel-data",
-    "href": "01-chap1.html#panel-data",
-    "title": "1  Introduction",
-    "section": "1.6 Panel data",
-    "text": "1.6 Panel data\nPanel data are a special case of longitudinal data, where the same units are observed consistently across multiple time periods. This allows analysts to study both within-unit dynamics (how a given unit changes over time) and between-unit differences.\nIn finance and econometric modelling, panel data is widely used because it captures both the cross-sectional dimension (different firms, individuals, or markets) and the time dimension (repeated observations).\nIn Panel data and Longitudinal data, which combines cross-sectional and time-series data, allows for the examination of both “within-behavior” and “between-behavior” effects.\nExample (Country-level Panel Data)\nSuppose you collect data on GDP growth rates for 50 countries from 2000–2020.\n1. Country-specific behavior (within a country over time)\nYou can see how Sri Lanka’s GDP growth changed year by year.\nExample:\n\nwas there a slowdown after the 2008 global crisis, followed by recovery?\n\n2. cross-country and temporal effects (Between countries over time)\nYou can compare trends across countries.\nExample:\n\nDid most countries experience a dip in 2008–2009 due to the financial crisis?\nDo developing countries generally grow faster than developed countries over these 20 years?",
-    "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "Front matter"
     ]
   },
   {
     "objectID": "04-chap4.html",
     "href": "04-chap4.html",
-    "title": "4  Forecasting with Linear Time Series Models",
+    "title": "4  Models For Stationary Time Series",
     "section": "",
-    "text": "4.1 Autoregressive Models\nY_t = \\alpha + \\phi_1 Y_{t-1} + \\phi_2 Y_{t-2} + \\dots + \\phi_p Y_{t-p} + \\epsilon_t\nWhere:\nY_t is the value at time t\n\\alpha is a constant,\n\\phi_1, \\phi_2,...\\phi_p are the parameters,\n\\epsilon_t is white noise (error term),\np is the order of the AR model.",
+    "text": "4.1 General Linear Process\nIn this chapter we will discuss family of autoregressive moving average (ARMA) time series models.\nA is a time series written as an infinite linear combination of random shocks \\{\\varepsilon_t\\}:\nX_t = \\mu + \\sum_{j=0}^{\\infty} \\psi_j \\, \\varepsilon_{t-j},\nwhere,\n\\mu is the mean\n\\{\\psi_j\\} are coefficients (weights)\n\\varepsilon_t \\sim \\text{i.i.d. } (0, \\sigma^2) are white noise shocks.",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Forecasting with Linear Time Series Models</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Models For Stationary Time Series</span>"
+    ]
+  },
+  {
+    "objectID": "04-chap4.html#autoregressive-models",
+    "href": "04-chap4.html#autoregressive-models",
+    "title": "4  Models For Stationary Time Series",
+    "section": "4.2 Autoregressive Models",
+    "text": "4.2 Autoregressive Models\nY_t = \\alpha + \\phi_1 Y_{t-1} + \\phi_2 Y_{t-2} + \\dots + \\phi_p Y_{t-p} + \\epsilon_t\nWhere:\nY_t is the value at time t\n\\alpha is a constant,\n\\phi_1, \\phi_2,...\\phi_p are the parameters,\n\\epsilon_t is white noise (error term),\np is the order of the AR model.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Models For Stationary Time Series</span>"
     ]
   },
   {
     "objectID": "04-chap4.html#in-class-properties-of-ar1-process",
     "href": "04-chap4.html#in-class-properties-of-ar1-process",
-    "title": "4  Forecasting with Linear Time Series Models",
-    "section": "4.2 In-class: Properties of AR(1) process",
-    "text": "4.2 In-class: Properties of AR(1) process\nDerive\n\nMean\nVariance\nCovariance\nAutocorrelation function of an AR(1) process",
+    "title": "4  Models For Stationary Time Series",
+    "section": "4.3 In-class: Properties of AR(1) process",
+    "text": "4.3 In-class: Properties of AR(1) process\nDerive\n\nMean\nVariance\nCovariance\nAutocorrelation function of an AR(1) process",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Forecasting with Linear Time Series Models</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Models For Stationary Time Series</span>"
     ]
   },
   {
     "objectID": "04-chap4.html#in-class-properties-of-ar2-process",
     "href": "04-chap4.html#in-class-properties-of-ar2-process",
-    "title": "4  Forecasting with Linear Time Series Models",
-    "section": "4.3 In-class: Properties of AR(2) process",
-    "text": "4.3 In-class: Properties of AR(2) process\nDerive\n\nMean\nVariance\nCovariance\nAutocorrelation function of an AR(1) process",
+    "title": "4  Models For Stationary Time Series",
+    "section": "4.4 In-class: Properties of AR(2) process",
+    "text": "4.4 In-class: Properties of AR(2) process\nDerive\n\nMean\nVariance\nCovariance\nAutocorrelation function of an AR(1) process",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Forecasting with Linear Time Series Models</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Models For Stationary Time Series</span>"
     ]
   },
   {
     "objectID": "04-chap4.html#in-class-properties-of-arp-process",
     "href": "04-chap4.html#in-class-properties-of-arp-process",
-    "title": "4  Forecasting with Linear Time Series Models",
-    "section": "4.4 In-class: Properties of AR(P) process",
-    "text": "4.4 In-class: Properties of AR(P) process\nDerive\n\nMean\nVariance\nCovariance\nAutocorrelation function of an AR(P) process",
+    "title": "4  Models For Stationary Time Series",
+    "section": "4.5 In-class: Properties of AR(P) process",
+    "text": "4.5 In-class: Properties of AR(P) process\nDerive\n\nMean\nVariance\nCovariance\nAutocorrelation function of an AR(P) process",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Forecasting with Linear Time Series Models</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Models For Stationary Time Series</span>"
     ]
   }
 ]

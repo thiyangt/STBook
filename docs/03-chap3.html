@@ -60,7 +60,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./refs.html" rel="next">
+<link href="./04-chap4.html" rel="next">
 <link href="./02-chap2.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -192,6 +192,12 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./04-chap4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Models For Stationary Time Series</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./refs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bibliography</span></a>
   </div>
@@ -207,28 +213,29 @@ window.Quarto = {
 <li><a href="#notation" id="toc-notation" class="nav-link active" data-scroll-target="#notation"><span class="header-section-number">3.1</span> Notation</a></li>
   <li><a href="#simple-time-series-forecasting-techniques" id="toc-simple-time-series-forecasting-techniques" class="nav-link" data-scroll-target="#simple-time-series-forecasting-techniques"><span class="header-section-number">3.2</span> Simple time series forecasting techniques</a></li>
   <li><a href="#example-electricity-demand-forecasting" id="toc-example-electricity-demand-forecasting" class="nav-link" data-scroll-target="#example-electricity-demand-forecasting"><span class="header-section-number">3.3</span> Example: Electricity Demand Forecasting</a></li>
-  <li><a href="#statistical-properties" id="toc-statistical-properties" class="nav-link" data-scroll-target="#statistical-properties"><span class="header-section-number">3.4</span> Statistical Properties</a></li>
-  <li><a href="#weekly-stationary" id="toc-weekly-stationary" class="nav-link" data-scroll-target="#weekly-stationary"><span class="header-section-number">3.5</span> Weekly stationary</a></li>
-  <li><a href="#strict-stationarity-of-a-time-series" id="toc-strict-stationarity-of-a-time-series" class="nav-link" data-scroll-target="#strict-stationarity-of-a-time-series"><span class="header-section-number">3.6</span> Strict stationarity of a time series</a></li>
-  <li><a href="#independent-and-identically-distributed-iid-noise" id="toc-independent-and-identically-distributed-iid-noise" class="nav-link" data-scroll-target="#independent-and-identically-distributed-iid-noise"><span class="header-section-number">3.7</span> 1. independent and identically distributed (iid) noise</a></li>
-  <li><a href="#white-noise" id="toc-white-noise" class="nav-link" data-scroll-target="#white-noise"><span class="header-section-number">3.8</span> 2. White noise</a></li>
-  <li><a href="#every-iid0-sigma2-sequence-is-wn0-sigma2-but-not-conversely.-why" id="toc-every-iid0-sigma2-sequence-is-wn0-sigma2-but-not-conversely.-why" class="nav-link" data-scroll-target="#every-iid0-sigma2-sequence-is-wn0-sigma2-but-not-conversely.-why"><span class="header-section-number">3.9</span> Every <span class="math inline">(IID(0, \sigma^2)</span> sequence is <span class="math inline">(WN(0, \sigma^2)</span> but not conversely. Why?</a></li>
-  <li><a href="#example-of-wn-but-not-iid" id="toc-example-of-wn-but-not-iid" class="nav-link" data-scroll-target="#example-of-wn-but-not-iid"><span class="header-section-number">3.10</span> 5. Example of WN but not IID</a></li>
-  <li><a href="#simulation-example" id="toc-simulation-example" class="nav-link" data-scroll-target="#simulation-example"><span class="header-section-number">3.11</span> Simulation example</a></li>
-  <li><a href="#random-walk" id="toc-random-walk" class="nav-link" data-scroll-target="#random-walk"><span class="header-section-number">3.12</span> 3. Random walk</a></li>
-  <li><a href="#identifying-non-stationarity-in-the-mean" id="toc-identifying-non-stationarity-in-the-mean" class="nav-link" data-scroll-target="#identifying-non-stationarity-in-the-mean"><span class="header-section-number">3.13</span> Identifying non-stationarity in the mean</a></li>
-  <li><a href="#backshift-notation" id="toc-backshift-notation" class="nav-link" data-scroll-target="#backshift-notation"><span class="header-section-number">3.14</span> Backshift notation:</a></li>
-  <li><a href="#ordinary-differencing" id="toc-ordinary-differencing" class="nav-link" data-scroll-target="#ordinary-differencing"><span class="header-section-number">3.15</span> Ordinary differencing</a></li>
-  <li><a href="#seasonal-differencing" id="toc-seasonal-differencing" class="nav-link" data-scroll-target="#seasonal-differencing"><span class="header-section-number">3.16</span> Seasonal differencing</a></li>
-  <li><a href="#twice-differenced-series" id="toc-twice-differenced-series" class="nav-link" data-scroll-target="#twice-differenced-series"><span class="header-section-number">3.17</span> Twice-differenced series</a></li>
-  <li><a href="#deterministic-trend-vs-stochastic-trend" id="toc-deterministic-trend-vs-stochastic-trend" class="nav-link" data-scroll-target="#deterministic-trend-vs-stochastic-trend"><span class="header-section-number">3.18</span> Deterministic trend vs Stochastic trend</a></li>
-  <li><a href="#random-walk-1" id="toc-random-walk-1" class="nav-link" data-scroll-target="#random-walk-1"><span class="header-section-number">3.19</span> Random walk</a></li>
-  <li><a href="#random-walk-with-drift" id="toc-random-walk-with-drift" class="nav-link" data-scroll-target="#random-walk-with-drift"><span class="header-section-number">3.20</span> Random walk with drift</a></li>
-  <li><a href="#common-trend-removal-de-trending-procedures" id="toc-common-trend-removal-de-trending-procedures" class="nav-link" data-scroll-target="#common-trend-removal-de-trending-procedures"><span class="header-section-number">3.21</span> Common trend removal (de-trending) procedures</a></li>
-  <li><a href="#remove-seasonality" id="toc-remove-seasonality" class="nav-link" data-scroll-target="#remove-seasonality"><span class="header-section-number">3.22</span> Remove seasonality</a></li>
-  <li><a href="#example-differencing-on-airpassengers-data" id="toc-example-differencing-on-airpassengers-data" class="nav-link" data-scroll-target="#example-differencing-on-airpassengers-data"><span class="header-section-number">3.23</span> Example: Differencing on AirPassengers Data</a></li>
-  <li><a href="#notation-id" id="toc-notation-id" class="nav-link" data-scroll-target="#notation-id"><span class="header-section-number">3.24</span> Notation: I(d)</a></li>
-  <li><a href="#variance-stabilization" id="toc-variance-stabilization" class="nav-link" data-scroll-target="#variance-stabilization"><span class="header-section-number">3.25</span> Variance stabilization</a></li>
+  <li><a href="#time-series-and-stochastic-processes" id="toc-time-series-and-stochastic-processes" class="nav-link" data-scroll-target="#time-series-and-stochastic-processes"><span class="header-section-number">3.4</span> Time Series and Stochastic Processes</a></li>
+  <li><a href="#statistical-properties" id="toc-statistical-properties" class="nav-link" data-scroll-target="#statistical-properties"><span class="header-section-number">3.5</span> Statistical Properties</a></li>
+  <li><a href="#weekly-stationary" id="toc-weekly-stationary" class="nav-link" data-scroll-target="#weekly-stationary"><span class="header-section-number">3.6</span> Weekly stationary</a></li>
+  <li><a href="#strict-stationarity-of-a-time-series" id="toc-strict-stationarity-of-a-time-series" class="nav-link" data-scroll-target="#strict-stationarity-of-a-time-series"><span class="header-section-number">3.7</span> Strict stationarity of a time series</a></li>
+  <li><a href="#independent-and-identically-distributed-iid-noise" id="toc-independent-and-identically-distributed-iid-noise" class="nav-link" data-scroll-target="#independent-and-identically-distributed-iid-noise"><span class="header-section-number">3.8</span> 1. independent and identically distributed (iid) noise</a></li>
+  <li><a href="#white-noise" id="toc-white-noise" class="nav-link" data-scroll-target="#white-noise"><span class="header-section-number">3.9</span> 2. White noise</a></li>
+  <li><a href="#every-iid0-sigma2-sequence-is-wn0-sigma2-but-not-conversely.-why" id="toc-every-iid0-sigma2-sequence-is-wn0-sigma2-but-not-conversely.-why" class="nav-link" data-scroll-target="#every-iid0-sigma2-sequence-is-wn0-sigma2-but-not-conversely.-why"><span class="header-section-number">3.10</span> Every <span class="math inline">(IID(0, \sigma^2)</span> sequence is <span class="math inline">(WN(0, \sigma^2)</span> but not conversely. Why?</a></li>
+  <li><a href="#example-of-wn-but-not-iid" id="toc-example-of-wn-but-not-iid" class="nav-link" data-scroll-target="#example-of-wn-but-not-iid"><span class="header-section-number">3.11</span> 5. Example of WN but not IID</a></li>
+  <li><a href="#simulation-example" id="toc-simulation-example" class="nav-link" data-scroll-target="#simulation-example"><span class="header-section-number">3.12</span> Simulation example</a></li>
+  <li><a href="#random-walk" id="toc-random-walk" class="nav-link" data-scroll-target="#random-walk"><span class="header-section-number">3.13</span> 3. Random walk</a></li>
+  <li><a href="#identifying-non-stationarity-in-the-mean" id="toc-identifying-non-stationarity-in-the-mean" class="nav-link" data-scroll-target="#identifying-non-stationarity-in-the-mean"><span class="header-section-number">3.14</span> Identifying non-stationarity in the mean</a></li>
+  <li><a href="#backshift-notation" id="toc-backshift-notation" class="nav-link" data-scroll-target="#backshift-notation"><span class="header-section-number">3.15</span> Backshift notation:</a></li>
+  <li><a href="#ordinary-differencing" id="toc-ordinary-differencing" class="nav-link" data-scroll-target="#ordinary-differencing"><span class="header-section-number">3.16</span> Ordinary differencing</a></li>
+  <li><a href="#seasonal-differencing" id="toc-seasonal-differencing" class="nav-link" data-scroll-target="#seasonal-differencing"><span class="header-section-number">3.17</span> Seasonal differencing</a></li>
+  <li><a href="#twice-differenced-series" id="toc-twice-differenced-series" class="nav-link" data-scroll-target="#twice-differenced-series"><span class="header-section-number">3.18</span> Twice-differenced series</a></li>
+  <li><a href="#deterministic-trend-vs-stochastic-trend" id="toc-deterministic-trend-vs-stochastic-trend" class="nav-link" data-scroll-target="#deterministic-trend-vs-stochastic-trend"><span class="header-section-number">3.19</span> Deterministic trend vs Stochastic trend</a></li>
+  <li><a href="#random-walk-1" id="toc-random-walk-1" class="nav-link" data-scroll-target="#random-walk-1"><span class="header-section-number">3.20</span> Random walk</a></li>
+  <li><a href="#random-walk-with-drift" id="toc-random-walk-with-drift" class="nav-link" data-scroll-target="#random-walk-with-drift"><span class="header-section-number">3.21</span> Random walk with drift</a></li>
+  <li><a href="#common-trend-removal-de-trending-procedures" id="toc-common-trend-removal-de-trending-procedures" class="nav-link" data-scroll-target="#common-trend-removal-de-trending-procedures"><span class="header-section-number">3.22</span> Common trend removal (de-trending) procedures</a></li>
+  <li><a href="#remove-seasonality" id="toc-remove-seasonality" class="nav-link" data-scroll-target="#remove-seasonality"><span class="header-section-number">3.23</span> Remove seasonality</a></li>
+  <li><a href="#example-differencing-on-airpassengers-data" id="toc-example-differencing-on-airpassengers-data" class="nav-link" data-scroll-target="#example-differencing-on-airpassengers-data"><span class="header-section-number">3.24</span> Example: Differencing on AirPassengers Data</a></li>
+  <li><a href="#notation-id" id="toc-notation-id" class="nav-link" data-scroll-target="#notation-id"><span class="header-section-number">3.25</span> Notation: I(d)</a></li>
+  <li><a href="#variance-stabilization" id="toc-variance-stabilization" class="nav-link" data-scroll-target="#variance-stabilization"><span class="header-section-number">3.26</span> Variance stabilization</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -296,8 +303,18 @@ window.Quarto = {
 </div>
 </div>
 </div>
-</section><section id="statistical-properties" class="level2" data-number="3.4"><h2 data-number="3.4" class="anchored" data-anchor-id="statistical-properties">
-<span class="header-section-number">3.4</span> Statistical Properties</h2>
+</section><section id="time-series-and-stochastic-processes" class="level2" data-number="3.4"><h2 data-number="3.4" class="anchored" data-anchor-id="time-series-and-stochastic-processes">
+<span class="header-section-number">3.4</span> Time Series and Stochastic Processes</h2>
+<p>The terms stochastic processes and time series are closely related but not the same.</p>
+<p>A is a collection of random variables indexed by time (or space).</p>
+<p><span class="math display">\{X_t : t \in T\},</span></p>
+<p>where <span class="math inline">T</span> is the index set (e.g., discrete or continuous time).</p>
+<p>A is a single realization (observed data) of a stochastic process. It is the actual sequence of observations collected over time.</p>
+<p>In short:</p>
+<p>Stochastic process = model/theory (all possible sequences). The probability mechanism (all possible paths).</p>
+<p>Time series = observed data (one sequence). One observed path (the single trajectory we actually have).</p>
+</section><section id="statistical-properties" class="level2" data-number="3.5"><h2 data-number="3.5" class="anchored" data-anchor-id="statistical-properties">
+<span class="header-section-number">3.5</span> Statistical Properties</h2>
 <section id="mean-function" class="level3"><h3 class="anchored" data-anchor-id="mean-function">Mean function</h3>
 <p>Let <span class="math inline">{X_1, X_2, ...}</span> be a sequence of time index random variables.</p>
 <p>The <strong>mean function</strong> of <span class="math inline">{X_t}</span> is</p>
@@ -314,29 +331,30 @@ window.Quarto = {
 </section><section id="autocorrelation-function" class="level3"><h3 class="anchored" data-anchor-id="autocorrelation-function">Autocorrelation function</h3>
 <p>The autocorrelation function of <span class="math inline">{X_t}</span> at lag <span class="math inline">(h)</span> is</p>
 <p><span class="math display">\rho_X(h)=\frac{\gamma_X(h)}{\gamma_X(0)}=Cor(X_{t+h}, X_t).</span></p>
-</section></section><section id="weekly-stationary" class="level2" data-number="3.5"><h2 data-number="3.5" class="anchored" data-anchor-id="weekly-stationary">
-<span class="header-section-number">3.5</span> Weekly stationary</h2>
+</section></section><section id="weekly-stationary" class="level2" data-number="3.6"><h2 data-number="3.6" class="anchored" data-anchor-id="weekly-stationary">
+<span class="header-section-number">3.6</span> Weekly stationary</h2>
 <p>A time series <span class="math inline">{X_t}</span> is called weekly stationary if</p>
 <ul>
 <li><p><span class="math inline">\mu_X(t)</span> is independent of <span class="math inline">t</span>.</p></li>
-<li><p><span class="math inline">\gamma_X(t+h, t)</span> is independent of <span class="math inline">(t)</span> for each <span class="math inline">(h)</span>.</p></li>
+<li><p><span class="math inline">Var(X_t) = \sigma^2</span>, Variance is constant. 2</p></li>
+<li><p><span class="math inline">\gamma_X(t+h, t)</span> is independent of <span class="math inline">(t)</span> for each <span class="math inline">(h)</span>. The autocovariance depends only on the lag (<span class="math inline">\gamma(h)</span> depends only on how far apart two points are (<span class="math inline">h</span>), and not on the actual time <span class="math inline">t</span>.</p></li>
 </ul>
 <p>In other words the statistical properties of the time series (mean, variance, autocorrelation, etc.) do not depend on the time at which the series is observed, that is no trend or seasonality. However, a time series with cyclic behaviour (but with no trend or seasonality) is stationary.</p>
-</section><section id="strict-stationarity-of-a-time-series" class="level2" data-number="3.6"><h2 data-number="3.6" class="anchored" data-anchor-id="strict-stationarity-of-a-time-series">
-<span class="header-section-number">3.6</span> Strict stationarity of a time series</h2>
-<p>A time series <span class="math inline">\{X_t\}</span> is called weekly stationary if the random vector <span class="math inline">[X_1, X_2..., X_n]</span> and <span class="math inline">[X_{1+h}, X_{2+h}..., X_{n+h}]</span> have the same joint distribution for all integers <span class="math inline">(h)</span> and <span class="math inline">(n &gt; 0)</span>.</p>
-</section><section id="independent-and-identically-distributed-iid-noise" class="level2" data-number="3.7"><h2 data-number="3.7" class="anchored" data-anchor-id="independent-and-identically-distributed-iid-noise">
-<span class="header-section-number">3.7</span> 1. independent and identically distributed (iid) noise</h2>
+</section><section id="strict-stationarity-of-a-time-series" class="level2" data-number="3.7"><h2 data-number="3.7" class="anchored" data-anchor-id="strict-stationarity-of-a-time-series">
+<span class="header-section-number">3.7</span> Strict stationarity of a time series</h2>
+<p>A time series <span class="math inline">\{X_t\}</span> is called strictly stationary if the random vector <span class="math inline">[X_1, X_2..., X_n]</span> and <span class="math inline">[X_{1+h}, X_{2+h}..., X_{n+h}]</span> have the same joint distribution for all integers <span class="math inline">(h)</span> and <span class="math inline">(n &gt; 0)</span>.</p>
+</section><section id="independent-and-identically-distributed-iid-noise" class="level2" data-number="3.8"><h2 data-number="3.8" class="anchored" data-anchor-id="independent-and-identically-distributed-iid-noise">
+<span class="header-section-number">3.8</span> 1. independent and identically distributed (iid) noise</h2>
 <ol type="1">
 <li><p>no trend or seasonal component</p></li>
 <li><p>observations are independent and identically distributed (iid) random variables with zero mean.</p></li>
 <li><p>Notation: <span class="math inline">{X_t} \sim IID(0, \sigma^2)</span></p></li>
 <li><p>plays an important role as a building block for more complicated time series.</p></li>
-</ol></section><section id="white-noise" class="level2" data-number="3.8"><h2 data-number="3.8" class="anchored" data-anchor-id="white-noise">
-<span class="header-section-number">3.8</span> 2. White noise</h2>
+</ol></section><section id="white-noise" class="level2" data-number="3.9"><h2 data-number="3.9" class="anchored" data-anchor-id="white-noise">
+<span class="header-section-number">3.9</span> 2. White noise</h2>
 <p>If <span class="math inline">{X_t}</span> is a sequence of uncorrelated random variables, each with zero mean and variance <span class="math inline">\sigma^2</span>, then such a sequence is referred to as <strong>white noise</strong>.</p>
-</section><section id="every-iid0-sigma2-sequence-is-wn0-sigma2-but-not-conversely.-why" class="level2" data-number="3.9"><h2 data-number="3.9" class="anchored" data-anchor-id="every-iid0-sigma2-sequence-is-wn0-sigma2-but-not-conversely.-why">
-<span class="header-section-number">3.9</span> Every <span class="math inline">(IID(0, \sigma^2)</span> sequence is <span class="math inline">(WN(0, \sigma^2)</span> but not conversely. Why?</h2>
+</section><section id="every-iid0-sigma2-sequence-is-wn0-sigma2-but-not-conversely.-why" class="level2" data-number="3.10"><h2 data-number="3.10" class="anchored" data-anchor-id="every-iid0-sigma2-sequence-is-wn0-sigma2-but-not-conversely.-why">
+<span class="header-section-number">3.10</span> Every <span class="math inline">(IID(0, \sigma^2)</span> sequence is <span class="math inline">(WN(0, \sigma^2)</span> but not conversely. Why?</h2>
 <section id="white-noise-wn" class="level3"><h3 class="anchored" data-anchor-id="white-noise-wn">1. White Noise (WN)</h3>
 <p>A sequence <span class="math inline">\{X_t\}</span> is called <strong>white noise</strong> with mean <span class="math inline">0</span> and variance <span class="math inline">\sigma^2</span>, written <span class="math inline">WN(0, \sigma^2)</span>, if:</p>
 <ul>
@@ -376,8 +394,8 @@ IID(0, \sigma^2) \;\;\Rightarrow\;\; WN(0, \sigma^2).
 </section><section id="why-not-conversely" class="level3"><h3 class="anchored" data-anchor-id="why-not-conversely">4. Why not conversely?</h3>
 <p>The reverse is not always true, because <strong>white noise only requires uncorrelatedness, not full independence</strong>.</p>
 <p>That means a sequence could be white noise but still have dependence in higher moments (nonlinear dependence).</p>
-</section></section><section id="example-of-wn-but-not-iid" class="level2" data-number="3.10"><h2 data-number="3.10" class="anchored" data-anchor-id="example-of-wn-but-not-iid">
-<span class="header-section-number">3.10</span> 5. Example of WN but not IID</h2>
+</section></section><section id="example-of-wn-but-not-iid" class="level2" data-number="3.11"><h2 data-number="3.11" class="anchored" data-anchor-id="example-of-wn-but-not-iid">
+<span class="header-section-number">3.11</span> 5. Example of WN but not IID</h2>
 <p>Let <span class="math inline">\{Z_t\}</span> be i.i.d. <span class="math inline">N(0,1)</span>. Define</p>
 <p><span class="math display">
 X_t = Z_t \cdot Z_{t-1}.
@@ -397,8 +415,8 @@ X_t = Z_t \cdot Z_{t-1}.
 <p><span class="math display">
 X_t \sim WN(0,1) \quad \text{but not} \quad IID(0,1).
 </span></p>
-</section><section id="simulation-example" class="level2" data-number="3.11"><h2 data-number="3.11" class="anchored" data-anchor-id="simulation-example">
-<span class="header-section-number">3.11</span> Simulation example</h2>
+</section><section id="simulation-example" class="level2" data-number="3.12"><h2 data-number="3.12" class="anchored" data-anchor-id="simulation-example">
+<span class="header-section-number">3.12</span> Simulation example</h2>
 <p>IID series</p>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
@@ -463,8 +481,8 @@ X_t \sim WN(0,1) \quad \text{but not} \quad IID(0,1).
 </div>
 </div>
 </div>
-</section><section id="random-walk" class="level2" data-number="3.12"><h2 data-number="3.12" class="anchored" data-anchor-id="random-walk">
-<span class="header-section-number">3.12</span> 3. Random walk</h2>
+</section><section id="random-walk" class="level2" data-number="3.13"><h2 data-number="3.13" class="anchored" data-anchor-id="random-walk">
+<span class="header-section-number">3.13</span> 3. Random walk</h2>
 <p>A random walk process is obtained by cumulatively summing iid random variables. If <span class="math inline">{S_t, t=0, 1, 2, ...}</span> is a random walk process, then <span class="math inline">S_0 =0</span></p>
 <p><span class="math inline">S_1=0+X_1</span></p>
 <p><span class="math inline">S_2=0+X_1+X_2</span></p>
@@ -472,8 +490,8 @@ X_t \sim WN(0,1) \quad \text{but not} \quad IID(0,1).
 <p><span class="math inline">S_t=X_1+X_2+...+X_t.</span></p>
 <p><strong>Question</strong></p>
 <p>Is <span class="math inline">{S_t, t=0, 1, 2, ...}</span> a weak stationary process?</p>
-</section><section id="identifying-non-stationarity-in-the-mean" class="level2" data-number="3.13"><h2 data-number="3.13" class="anchored" data-anchor-id="identifying-non-stationarity-in-the-mean">
-<span class="header-section-number">3.13</span> Identifying non-stationarity in the mean</h2>
+</section><section id="identifying-non-stationarity-in-the-mean" class="level2" data-number="3.14"><h2 data-number="3.14" class="anchored" data-anchor-id="identifying-non-stationarity-in-the-mean">
+<span class="header-section-number">3.14</span> Identifying non-stationarity in the mean</h2>
 <ul>
 <li><p>Using time series plot</p></li>
 <li>
@@ -484,34 +502,35 @@ X_t \sim WN(0,1) \quad \text{but not} \quad IID(0,1).
 <li><p>For non-stationary series, the ACF at lag 1 is often large and positive.</p></li>
 </ul>
 </li>
-</ul></section><section id="backshift-notation" class="level2" data-number="3.14"><h2 data-number="3.14" class="anchored" data-anchor-id="backshift-notation">
-<span class="header-section-number">3.14</span> Backshift notation:</h2>
+</ul></section><section id="backshift-notation" class="level2" data-number="3.15"><h2 data-number="3.15" class="anchored" data-anchor-id="backshift-notation">
+<span class="header-section-number">3.15</span> Backshift notation:</h2>
 <p><span class="math display">BX_t=X_{t-1}</span></p>
-</section><section id="ordinary-differencing" class="level2" data-number="3.15"><h2 data-number="3.15" class="anchored" data-anchor-id="ordinary-differencing">
-<span class="header-section-number">3.15</span> Ordinary differencing</h2>
+</section><section id="ordinary-differencing" class="level2" data-number="3.16"><h2 data-number="3.16" class="anchored" data-anchor-id="ordinary-differencing">
+<span class="header-section-number">3.16</span> Ordinary differencing</h2>
 <p>The first-order differencing can be defined as</p>
 <p><span class="math display">\nabla X_t = X_t-X_{t-1}=X_t-BX_t=(1-B)X_t</span> where <span class="math inline">\nabla=1-B</span>.</p>
 <p>The second-order differencing</p>
 <p><span class="math display">\nabla^2X_t=\nabla(\nabla X_t)=\nabla(X_t-X_{t-1})=\nabla X_t - \nabla X_{t-1}</span></p>
 <p><span class="math display">\nabla X_t - \nabla X_{t-1}=(X_t-X_{t-1})-(X_{t-1}-X_{t-2})</span></p>
 <p>In practice, we seldom need to go beyond second order differencing.</p>
-</section><section id="seasonal-differencing" class="level2" data-number="3.16"><h2 data-number="3.16" class="anchored" data-anchor-id="seasonal-differencing">
-<span class="header-section-number">3.16</span> Seasonal differencing</h2>
+</section><section id="seasonal-differencing" class="level2" data-number="3.17"><h2 data-number="3.17" class="anchored" data-anchor-id="seasonal-differencing">
+<span class="header-section-number">3.17</span> Seasonal differencing</h2>
 <p>Differencing between an observation and the corresponding observation from the previous year.</p>
 <p><span class="math display">\nabla_mX_t=X_t-X_{t-m}=(1-B^m)X_t</span> where <span class="math inline">(m)</span> is the number of seasons. For monthly, <span class="math inline">(m=12)</span>, for quarterly <span class="math inline">(m=4)</span>.</p>
 <p>For monthly series</p>
 <p><span class="math display">\nabla_{12}X_t=X_t-X_{t-12}</span></p>
-</section><section id="twice-differenced-series" class="level2" data-number="3.17"><h2 data-number="3.17" class="anchored" data-anchor-id="twice-differenced-series">
-<span class="header-section-number">3.17</span> Twice-differenced series</h2>
+</section><section id="twice-differenced-series" class="level2" data-number="3.18"><h2 data-number="3.18" class="anchored" data-anchor-id="twice-differenced-series">
+<span class="header-section-number">3.18</span> Twice-differenced series</h2>
 <p><span class="math display">\nabla^2_{12}X_t=\nabla_{12}X_t-\nabla_{12}X_{t-1}</span> <span class="math display">\nabla_{12}X_t-\nabla_{12}X_{t-1}=(X_t-X_{t-12})-(X_{t-1}-X_{t-13})</span> If seasonality is strong, the seasonal differencing should be done first.</p>
-</section><section id="deterministic-trend-vs-stochastic-trend" class="level2" data-number="3.18"><h2 data-number="3.18" class="anchored" data-anchor-id="deterministic-trend-vs-stochastic-trend">
-<span class="header-section-number">3.18</span> Deterministic trend vs Stochastic trend</h2>
+</section><section id="deterministic-trend-vs-stochastic-trend" class="level2" data-number="3.19"><h2 data-number="3.19" class="anchored" data-anchor-id="deterministic-trend-vs-stochastic-trend">
+<span class="header-section-number">3.19</span> Deterministic trend vs Stochastic trend</h2>
 <section id="deterministic-trend" class="level3"><h3 class="anchored" data-anchor-id="deterministic-trend">Deterministic trend</h3>
 <p><span class="math display">Y_t  = f(t) + \epsilon_t</span></p>
 <p>where <span class="math inline">\epsilon_t \sim iid(0, \sigma^2)</span>, <span class="math inline">t = 1, 2, ...T</span></p>
 <p>Mean of the process is time dependent, but the variance of the process is constant.</p>
-<p>A trend is deterministic if it is a nonrandom function of time.</p>
+<p>A trend is deterministic if it is a nonrandom function of time. A deterministic trend is a predictable, fixed function of time. If you know the form of the function, you can determine the trend exactly.</p>
 </section><section id="stochastic-trend" class="level3"><h3 class="anchored" data-anchor-id="stochastic-trend">Stochastic trend</h3>
+<p>A stochastic trend is driven by random shocks that accumulate over time. A stochastic trend is driven by random shocks (also called innovations, disturbances, or error terms) that accumulate over time.</p>
 <p><strong>1. Random walk</strong></p>
 <p><span class="math display">Y_t = Y_{t-1} + \epsilon_t</span></p>
 <ul>
@@ -520,12 +539,12 @@ X_t \sim WN(0,1) \quad \text{but not} \quad IID(0,1).
 </ul>
 <p>A trend is said to be stochastic if it is a random function of time.</p>
 <p><strong>2. Random walk with drift</strong></p>
-<p><span class="math display">Y_t = \alpha+  Y_{t-1} + \epsilon_t</span></p>
+<p><span class="math display">Y_t = \alpha +  Y_{t-1} + \epsilon_t</span></p>
 <ul>
 <li><p>Random walk with drift has a stochastic trend and a deterministic trend.</p></li>
 <li><p>Model behind drift method.</p></li>
-</ul></section></section><section id="random-walk-1" class="level2" data-number="3.19"><h2 data-number="3.19" class="anchored" data-anchor-id="random-walk-1">
-<span class="header-section-number">3.19</span> Random walk</h2>
+</ul></section></section><section id="random-walk-1" class="level2" data-number="3.20"><h2 data-number="3.20" class="anchored" data-anchor-id="random-walk-1">
+<span class="header-section-number">3.20</span> Random walk</h2>
 <p><span class="math display">
 \begin{aligned}
   Y_t &amp;= Y_{t-1} + \epsilon_t \\
@@ -538,11 +557,11 @@ X_t \sim WN(0,1) \quad \text{but not} \quad IID(0,1).
 </span></p>
 <p>Mean: <span class="math inline">E(Y_t) = Y_0</span>.</p>
 <p>Variance: <span class="math inline">Var(Y_t)=t \sigma^2</span>.</p>
-</section><section id="random-walk-with-drift" class="level2" data-number="3.20"><h2 data-number="3.20" class="anchored" data-anchor-id="random-walk-with-drift">
-<span class="header-section-number">3.20</span> Random walk with drift</h2>
+</section><section id="random-walk-with-drift" class="level2" data-number="3.21"><h2 data-number="3.21" class="anchored" data-anchor-id="random-walk-with-drift">
+<span class="header-section-number">3.21</span> Random walk with drift</h2>
 <p><span class="math display">
 \begin{aligned}
-  Y_t &amp;= Y_{t-1} + \epsilon_t \\
+  Y_t &amp;= \alpha + Y_{t-1} + \epsilon_t \\
      Y_1    &amp;= \alpha+Y_0 + \epsilon_1 \\
          Y_2 &amp;= \alpha+ Y_1 + \epsilon_2=2 \alpha+Y_0 + \epsilon_1 + \epsilon_2\\
           Y_3 &amp;= \alpha+ Y_2 + \epsilon_3= 3 \alpha+ Y_0 + \epsilon_1 + \epsilon_2 +\epsilon_3\\
@@ -555,8 +574,8 @@ X_t \sim WN(0,1) \quad \text{but not} \quad IID(0,1).
 <p>Mean: <span class="math inline">E(Y_t) = Y_0 + t\alpha</span></p>
 <p>Variance: <span class="math inline">Var(Y_t) = t\sigma^2</span>.</p>
 <p>There is a trend in both mean and variance.</p>
-</section><section id="common-trend-removal-de-trending-procedures" class="level2" data-number="3.21"><h2 data-number="3.21" class="anchored" data-anchor-id="common-trend-removal-de-trending-procedures">
-<span class="header-section-number">3.21</span> Common trend removal (de-trending) procedures</h2>
+</section><section id="common-trend-removal-de-trending-procedures" class="level2" data-number="3.22"><h2 data-number="3.22" class="anchored" data-anchor-id="common-trend-removal-de-trending-procedures">
+<span class="header-section-number">3.22</span> Common trend removal (de-trending) procedures</h2>
 <ol type="1">
 <li>
 <p>Deterministic trend: Time-trend regression</p>
@@ -566,11 +585,11 @@ X_t \sim WN(0,1) \quad \text{but not} \quad IID(0,1).
 <p>Stochastic trend: Differencing</p>
 <p>The process is also known as a <strong>Difference-stationary process</strong>.</p>
 </li>
-</ol></section><section id="remove-seasonality" class="level2" data-number="3.22"><h2 data-number="3.22" class="anchored" data-anchor-id="remove-seasonality">
-<span class="header-section-number">3.22</span> Remove seasonality</h2>
+</ol></section><section id="remove-seasonality" class="level2" data-number="3.23"><h2 data-number="3.23" class="anchored" data-anchor-id="remove-seasonality">
+<span class="header-section-number">3.23</span> Remove seasonality</h2>
 <p>Take seasonal differencing</p>
-</section><section id="example-differencing-on-airpassengers-data" class="level2" data-number="3.23"><h2 data-number="3.23" class="anchored" data-anchor-id="example-differencing-on-airpassengers-data">
-<span class="header-section-number">3.23</span> Example: Differencing on AirPassengers Data</h2>
+</section><section id="example-differencing-on-airpassengers-data" class="level2" data-number="3.24"><h2 data-number="3.24" class="anchored" data-anchor-id="example-differencing-on-airpassengers-data">
+<span class="header-section-number">3.24</span> Example: Differencing on AirPassengers Data</h2>
 <p>The built-in AirPassengers dataset (monthly airline passengers, 1949–1960) has trend + seasonality.</p>
 <div class="cell">
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load data</span></span>
@@ -669,16 +688,16 @@ X_t \sim WN(0,1) \quad \text{but not} \quad IID(0,1).
 1951  30  24                                        </code></pre>
 </div>
 </div>
-</section><section id="notation-id" class="level2" data-number="3.24"><h2 data-number="3.24" class="anchored" data-anchor-id="notation-id">
-<span class="header-section-number">3.24</span> Notation: I(d)</h2>
+</section><section id="notation-id" class="level2" data-number="3.25"><h2 data-number="3.25" class="anchored" data-anchor-id="notation-id">
+<span class="header-section-number">3.25</span> Notation: I(d)</h2>
 <p>Integrated to order <span class="math inline">d</span>: Series can be made stationary by differencing <span class="math inline">d</span> times.</p>
 <ul>
 <li>Known as <span class="math inline">I(d)</span> process.</li>
 </ul>
 <p><strong>Question:</strong> Show that random walk process is an <span class="math inline">I(1)</span> process.</p>
 <p>The random walk process is called a unit root process. (If one of the roots turns out to be one, then the process is called unit root process.)</p>
-</section><section id="variance-stabilization" class="level2" data-number="3.25"><h2 data-number="3.25" class="anchored" data-anchor-id="variance-stabilization">
-<span class="header-section-number">3.25</span> Variance stabilization</h2>
+</section><section id="variance-stabilization" class="level2" data-number="3.26"><h2 data-number="3.26" class="anchored" data-anchor-id="variance-stabilization">
+<span class="header-section-number">3.26</span> Variance stabilization</h2>
 <p>Transform the series.</p>
 <p>Eg:</p>
 <ul>
@@ -1125,8 +1144,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./refs.html" class="pagination-link" aria-label="Bibliography">
-        <span class="nav-page-text">Bibliography</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./04-chap4.html" class="pagination-link" aria-label="Models For Stationary Time Series">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Models For Stationary Time Series</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

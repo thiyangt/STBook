@@ -113,20 +113,6 @@
 \def\fps@figure{htbp}
 \makeatother
 
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{multirow}
-\usepackage{wrapfig}
-\usepackage{float}
-\usepackage{colortbl}
-\usepackage{pdflscape}
-\usepackage{tabu}
-\usepackage{threeparttable}
-\usepackage{threeparttablex}
-\usepackage[normalem]{ulem}
-\usepackage{makecell}
-\usepackage{xcolor}
 \makeatletter
 \@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
 \makeatother
@@ -296,11 +282,10 @@
   \begin{center}\fontsize{24}{28}\sf
      \textbf{Spatio-Temporal Data Analysis}\\[2cm]
      \fontsize{18}{20}\sf Thiyanga S. Talagala\\[0.2cm]
-     \fontsize{13}{15}\sf B.Sc. (Hons), University of Tangambalanga
+     \fontsize{13}{15}\sf 
      \vfill
-     \fontsize{13}{15}\sf A thesis submitted for the degree of\\ Doctor
-of Philosophy\\ at Monash University in \number\the\year\\
-     Department of Econometrics \& Business Statistics
+     \fontsize{13}{15}\sf A thesis submitted for the degree of\\ \\ at Monash University in \number\the\year\\
+     
   \end{center}
   \newpage\mbox{}\thispagestyle{empty}\newpage
 }
@@ -328,196 +313,9 @@ of Philosophy\\ at Monash University in \number\the\year\\
 
 \markboth{Copyright notice}{Copyright notice}
 
-Produced on 21 September 2025.
+Produced on 27 September 2025.
 
 © Thiyanga S. Talagala (2025).
-
-\bookmarksetup{startatroot}
-
-\chapter*{Abstract}\label{abstract}
-\addcontentsline{toc}{chapter}{Abstract}
-
-\markboth{Abstract}{Abstract}
-
-The abstract should outline the main approach and findings of the thesis
-and must not be more than 500 words.
-
-\bookmarksetup{startatroot}
-
-\chapter*{Declaration}\label{declaration}
-\addcontentsline{toc}{chapter}{Declaration}
-
-\markboth{Declaration}{Declaration}
-
-\begin{quote}
-Use only one of the following declarations (Standard thesis or Thesis
-including published works declaration) and remove the other.
-\end{quote}
-
-\subsection*{Standard thesis}\label{standard-thesis}
-\addcontentsline{toc}{subsection}{Standard thesis}
-
-This thesis is an original work of my research and contains no material
-which has been accepted for the award of any other degree or diploma at
-any university or equivalent institution and that, to the best of my
-knowledge and belief, this thesis contains no material previously
-published or written by another person, except where due reference is
-made in the text of the thesis.
-
-Student name:
-
-Student signature:
-
-Date:
-
-\subsubsection*{Publications during
-enrolment}\label{publications-during-enrolment}
-\addcontentsline{toc}{subsubsection}{Publications during enrolment}
-
-\begin{quote}
-Remove this section if you do not have publications.
-\end{quote}
-
-The material in Chapter~\ref{sec-intro} has been submitted to the
-journal \emph{Journal of Impossible Results} for possible publication.
-
-The contribution in \textbf{?@sec-litreview} of this thesis was
-presented in the International Symposium on Nonsense held in Dublin,
-Ireland, in July 2022.
-
-\subsubsection*{Reproducibility
-statement}\label{reproducibility-statement}
-\addcontentsline{toc}{subsubsection}{Reproducibility statement}
-
-This thesis is written using Quarto with renv \autocite{renv} to create
-a reproducible environment. All materials (including the data sets and
-source files) required to reproduce this document can be found at the
-Github repository
-\href{https://github.com/SusanSu/thesis}{\texttt{github.com/SusanSu/thesis}}.
-
-This work is licensed under a
-\href{http://creativecommons.org/licenses/by-nc-sa/4.0/}{Creative
-Commons Attribution-NonCommercial-ShareAlike 4.0 International License}.
-
-\subsection*{Thesis including published works
-declaration}\label{thesis-including-published-works-declaration}
-\addcontentsline{toc}{subsection}{Thesis including published works
-declaration}
-
-I hereby declare that this thesis contains no material which has been
-accepted for the award of any other degree or diploma at any university
-or equivalent institution and that, to the best of my knowledge and
-belief, this thesis contains no material previously published or written
-by another person, except where due reference is made in the text of the
-thesis.
-
-This thesis includes ?? original papers published in peer reviewed
-journals and ?? submitted publications. The core theme of the thesis is
-??. The ideas, development and writing up of all the papers in the
-thesis were the principal responsibility of myself, the student, working
-within the Department of Econometrics \& Business Statistics under the
-supervision of ??
-
-(The inclusion of co-authors reflects the fact that the work came from
-active collaboration between researchers and acknowledges input into
-team-based research.)
-
-In the case of (??insert chapter numbers) my contribution to the work
-involved the following:
-
-\begingroup\fontsize{10}{12}\selectfont
-
-\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
-\begin{tabu} to \linewidth {>{\raggedleft\arraybackslash}p{1.2cm}>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright}X>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{2.6cm}}
-\toprule
-\multicolumn{1}{>{\raggedright\arraybackslash}p{1.2cm}}{\textbf{Thesis chapter}} & \multicolumn{1}{>{\raggedright\arraybackslash}p{2.6cm}}{\textbf{Publication title}} & \multicolumn{1}{l}{\textbf{Status}} & \multicolumn{1}{>{\raggedright\arraybackslash}p{2.6cm}}{\textbf{Nature and \% of student contribution}} & \multicolumn{1}{>{\raggedright\arraybackslash}p{2.6cm}}{\textbf{Nature and \% of coauthors' contribution}} & \multicolumn{1}{>{\raggedright\arraybackslash}p{2.6cm}}{\textbf{Coauthors are Monash students}}\\
-\midrule
-2 & The life cycle of Mongolian crickets & Submitted & Concept and data analysis, writing first draft: 60\% & Shu Xu, input into manuscript: 25\%; Eddie Betts, input into manuscript: 15\% & Shu Xu: No; Eddie Betts: Yes\\
-\bottomrule
-\end{tabu}}
-\endgroup{}
-
-I have / have not renumbered sections of submitted or published papers
-in order to generate a consistent presentation within the thesis.
-
-Student name:
-
-Student signature:
-
-Date:
-
-I hereby certify that the above declaration correctly reflects the
-nature and extent of the student's and co-authors' contributions to this
-work. In instances where I am not the responsible author I have
-consulted with the responsible author to agree on the respective
-contributions of the authors.
-
-Main Supervisor name:
-
-Main Supervisor signature:
-
-Date:
-
-\bookmarksetup{startatroot}
-
-\chapter*{Acknowledgements}\label{acknowledgements}
-\addcontentsline{toc}{chapter}{Acknowledgements}
-
-\markboth{Acknowledgements}{Acknowledgements}
-
-I would like to thank my pet goldfish for \ldots{}
-
-\begin{quote}
-In accordance with Chapter 7.1.4 of the research degrees handbook, if
-you have engaged the services of a~professional~editor, you
-must~provide~their name~and a brief description of the service rendered.
-If the professional editor's current or former area of academic
-specialisation is similar your own, this too should be stated as it may
-suggest to examiners that the editor's advice to the student has
-extended beyond guidance on English expression to affect the substance
-and structure of the thesis.
-\end{quote}
-
-\begin{quote}
-If you have used generative artificial intelligence (AI) technologies,
-you must include a written acknowledgment of the use and its extent.
-Your acknowledgement should at a minimum specify which technology was
-used, include explicit description on how the information was generated,
-and explain how the output was used in your work. Below is a suggested
-format:
-\end{quote}
-
-\begin{quote}
-``I acknowledge the use of {[}insert AI system(s) and link{]} to
-{[}specific use of generative artificial intelligence{]}. The output
-from these was used to {[}explain use{]}.''
-\end{quote}
-
-\begin{quote}
-Free text section for you to record your acknowledgment and gratitude
-for the more general academic input and support such as financial
-support from grants and scholarships and the non-academic support you
-have received during the course of your enrolment. If you are a
-recipient of the ``Australian Government Research Training Program
-Scholarship'', you are required to include the following statement:
-\end{quote}
-
-\begin{quote}
-\begin{quote}
-``This research was supported by an Australian Government Research
-Training Program (RTP) Scholarship.''
-\end{quote}
-\end{quote}
-
-\begin{quote}
-You may also wish to acknowledge significant and substantial
-contribution made by others to the research, work and writing
-represented and/or reported in the thesis. These could include
-significant contributions to: the conception and design of the project;
-non-routine technical work; analysis and interpretation of research
-data; drafting significant parts of the work or critically revising it
-to contribute to the interpretation.
-\end{quote}
 
 \clearpage\pagenumbering{arabic}\setcounter{page}{1}
 
@@ -658,8 +456,8 @@ Example:
 
 \bookmarksetup{startatroot}
 
-\chapter{Visualising Time Series
-Data}\label{visualising-time-series-data}
+\chapter{Introduction to Time Series
+Analysis}\label{introduction-to-time-series-analysis}
 
 \section{Time series}\label{time-series}
 
@@ -667,6 +465,36 @@ A time series is a sequence of observations recorded in time order. The
 time intervals between observations can be regular (e.g., daily,
 monthly, yearly) or irregular (e.g., magnitude of a earthquake at a
 particular location).
+
+\section{Main Time Series Patterns}\label{main-time-series-patterns}
+
+\subsection{Trend}\label{trend}
+
+Long-term increase or decrease in the data.
+
+\subsection{Seasonal}\label{seasonal}
+
+\begin{itemize}
+\item
+  A seasonal pattern exists when a series is influenced by seasonal
+  factors (e.g., the quarter of the year, the month, or day of the
+  week).
+\item
+  Seasonality is always of a fixed and known period.
+\end{itemize}
+
+\subsection{Cyclic}\label{cyclic}
+
+\begin{itemize}
+\item
+  A cyclic pattern exists when data exhibit rises and falls that are not
+  of fixed period.
+\item
+  The duration of these fluctuations is usually of at least 2 years.
+\item
+  The average length of cycles is longer than the length of a seasonal
+  pattern.
+\end{itemize}
 
 \section{Frequency of a time series (Seasonal
 periods)}\label{frequency-of-a-time-series-seasonal-periods}
@@ -726,8 +554,8 @@ Minutes & 60 & 1440 & 1440 & 10080 & 525960.00 \\
 Seconds & 60 & 3600 & 86400 & 604800 & 31557600.00 \\
 \end{longtable}
 
-\section{\texorpdfstring{\texttt{DataFrame} for time series
-data}{DataFrame for time series data}}\label{dataframe-for-time-series-data}
+\section{\texorpdfstring{\texttt{DataFrame} for time series data:
+Python}{DataFrame for time series data: Python}}\label{dataframe-for-time-series-data-python}
 
 When your DataFrame represents a time series, the index is usually the
 date or time, allowing pandas to:
@@ -811,11 +639,1435 @@ Month
 2025 Jun    200
 \end{verbatim}
 
-\section{Time series visualisation using grammar of
-graphics}\label{time-series-visualisation-using-grammar-of-graphics}
+\section{\texorpdfstring{\texttt{DataFrame} for time series data:
+R}{DataFrame for time series data: R}}\label{dataframe-for-time-series-data-r}
 
-\subsection{Introduction to ``grammar of graphics'' with
-plotnine}\label{introduction-to-grammar-of-graphics-with-plotnine}
+We use tsibbles to store data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(tsibble)}
+\FunctionTok{library}\NormalTok{(lubridate)}
+\FunctionTok{library}\NormalTok{(feasts)}
+\FunctionTok{library}\NormalTok{(denguedatahub)}
+\CommentTok{\# install.packages("devtools")}
+\CommentTok{\#devtools::install\_github("thiyangt/TourSriLanka")}
+\FunctionTok{library}\NormalTok{(TourSriLanka)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y.tsibble }\OtherTok{\textless{}{-}} \FunctionTok{tsibble}\NormalTok{(}
+  \AttributeTok{Year =} \DecValTok{2020}\SpecialCharTok{:}\DecValTok{2023}\NormalTok{,}
+  \AttributeTok{Earnings =} \FunctionTok{c}\NormalTok{(}\FloatTok{682.4}\NormalTok{, }\FloatTok{506.9}\NormalTok{, }\FloatTok{1136.3}\NormalTok{, }\FloatTok{2068.0}\NormalTok{),}
+  \AttributeTok{index =}\NormalTok{ Year)}
+\NormalTok{y.tsibble}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tsibble: 4 x 2 [1Y]
+   Year Earnings
+  <int>    <dbl>
+1  2020     682.
+2  2021     507.
+3  2022    1136.
+4  2023    2068 
+\end{verbatim}
+
+\section{Dataset: R}\label{dataset-r}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(TourSriLanka)}
+\FunctionTok{data}\NormalTok{(earnings)}
+\NormalTok{earnings}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 180 x 3
+   Month   Year  Earnings
+   <chr>   <chr>    <dbl>
+ 1 January 2009      30  
+ 2 January 2010      44.7
+ 3 January 2011      72  
+ 4 January 2012      88.9
+ 5 January 2013     149. 
+ 6 January 2014     233. 
+ 7 January 2015     259  
+ 8 January 2016     333. 
+ 9 January 2017     407. 
+10 January 2018     448. 
+# i 170 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{earnings }\OtherTok{\textless{}{-}}\NormalTok{ earnings }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{arrange}\NormalTok{(Year, }\FunctionTok{match}\NormalTok{(Month, month.name) )}
+\NormalTok{earnings}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 180 x 3
+   Month     Year  Earnings
+   <chr>     <chr>    <dbl>
+ 1 January   2009      30  
+ 2 February  2009      26.7
+ 3 March     2009      26.6
+ 4 April     2009      20.3
+ 5 May       2009      19.3
+ 6 June      2009      23.6
+ 7 July      2009      33  
+ 8 August    2009      32.2
+ 9 September 2009      29.6
+10 October   2009      29.3
+# i 170 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y.earnings }\OtherTok{\textless{}{-}}\NormalTok{ earnings }\SpecialCharTok{|\textgreater{}} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Date =} \FunctionTok{seq}\NormalTok{(}\FunctionTok{ymd\_hm}\NormalTok{(}\StringTok{"2009{-}1{-}1 0:00"}\NormalTok{), }\FunctionTok{ymd\_hm}\NormalTok{(}\StringTok{"2023{-}12{-}1 12:00"}\NormalTok{), }\AttributeTok{by =} \StringTok{"month"}\NormalTok{))}
+\NormalTok{y.earnings}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 180 x 4
+   Month     Year  Earnings Date               
+   <chr>     <chr>    <dbl> <dttm>             
+ 1 January   2009      30   2009-01-01 00:00:00
+ 2 February  2009      26.7 2009-02-01 00:00:00
+ 3 March     2009      26.6 2009-03-01 00:00:00
+ 4 April     2009      20.3 2009-04-01 00:00:00
+ 5 May       2009      19.3 2009-05-01 00:00:00
+ 6 June      2009      23.6 2009-06-01 00:00:00
+ 7 July      2009      33   2009-07-01 00:00:00
+ 8 August    2009      32.2 2009-08-01 00:00:00
+ 9 September 2009      29.6 2009-09-01 00:00:00
+10 October   2009      29.3 2009-10-01 00:00:00
+# i 170 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y.earnings }\OtherTok{\textless{}{-}}\NormalTok{ y.earnings }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{select}\NormalTok{(Earnings, Date) }\SpecialCharTok{|\textgreater{}} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Time =} \FunctionTok{yearmonth}\NormalTok{(Date))}
+\NormalTok{y.earnings}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 180 x 3
+   Earnings Date                    Time
+      <dbl> <dttm>                 <mth>
+ 1     30   2009-01-01 00:00:00 2009 Jan
+ 2     26.7 2009-02-01 00:00:00 2009 Feb
+ 3     26.6 2009-03-01 00:00:00 2009 Mar
+ 4     20.3 2009-04-01 00:00:00 2009 Apr
+ 5     19.3 2009-05-01 00:00:00 2009 May
+ 6     23.6 2009-06-01 00:00:00 2009 Jun
+ 7     33   2009-07-01 00:00:00 2009 Jul
+ 8     32.2 2009-08-01 00:00:00 2009 Aug
+ 9     29.6 2009-09-01 00:00:00 2009 Sep
+10     29.3 2009-10-01 00:00:00 2009 Oct
+# i 170 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ts.earnings }\OtherTok{\textless{}{-}}\NormalTok{ y.earnings }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{select}\NormalTok{(Earnings, Time) }\SpecialCharTok{|\textgreater{}} \FunctionTok{as\_tsibble}\NormalTok{(}\AttributeTok{index=}\NormalTok{Time)}
+\NormalTok{ts.earnings}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tsibble: 180 x 2 [1M]
+   Earnings     Time
+      <dbl>    <mth>
+ 1     30   2009 Jan
+ 2     26.7 2009 Feb
+ 3     26.6 2009 Mar
+ 4     20.3 2009 Apr
+ 5     19.3 2009 May
+ 6     23.6 2009 Jun
+ 7     33   2009 Jul
+ 8     32.2 2009 Aug
+ 9     29.6 2009 Sep
+10     29.3 2009 Oct
+# i 170 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ggts }\OtherTok{\textless{}{-}}\NormalTok{ ts.earnings }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Time, }\AttributeTok{y =}\NormalTok{ Earnings)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{y =} \StringTok{"Earnings from tourism (USD Mn)"}\NormalTok{, }\AttributeTok{x=}\StringTok{"Time"}\NormalTok{)  }
+\NormalTok{ggts}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{02-chap2_files/figure-pdf/unnamed-chunk-13-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ts.earnings }\OtherTok{\textless{}{-}}\NormalTok{ y.earnings }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{select}\NormalTok{(Earnings, Time) }\SpecialCharTok{|\textgreater{}} \FunctionTok{as\_tsibble}\NormalTok{(}\AttributeTok{index=}\NormalTok{Time)}
+\NormalTok{ts.earnings}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tsibble: 180 x 2 [1M]
+   Earnings     Time
+      <dbl>    <mth>
+ 1     30   2009 Jan
+ 2     26.7 2009 Feb
+ 3     26.6 2009 Mar
+ 4     20.3 2009 Apr
+ 5     19.3 2009 May
+ 6     23.6 2009 Jun
+ 7     33   2009 Jul
+ 8     32.2 2009 Aug
+ 9     29.6 2009 Sep
+10     29.3 2009 Oct
+# i 170 more rows
+\end{verbatim}
+
+\section{Time series visualisation using grammar of graphics:
+R}\label{time-series-visualisation-using-grammar-of-graphics-r}
+
+The grammar of graphics is a way of thinking about plots as layers. Each
+plot is built from components like:
+
+\textbf{Data} -- the dataset you are plotting.
+
+\textbf{Aesthetics (aes)} -- how variables map to visual properties like
+x, y, color, or size.
+
+\textbf{Geometries (geom)} -- the type of plot (points, lines, bars,
+etc.).
+
+\textbf{Facets} -- split the plot into subplots based on a variable.
+
+\textbf{Statistics (stat)} -- summary computations like regression lines
+or counts.
+
+\textbf{Scales} -- control axis limits, colors, or sizes.
+
+\textbf{Coordinates (coord)} -- control coordinate system (Cartesian,
+polar).
+
+\textbf{Theme} -- control visual appearance like text, background, and
+grid.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ggts }\OtherTok{\textless{}{-}}\NormalTok{ ts.earnings }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Time, }\AttributeTok{y =}\NormalTok{ Earnings)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{y =} \StringTok{"Earnings from tourism (USD Mn)"}\NormalTok{, }\AttributeTok{x=}\StringTok{"Time"}\NormalTok{)  }
+\NormalTok{ggts}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{02-chap2_files/figure-pdf/unnamed-chunk-15-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ggts }\OtherTok{\textless{}{-}}\NormalTok{ ts.earnings }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Time, }\AttributeTok{y =}\NormalTok{ Earnings)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{y =} \StringTok{"Earnings from tourism (USD Mn)"}\NormalTok{, }\AttributeTok{x=}\StringTok{"Time"}\NormalTok{)  }
+\NormalTok{ggts}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{02-chap2_files/figure-pdf/unnamed-chunk-16-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ts.earnings }\SpecialCharTok{|\textgreater{}}
+    \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Time =} \FunctionTok{as\_date}\NormalTok{(}\FunctionTok{yearmonth}\NormalTok{(Time))) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Time, }\AttributeTok{y =}\NormalTok{ Earnings)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_x\_date}\NormalTok{(}\AttributeTok{date\_breaks =} \StringTok{"1 year"}\NormalTok{, }\AttributeTok{date\_labels =} \StringTok{"\%Y"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{y =} \StringTok{"Earnings from tourism (USD Mn)"}\NormalTok{, }\AttributeTok{x=}\StringTok{"Time"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{02-chap2_files/figure-pdf/unnamed-chunk-17-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(viridis)}
+\NormalTok{ts.earnings }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{gg\_season}\NormalTok{(Earnings, }\AttributeTok{period =} \StringTok{"1 year"}\NormalTok{,  }\AttributeTok{pal =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{viridis\_pal}\NormalTok{()(}\DecValTok{15}\NormalTok{))  }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{()  }
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{02-chap2_files/figure-pdf/unnamed-chunk-18-1.pdf}}
+
+\section{Dataset: Python}\label{dataset-python}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ plotnine }\ImportTok{as}\NormalTok{ p9}
+\ImportTok{from}\NormalTok{ plotnine.data }\ImportTok{import}\NormalTok{ economics}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Working with Built-in Data
+Set}\label{working-with-built-in-data-set}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
+\ImportTok{import}\NormalTok{ plotnine }\ImportTok{as}\NormalTok{ p9 }
+\ImportTok{from}\NormalTok{ plotnine }\ImportTok{import} \OperatorTok{*}
+\ImportTok{from}\NormalTok{ plotnine.data }\ImportTok{import} \OperatorTok{*}
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\NormalTok{economics}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+          date      pce     pop  psavert  uempmed  unemploy
+0   1967-07-01    507.4  198712     12.5      4.5      2944
+1   1967-08-01    510.5  198911     12.5      4.7      2945
+2   1967-09-01    516.3  199113     11.7      4.6      2958
+3   1967-10-01    512.9  199311     12.5      4.9      3143
+4   1967-11-01    518.1  199498     12.5      4.7      3066
+..         ...      ...     ...      ...      ...       ...
+569 2014-12-01  12122.0  320201      5.0     12.6      8688
+570 2015-01-01  12080.8  320367      5.5     13.4      8979
+571 2015-02-01  12095.9  320534      5.7     13.1      8705
+572 2015-03-01  12161.5  320707      5.2     12.2      8575
+573 2015-04-01  12158.9  320887      5.6     11.7      8549
+
+[574 rows x 6 columns]
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{economics.info()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 574 entries, 0 to 573
+Data columns (total 6 columns):
+ #   Column    Non-Null Count  Dtype         
+---  ------    --------------  -----         
+ 0   date      574 non-null    datetime64[ns]
+ 1   pce       574 non-null    float64       
+ 2   pop       574 non-null    int64         
+ 3   psavert   574 non-null    float64       
+ 4   uempmed   574 non-null    float64       
+ 5   unemploy  574 non-null    int64         
+dtypes: datetime64[ns](1), float64(3), int64(2)
+memory usage: 27.0 KB
+\end{verbatim}
+
+\subsection{\texorpdfstring{Create \texttt{year} and \texttt{month}
+columns}{Create year and month columns}}\label{create-year-and-month-columns}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{economics[}\StringTok{\textquotesingle{}year\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ economics[}\StringTok{\textquotesingle{}date\textquotesingle{}}\NormalTok{].dt.year}
+\NormalTok{economics[}\StringTok{\textquotesingle{}month\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ economics[}\StringTok{\textquotesingle{}date\textquotesingle{}}\NormalTok{].dt.month}
+\NormalTok{economics}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+          date      pce     pop  psavert  uempmed  unemploy  year  month
+0   1967-07-01    507.4  198712     12.5      4.5      2944  1967      7
+1   1967-08-01    510.5  198911     12.5      4.7      2945  1967      8
+2   1967-09-01    516.3  199113     11.7      4.6      2958  1967      9
+3   1967-10-01    512.9  199311     12.5      4.9      3143  1967     10
+4   1967-11-01    518.1  199498     12.5      4.7      3066  1967     11
+..         ...      ...     ...      ...      ...       ...   ...    ...
+569 2014-12-01  12122.0  320201      5.0     12.6      8688  2014     12
+570 2015-01-01  12080.8  320367      5.5     13.4      8979  2015      1
+571 2015-02-01  12095.9  320534      5.7     13.1      8705  2015      2
+572 2015-03-01  12161.5  320707      5.2     12.2      8575  2015      3
+573 2015-04-01  12158.9  320887      5.6     11.7      8549  2015      4
+
+[574 rows x 8 columns]
+\end{verbatim}
+
+\section{Time series visualisation using grammar of graphics:
+Python}\label{time-series-visualisation-using-grammar-of-graphics-python}
+
+The grammar of graphics is a way of thinking about plots as layers. Each
+plot is built from components like:
+
+\textbf{Data} -- the dataset you are plotting.
+
+\textbf{Aesthetics (aes)} -- how variables map to visual properties like
+x, y, color, or size.
+
+\textbf{Geometries (geom)} -- the type of plot (points, lines, bars,
+etc.).
+
+\textbf{Facets} -- split the plot into subplots based on a variable.
+
+\textbf{Statistics (stat)} -- summary computations like regression lines
+or counts.
+
+\textbf{Scales} -- control axis limits, colors, or sizes.
+
+\textbf{Coordinates (coord)} -- control coordinate system (Cartesian,
+polar).
+
+\textbf{Theme} -- control visual appearance like text, background, and
+grid.
+
+\href{https://thiyangt.github.io/spts_python_practical/Practical1/}{*}
+
+\section{What is a lag value?}\label{what-is-a-lag-value}
+
+In time series analysis, a lag represents the number of time steps by
+which a series is shifted backward to compare it with itself.
+
+Lag 1: Compare each value with the previous observation.
+
+Lag 2: Compare each value with the value two steps before.
+
+Lag k: Compare each value with the value k steps earlier.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
+
+\CommentTok{\# Small time series with 5 points}
+\NormalTok{data }\OperatorTok{=}\NormalTok{ [}\DecValTok{10}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{13}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{14}\NormalTok{]}
+\NormalTok{dates }\OperatorTok{=}\NormalTok{ pd.date\_range(start}\OperatorTok{=}\StringTok{\textquotesingle{}2025{-}01{-}01\textquotesingle{}}\NormalTok{, periods}\OperatorTok{=}\DecValTok{5}\NormalTok{, freq}\OperatorTok{=}\StringTok{\textquotesingle{}D\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(\{}\StringTok{\textquotesingle{}Date\textquotesingle{}}\NormalTok{: dates, }\StringTok{\textquotesingle{}Value\textquotesingle{}}\NormalTok{: data\})}
+\NormalTok{df.set\_index(}\StringTok{\textquotesingle{}Date\textquotesingle{}}\NormalTok{, inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+
+\CommentTok{\# Create lagged series}
+\NormalTok{df[}\StringTok{\textquotesingle{}Lag1\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ df[}\StringTok{\textquotesingle{}Value\textquotesingle{}}\NormalTok{].shift(}\DecValTok{1}\NormalTok{)  }\CommentTok{\# lag 1}
+\NormalTok{df[}\StringTok{\textquotesingle{}Lag2\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ df[}\StringTok{\textquotesingle{}Value\textquotesingle{}}\NormalTok{].shift(}\DecValTok{2}\NormalTok{)  }\CommentTok{\# lag 2}
+
+\CommentTok{\# Show the result}
+\BuiltInTok{print}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+            Value  Lag1  Lag2
+Date                         
+2025-01-01     10   NaN   NaN
+2025-01-02     12  10.0   NaN
+2025-01-03     13  12.0  10.0
+2025-01-04     15  13.0  12.0
+2025-01-05     14  15.0  13.0
+\end{verbatim}
+
+\section{Correlation vs
+Autocorrelation}\label{correlation-vs-autocorrelation}
+
+\subsection{Correlation}\label{correlation}
+
+Measures the strength of the linear relationship between two variables
+
+\[r = \frac{\sum_{i=1}^{n} (x_i -\bar{x})(y_i-\bar{y})}{\sqrt{\sum_{i=1}^{n} (x_i -\bar{x})^2 \sum_{i=1}^{n} (y_i -\bar{y})^2}}\]
+
+\subsection{Autocorrelation}\label{autocorrelation}
+
+Measures the strength of linear relationship between lagged values of
+time series.
+
+\[r_k = \frac{\sum (y_t -\bar{y})(y_{t-k}-\bar{y})}{\sum (y_t -\bar{y})^2}\]
+
+\section{Your turn: why different
+values?}\label{your-turn-why-different-values}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Correlation (autocorrelation) between original series and lagged series}
+\NormalTok{autocorr\_lag1 }\OperatorTok{=}\NormalTok{ df[}\StringTok{\textquotesingle{}Value\textquotesingle{}}\NormalTok{].corr(df[}\StringTok{\textquotesingle{}Lag1\textquotesingle{}}\NormalTok{])}
+\NormalTok{autocorr\_lag2 }\OperatorTok{=}\NormalTok{ df[}\StringTok{\textquotesingle{}Value\textquotesingle{}}\NormalTok{].corr(df[}\StringTok{\textquotesingle{}Lag2\textquotesingle{}}\NormalTok{])}
+
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Autocorrelation at lag 1: }\SpecialCharTok{\{}\NormalTok{autocorr\_lag1}\SpecialCharTok{:.3f\}}\SpecialStringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Autocorrelation at lag 1: 0.744
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Autocorrelation at lag 2: }\SpecialCharTok{\{}\NormalTok{autocorr\_lag2}\SpecialCharTok{:.3f\}}\SpecialStringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Autocorrelation at lag 2: 0.655
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+\ImportTok{from}\NormalTok{ statsmodels.tsa.stattools }\ImportTok{import}\NormalTok{ acf}
+
+\CommentTok{\# Small time series with 5 points}
+\NormalTok{data }\OperatorTok{=}\NormalTok{ [}\DecValTok{10}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{13}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{14}\NormalTok{]}
+\NormalTok{dates }\OperatorTok{=}\NormalTok{ pd.date\_range(start}\OperatorTok{=}\StringTok{\textquotesingle{}2025{-}01{-}01\textquotesingle{}}\NormalTok{, periods}\OperatorTok{=}\DecValTok{5}\NormalTok{, freq}\OperatorTok{=}\StringTok{\textquotesingle{}D\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{df }\OperatorTok{=}\NormalTok{ pd.DataFrame(\{}\StringTok{\textquotesingle{}Date\textquotesingle{}}\NormalTok{: dates, }\StringTok{\textquotesingle{}Value\textquotesingle{}}\NormalTok{: data\})}
+\NormalTok{df.set\_index(}\StringTok{\textquotesingle{}Date\textquotesingle{}}\NormalTok{, inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+
+\BuiltInTok{print}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+            Value
+Date             
+2025-01-01     10
+2025-01-02     12
+2025-01-03     13
+2025-01-04     15
+2025-01-05     14
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Compute autocorrelation for lags 1 to 4 (max lag = n{-}1)}
+\NormalTok{autocorr\_values }\OperatorTok{=}\NormalTok{ acf(df[}\StringTok{\textquotesingle{}Value\textquotesingle{}}\NormalTok{], nlags}\OperatorTok{=}\DecValTok{4}\NormalTok{, fft}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+
+\CommentTok{\# Show autocorrelation values}
+\ControlFlowTok{for}\NormalTok{ lag, val }\KeywordTok{in} \BuiltInTok{enumerate}\NormalTok{(autocorr\_values):}
+    \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Lag }\SpecialCharTok{\{}\NormalTok{lag}\SpecialCharTok{\}}\SpecialStringTok{: }\SpecialCharTok{\{}\NormalTok{val}\SpecialCharTok{:.3f\}}\SpecialStringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Lag 0: 1.000
+Lag 1: 0.349
+Lag 2: -0.141
+Lag 3: -0.481
+Lag 4: -0.227
+\end{verbatim}
+
+\section{Autocorrelation plots (ACF)}\label{autocorrelation-plots-acf}
+
+The ACF measures the correlation between a time series and lagged
+versions of itself. It tells us how past values influence current
+values.
+
+\subsection{Example 1}\label{example-1}
+
+Time series plot
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(fable)}
+\FunctionTok{library}\NormalTok{(fpp2)}
+\FunctionTok{autoplot}\NormalTok{(beer)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{02-chap2_files/figure-pdf/unnamed-chunk-27-1.pdf}}
+
+Seasonal plot
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggseasonplot}\NormalTok{(beer, }\AttributeTok{year.labels=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{year.labels.left=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{02-chap2_files/figure-pdf/unnamed-chunk-28-1.pdf}}
+
+ACF
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggAcf}\NormalTok{(beer)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{02-chap2_files/figure-pdf/unnamed-chunk-29-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggseasonplot}\NormalTok{(beer, }\AttributeTok{year.labels=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{year.labels.left=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{02-chap2_files/figure-pdf/unnamed-chunk-30-1.pdf}}
+
+\section{Example 2}\label{example-2}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{aelec }\OtherTok{\textless{}{-}} \FunctionTok{window}\NormalTok{(elec, }\AttributeTok{start=}\DecValTok{1980}\NormalTok{)}
+\FunctionTok{autoplot}\NormalTok{(aelec) }\SpecialCharTok{+} \FunctionTok{xlab}\NormalTok{(}\StringTok{"Year"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ylab}\NormalTok{(}\StringTok{"GWh"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{02-chap2_files/figure-pdf/unnamed-chunk-31-1.pdf}}
+
+Seasonal plots
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggseasonplot}\NormalTok{(aelec, }\AttributeTok{year.labels=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{year.labels.left=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{02-chap2_files/figure-pdf/unnamed-chunk-32-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggAcf}\NormalTok{(aelec, }\AttributeTok{lag=}\DecValTok{48}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{02-chap2_files/figure-pdf/unnamed-chunk-33-1.pdf}}
+
+\section{Example 3}\label{example-3}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{ts}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{))}
+\FunctionTok{autoplot}\NormalTok{(y) }\SpecialCharTok{+} \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"White noise"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{02-chap2_files/figure-pdf/unnamed-chunk-34-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggAcf}\NormalTok{(y)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{02-chap2_files/figure-pdf/unnamed-chunk-35-1.pdf}}
+
+\section{Exercise}\label{exercise}
+
+Question 6 at \url{https://otexts.com/fpp2/graphics-exercises.html}
+
+\bookmarksetup{startatroot}
+
+\chapter{Introduction to Time Series
+Forecasting}\label{introduction-to-time-series-forecasting}
+
+\section{Notation}\label{notation}
+
+\(\hat{Y}_{T+h|T}\) - The forecast of the time series \(𝑌\) at time
+\(T+h\), made using the information available up to time \(T\).
+
+\section{Simple time series forecasting
+techniques}\label{simple-time-series-forecasting-techniques}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Average method
+\item
+  Naive method/ random walk method
+\item
+  Seasonal naive method
+\item
+  Drift method
+\end{enumerate}
+
+\href{https://otexts.com/fpp2/simple-methods.html}{Reading}
+
+\section{Example: Electricity Demand
+Forecasting}\label{example-electricity-demand-forecasting}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(fable)}
+\FunctionTok{library}\NormalTok{(fpp2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{aelec }\OtherTok{\textless{}{-}} \FunctionTok{window}\NormalTok{(elec, }\AttributeTok{start=}\DecValTok{1980}\NormalTok{)}
+\FunctionTok{autoplot}\NormalTok{(aelec)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{03-chap3_files/figure-pdf/unnamed-chunk-3-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Plot some forecasts}
+\FunctionTok{autoplot}\NormalTok{(aelec) }\SpecialCharTok{+}
+  \FunctionTok{autolayer}\NormalTok{(}\FunctionTok{meanf}\NormalTok{(aelec, }\AttributeTok{h=}\DecValTok{11}\NormalTok{),}
+    \AttributeTok{series=}\StringTok{"Mean"}\NormalTok{, }\AttributeTok{PI=}\ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{autolayer}\NormalTok{(}\FunctionTok{naive}\NormalTok{(aelec, }\AttributeTok{h=}\DecValTok{11}\NormalTok{),}
+    \AttributeTok{series=}\StringTok{"Naïve"}\NormalTok{, }\AttributeTok{PI=}\ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{autolayer}\NormalTok{(}\FunctionTok{snaive}\NormalTok{(aelec, }\AttributeTok{h=}\DecValTok{11}\NormalTok{),}
+    \AttributeTok{series=}\StringTok{"Seasonal naïve"}\NormalTok{, }\AttributeTok{PI=}\ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Forecasts from Mean, NAIVE and SNAIVE"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{"Year"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ylab}\NormalTok{(}\StringTok{"Value"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{guides}\NormalTok{(}\AttributeTok{colour=}\FunctionTok{guide\_legend}\NormalTok{(}\AttributeTok{title=}\StringTok{"Forecast"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{03-chap3_files/figure-pdf/unnamed-chunk-4-1.pdf}}
+
+\section{Time Series and Stochastic
+Processes}\label{time-series-and-stochastic-processes}
+
+The terms stochastic processes and time series are closely related but
+not the same.
+
+A \textbf{stochastic process} is a collection of random variables
+indexed by time (or space).
+
+\[\{X_t : t \in T\},\]
+
+where \(T\) is the index set (e.g., discrete or continuous time).
+
+A \textbf{time series} is a single realization (observed data) of a
+stochastic process. It is the actual sequence of observations collected
+over time.
+
+In short:
+
+Stochastic process = model/theory (all possible sequences). The
+probability mechanism (all possible paths).
+
+Time series = observed data (one sequence). One observed path (the
+single trajectory we actually have).
+
+\section{Statistical Properties}\label{statistical-properties}
+
+\subsection{Mean function}\label{mean-function}
+
+Let \({X_1, X_2, ...}\) be a sequence of time index random variables.
+
+The \textbf{mean function} of \({X_t}\) is
+
+\[\mu_X(t)=E(X_t).\]
+
+\subsection{Covariance function}\label{covariance-function}
+
+The \textbf{covariance function} of \({X_t}\) is
+
+\[\gamma_X(r, s)=Cov(X_r, X_s)=E[(X_r-\mu_X(r))(X_s-\mu_X(s))]\]
+
+for all integers \((r)\) and \((s)\).
+
+\subsection{Autocovariance function}\label{autocovariance-function}
+
+The autocovariance function of \({X_t}\) at lag \((h)\) is defined by
+\[\gamma_X(h):=\gamma_X(h, 0)=\gamma(t+h, t)=Cov(X_{t+h}, X_t).\]
+
+or
+
+The autocovariance function of \({X_t}\) at lag \((h)\) is
+
+\[\gamma_X(h)=Cov(X_{t+h}, X_t).\]
+
+\subsection{Autocorrelation function}\label{autocorrelation-function}
+
+The autocorrelation function of \({X_t}\) at lag \((h)\) is
+
+\[\rho_X(h)=\frac{\gamma_X(h)}{\gamma_X(0)}=Cor(X_{t+h}, X_t).\]
+
+\section{Weekly stationary}\label{weekly-stationary}
+
+A time series \({X_t}\) is called weekly stationary if
+
+\begin{itemize}
+\item
+  \(\mu_X(t)\) is independent of \(t\).
+\item
+  \(Var(X_t) = \sigma^2\), Variance is constant. 2
+\item
+  \(\gamma_X(t+h, t)\) is independent of \((t)\) for each \((h)\). The
+  autocovariance depends only on the lag (\(\gamma(h)\) depends only on
+  how far apart two points are (\(h\)), and not on the actual time
+  \(t\).
+\end{itemize}
+
+In other words the statistical properties of the time series (mean,
+variance, autocorrelation, etc.) do not depend on the time at which the
+series is observed, that is no trend or seasonality. However, a time
+series with cyclic behaviour (but with no trend or seasonality) is
+stationary.
+
+\section{Strict stationarity of a time
+series}\label{strict-stationarity-of-a-time-series}
+
+A time series \(\{X_t\}\) is called strictly stationary if the random
+vector \([X_1, X_2..., X_n]\) and \([X_{1+h}, X_{2+h}..., X_{n+h}]\)
+have the same joint distribution for all integers \((h)\) and
+\((n > 0)\).
+
+\section{1. independent and identically distributed (iid)
+noise}\label{independent-and-identically-distributed-iid-noise}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  no trend or seasonal component
+\item
+  observations are independent and identically distributed (iid) random
+  variables with zero mean.
+\item
+  Notation: \({X_t} \sim IID(0, \sigma^2)\)
+\item
+  plays an important role as a building block for more complicated time
+  series.
+\end{enumerate}
+
+\section{2. White noise}\label{white-noise}
+
+If \({X_t}\) is a sequence of uncorrelated random variables, each with
+zero mean and variance \(\sigma^2\), then such a sequence is referred to
+as \textbf{white noise}.
+
+\section{\texorpdfstring{Every \((IID(0, \sigma^2)\) sequence is
+\((WN(0, \sigma^2)\) but not conversely.
+Why?}{Every (IID(0, \textbackslash sigma\^{}2) sequence is (WN(0, \textbackslash sigma\^{}2) but not conversely. Why?}}\label{every-iid0-sigma2-sequence-is-wn0-sigma2-but-not-conversely.-why}
+
+\subsection{1. White Noise (WN)}\label{white-noise-wn}
+
+A sequence \(\{X_t\}\) is called \textbf{white noise} with mean \(0\)
+and variance \(\sigma^2\), written \(WN(0, \sigma^2)\), if:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\mathbb{E}[X_t] = 0\) for all \(t\).\\
+\item
+  \(\mathrm{Var}(X_t) = \sigma^2\) for all \(t\).\\
+\item
+  \(\mathrm{Cov}(X_t, X_s) = 0\) for all \(t \neq s\) (uncorrelated
+  across time).
+\end{itemize}
+
+Notice: \emph{uncorrelated \(\neq\) independent}.
+
+\subsection{\texorpdfstring{2. i.i.d.
+\((0, \sigma^2)\)}{2. i.i.d. (0, \textbackslash sigma\^{}2)}}\label{i.i.d.-0-sigma2}
+
+A sequence \(\{X_t\}\) is \(IID(0, \sigma^2)\) if:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\mathbb{E}[X_t] = 0\).\\
+\item
+  \(\mathrm{Var}(X_t) = \sigma^2\).\\
+\item
+  \(X_t\) are independent and identically distributed.
+\end{itemize}
+
+\subsection{\texorpdfstring{3. Why every \(IID(0, \sigma^2)\) is
+\(WN(0, \sigma^2)\)}{3. Why every IID(0, \textbackslash sigma\^{}2) is WN(0, \textbackslash sigma\^{}2)}}\label{why-every-iid0-sigma2-is-wn0-sigma2}
+
+\begin{itemize}
+\tightlist
+\item
+  Independence \(\;\Rightarrow\;\) zero correlation.\\
+\item
+  So, an i.i.d. sequence automatically satisfies the white noise
+  conditions (same mean, same variance, no correlation).
+\end{itemize}
+
+Therefore:
+
+\[
+IID(0, \sigma^2) \;\;\Rightarrow\;\; WN(0, \sigma^2).
+\]
+
+\subsection{4. Why not conversely?}\label{why-not-conversely}
+
+The reverse is not always true, because \textbf{white noise only
+requires uncorrelatedness, not full independence}.
+
+That means a sequence could be white noise but still have dependence in
+higher moments (nonlinear dependence).
+
+\section{5. Example of WN but not IID}\label{example-of-wn-but-not-iid}
+
+Let \(\{Z_t\}\) be i.i.d. \(N(0,1)\). Define
+
+\[
+X_t = Z_t \cdot Z_{t-1}.
+\]
+
+Then:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\mathbb{E}[X_t] = 0\),\\
+\item
+  \(\mathrm{Var}(X_t) = 1\),\\
+\item
+  For \(t \neq s\), \(\mathrm{Cov}(X_t, X_s) = 0\). ✅ So it's white
+  noise.
+\end{itemize}
+
+But the sequence is \textbf{not independent} (because \(X_t\) depends on
+\(Z_{t-1}\), which also appears in \(X_{t-1}\)).
+
+Thus,
+
+\[
+X_t \sim WN(0,1) \quad \text{but not} \quad IID(0,1).
+\]
+
+\section{Simulation example}\label{simulation-example}
+
+IID series
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+
+\CommentTok{\# Parameters}
+\NormalTok{n }\OtherTok{\textless{}{-}} \DecValTok{200}        \CommentTok{\# length of series}
+\NormalTok{sigma }\OtherTok{\textless{}{-}} \DecValTok{1}      \CommentTok{\# standard deviation}
+
+\CommentTok{\# IID(0, sigma\^{}2) \textasciitilde{} Normal(0, sigma\^{}2)}
+\NormalTok{iid\_seq }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n, }\AttributeTok{mean =} \DecValTok{0}\NormalTok{, }\AttributeTok{sd =}\NormalTok{ sigma)}
+
+\CommentTok{\# Quick check}
+\FunctionTok{mean}\NormalTok{(iid\_seq)      }\CommentTok{\# should be \textasciitilde{}0}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] -0.008570445
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{var}\NormalTok{(iid\_seq)       }\CommentTok{\# should be \textasciitilde{}sigma\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.8895506
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{acf}\NormalTok{(iid\_seq)       }\CommentTok{\# autocorrelations \textasciitilde{} 0}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{03-chap3_files/figure-pdf/unnamed-chunk-5-1.pdf}}
+
+White noise
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+
+\NormalTok{n }\OtherTok{\textless{}{-}} \DecValTok{200}
+\NormalTok{Z }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n, }\AttributeTok{mean =} \DecValTok{0}\NormalTok{, }\AttributeTok{sd =} \DecValTok{1}\NormalTok{)}
+
+\CommentTok{\# Construct WN but not IID}
+\NormalTok{wn\_not\_iid }\OtherTok{\textless{}{-}}\NormalTok{ Z[}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{] }\SpecialCharTok{*}\NormalTok{ Z[}\SpecialCharTok{{-}}\NormalTok{n]   }\CommentTok{\# X\_t = Z\_t * Z\_\{t{-}1\}, length n{-}1}
+
+\CommentTok{\# Quick check}
+\FunctionTok{mean}\NormalTok{(wn\_not\_iid)        }\CommentTok{\# \textasciitilde{}0}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] -0.05650406
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{var}\NormalTok{(wn\_not\_iid)         }\CommentTok{\# \textasciitilde{}1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.8196189
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{acf}\NormalTok{(wn\_not\_iid)         }\CommentTok{\# uncorrelated {-}\textgreater{} ACF \textasciitilde{} 0}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{03-chap3_files/figure-pdf/unnamed-chunk-6-1.pdf}}
+
+Side-by-side visualisation
+
+\pandocbounded{\includegraphics[keepaspectratio]{03-chap3_files/figure-pdf/unnamed-chunk-7-1.pdf}}
+
+\section{3. Random walk}\label{random-walk}
+
+A random walk process is obtained by cumulatively summing iid random
+variables. If \({S_t, t=0, 1, 2, ...}\) is a random walk process, then
+\(S_0 =0\)
+
+\(S_1=0+X_1\)
+
+\(S_2=0+X_1+X_2\)
+
+\(...\)
+
+\(S_t=X_1+X_2+...+X_t.\)
+
+\textbf{Question}
+
+Is \({S_t, t=0, 1, 2, ...}\) a weak stationary process?
+
+\section{Identifying non-stationarity in the
+mean}\label{identifying-non-stationarity-in-the-mean}
+
+\begin{itemize}
+\item
+  Using time series plot
+\item
+  ACF plot
+
+  \begin{itemize}
+  \item
+    ACF of stationary time series will drop to relatively quickly.
+  \item
+    The ACF of non-stationary series decreases slowly.
+  \item
+    For non-stationary series, the ACF at lag 1 is often large and
+    positive.
+  \end{itemize}
+\end{itemize}
+
+\section{Backshift notation:}\label{backshift-notation}
+
+\[BX_t=X_{t-1}\]
+
+\section{Ordinary differencing}\label{ordinary-differencing}
+
+The first-order differencing can be defined as
+
+\[\nabla X_t = X_t-X_{t-1}=X_t-BX_t=(1-B)X_t\] where \(\nabla=1-B\).
+
+The second-order differencing
+
+\[\nabla^2X_t=\nabla(\nabla X_t)=\nabla(X_t-X_{t-1})=\nabla X_t - \nabla X_{t-1}\]
+
+\[\nabla X_t - \nabla X_{t-1}=(X_t-X_{t-1})-(X_{t-1}-X_{t-2})\]
+
+In practice, we seldom need to go beyond second order differencing.
+
+\section{Seasonal differencing}\label{seasonal-differencing}
+
+Differencing between an observation and the corresponding observation
+from the previous year.
+
+\[\nabla_mX_t=X_t-X_{t-m}=(1-B^m)X_t\] where \((m)\) is the number of
+seasons. For monthly, \((m=12)\), for quarterly \((m=4)\).
+
+For monthly series
+
+\[\nabla_{12}X_t=X_t-X_{t-12}\]
+
+\section{Twice-differenced series}\label{twice-differenced-series}
+
+\[\nabla^2_{12}X_t=\nabla_{12}X_t-\nabla_{12}X_{t-1}\]
+\[\nabla_{12}X_t-\nabla_{12}X_{t-1}=(X_t-X_{t-12})-(X_{t-1}-X_{t-13})\]
+If seasonality is strong, the seasonal differencing should be done
+first.
+
+\section{Deterministic trend vs Stochastic
+trend}\label{deterministic-trend-vs-stochastic-trend}
+
+\subsection{Deterministic trend}\label{deterministic-trend}
+
+\[Y_t  = f(t) + \epsilon_t\]
+
+where \(\epsilon_t \sim iid(0, \sigma^2)\), \(t = 1, 2, ...T\)
+
+Mean of the process is time dependent, but the variance of the process
+is constant.
+
+A trend is deterministic if it is a nonrandom function of time. A
+deterministic trend is a predictable, fixed function of time. If you
+know the form of the function, you can determine the trend exactly.
+
+\subsection{Stochastic trend}\label{stochastic-trend}
+
+A stochastic trend is driven by random shocks that accumulate over time.
+A stochastic trend is driven by random shocks (also called innovations,
+disturbances, or error terms) that accumulate over time.
+
+\textbf{1. Random walk}
+
+\[Y_t = Y_{t-1} + \epsilon_t\]
+
+\begin{itemize}
+\item
+  Random walk has a stochastic trend.
+\item
+  Model behind naive method.
+\end{itemize}
+
+A trend is said to be stochastic if it is a random function of time.
+
+\textbf{2. Random walk with drift}
+
+\[Y_t = \alpha +  Y_{t-1} + \epsilon_t\]
+
+\begin{itemize}
+\item
+  Random walk with drift has a stochastic trend and a deterministic
+  trend.
+\item
+  Model behind drift method.
+\end{itemize}
+
+\section{Random walk}\label{random-walk-1}
+
+\[
+\begin{aligned}
+  Y_t &= Y_{t-1} + \epsilon_t \\
+     Y_1    &= Y_0 + \epsilon_1 \\
+         Y_2 &=  Y_1 + \epsilon_2=Y_0 + \epsilon_1 + \epsilon_2\\
+          Y_3 &=  Y_2 + \epsilon_3=Y_0 + \epsilon_1 + \epsilon_2 +\epsilon_3\\
+          .   \\
+          Y_t &=Y_{t-1} + \epsilon_t=Y_0 + \epsilon_1 + \epsilon_2 + \epsilon_3 +...+ \epsilon_t = Y_0 + \sum_{i=1}^{t} \epsilon_t
+\end{aligned}
+\]
+
+Mean: \(E(Y_t) = Y_0\).
+
+Variance: \(Var(Y_t)=t \sigma^2\).
+
+\section{Random walk with drift}\label{random-walk-with-drift}
+
+\[
+\begin{aligned}
+  Y_t &= \alpha + Y_{t-1} + \epsilon_t \\
+     Y_1    &= \alpha+Y_0 + \epsilon_1 \\
+         Y_2 &= \alpha+ Y_1 + \epsilon_2=2 \alpha+Y_0 + \epsilon_1 + \epsilon_2\\
+          Y_3 &= \alpha+ Y_2 + \epsilon_3= 3 \alpha+ Y_0 + \epsilon_1 + \epsilon_2 +\epsilon_3\\
+          .   \\
+          Y_t &= \alpha+Y_{t-1} + \epsilon_t= t \alpha+ Y_0 + \epsilon_1 + \epsilon_2 + \epsilon_3 +...+ \epsilon_t \\
+          Y_t &= t \alpha + Y_0 + \sum_{i=1}^{t} \epsilon_t
+\end{aligned}
+\]
+
+It has a \emph{deterministic trend} \((Y_0 + t \alpha)\) and a
+\emph{stochastic trend} \(\sum_{i=1}^{t} \epsilon_t\).
+
+Mean: \(E(Y_t) = Y_0 + t\alpha\)
+
+Variance: \(Var(Y_t) = t\sigma^2\).
+
+There is a trend in both mean and variance.
+
+\section{Common trend removal (de-trending)
+procedures}\label{common-trend-removal-de-trending-procedures}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Deterministic trend: Time-trend regression
+
+  The trend can be removed by fitting a deterministic polynomial time
+  trend. The residual series after removing the trend will give us the
+  de-trended series.
+\item
+  Stochastic trend: Differencing
+
+  The process is also known as a \textbf{Difference-stationary process}.
+\end{enumerate}
+
+\section{Remove seasonality}\label{remove-seasonality}
+
+Take seasonal differencing
+
+\section{Example: Differencing on AirPassengers
+Data}\label{example-differencing-on-airpassengers-data}
+
+The built-in AirPassengers dataset (monthly airline passengers,
+1949--1960) has trend + seasonality.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load data}
+\FunctionTok{data}\NormalTok{(}\StringTok{"AirPassengers"}\NormalTok{)}
+\NormalTok{ts\_data }\OtherTok{\textless{}{-}}\NormalTok{ AirPassengers}
+
+\CommentTok{\#par(mfrow = c(3,2))}
+
+\CommentTok{\# 1. Original series}
+\FunctionTok{plot}\NormalTok{(ts\_data, }\AttributeTok{main =} \StringTok{"Original Series"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Passengers"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{03-chap3_files/figure-pdf/unnamed-chunk-8-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{acf}\NormalTok{(ts\_data, }\AttributeTok{main =} \StringTok{"ACF: Original Series"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{03-chap3_files/figure-pdf/unnamed-chunk-8-2.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 2. First difference (remove trend)}
+\NormalTok{diff1 }\OtherTok{\textless{}{-}} \FunctionTok{diff}\NormalTok{(ts\_data, }\AttributeTok{differences =} \DecValTok{1}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(diff1, }\AttributeTok{main =} \StringTok{"1st Difference (Remove Trend)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Difference"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{03-chap3_files/figure-pdf/unnamed-chunk-8-3.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{acf}\NormalTok{(diff1, }\AttributeTok{main =} \StringTok{"ACF: 1st Difference"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{03-chap3_files/figure-pdf/unnamed-chunk-8-4.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 3. Seasonal difference (lag = 12, remove seasonality)}
+\NormalTok{diff\_seasonal }\OtherTok{\textless{}{-}} \FunctionTok{diff}\NormalTok{(diff1, }\AttributeTok{lag =} \DecValTok{12}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(diff\_seasonal, }\AttributeTok{main =} \StringTok{"Seasonal Difference (Remove Seasonality)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Difference"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{03-chap3_files/figure-pdf/unnamed-chunk-8-5.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{acf}\NormalTok{(diff\_seasonal, }\AttributeTok{main =} \StringTok{"ACF: Seasonal Difference"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{03-chap3_files/figure-pdf/unnamed-chunk-8-6.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 3. Seasonal difference (lag = 12, remove seasonality from the original series)}
+\NormalTok{diff\_seasonal\_only }\OtherTok{\textless{}{-}} \FunctionTok{diff}\NormalTok{(ts\_data, }\AttributeTok{lag =} \DecValTok{12}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(diff\_seasonal\_only, }\AttributeTok{main =} \StringTok{"Seasonal Difference (Remove Seasonality)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Difference"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{03-chap3_files/figure-pdf/unnamed-chunk-8-7.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{acf}\NormalTok{(diff\_seasonal\_only, }\AttributeTok{main =} \StringTok{"ACF: Seasonal Difference"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{03-chap3_files/figure-pdf/unnamed-chunk-8-8.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(ts\_data, }\DecValTok{14}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
+1949 112 118 132 129 121 135 148 148 136 119 104 118
+1950 115 126                                        
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(diff1, }\DecValTok{14}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
+1949       6  14  -3  -8  14  13   0 -12 -17 -15  14
+1950  -3  11  15                                    
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(diff\_seasonal, }\DecValTok{14}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
+1950       5   1  -3  -2  10   8   0   0  -8  -4  12
+1951   8  -6  13                                    
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(diff\_seasonal\_only, }\DecValTok{14}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
+1950   3   8   9   6   4  14  22  22  22  14  10  22
+1951  30  24                                        
+\end{verbatim}
+
+\section{Notation: I(d)}\label{notation-id}
+
+Integrated to order \(d\): Series can be made stationary by differencing
+\(d\) times.
+
+\begin{itemize}
+\tightlist
+\item
+  Known as \(I(d)\) process.
+\end{itemize}
+
+\textbf{Question:} Show that random walk process is an \(I(1)\) process.
+
+The random walk process is called a unit root process. (If one of the
+roots turns out to be one, then the process is called unit root
+process.)
+
+\section{Variance stabilization}\label{variance-stabilization}
+
+Transform the series.
+
+Eg:
+
+\begin{itemize}
+\item
+  Square root: \(W_t = \sqrt{Y_t}\)
+\item
+  Logarithm: \(W_t = log({Y_t})\)
+
+  \begin{itemize}
+  \item
+    This very useful.
+  \item
+    Interpretable: Changes in a log value are \textbf{relative (percent)
+    changes on the original sclae}.
+  \end{itemize}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{log\_ts }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{(ts\_data)}
+\FunctionTok{plot}\NormalTok{(log\_ts, }\AttributeTok{main =} \StringTok{"Log{-}Transformed Series"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"log(Passengers)"}\NormalTok{, }\AttributeTok{col =} \StringTok{"steelblue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{03-chap3_files/figure-pdf/unnamed-chunk-10-1.pdf}}
+
+\bookmarksetup{startatroot}
+
+\chapter{Models For Stationary Time
+Series}\label{models-for-stationary-time-series}
+
+In this chapter we will discuss family of autoregressive moving average
+(ARMA) time series models.
+
+\section{General Linear Process}\label{general-linear-process}
+
+A \textbf{linear process} is a time series written as an infinite linear
+combination of random shocks \(\{\varepsilon_t\}\):
+
+\[X_t = \mu + \sum_{j=0}^{\infty} \psi_j \, \varepsilon_{t-j},\]
+
+where,
+
+\(\mu\) is the mean
+
+\(\{\psi_j\}\) are coefficients (weights)
+
+\(\varepsilon_t \sim \text{i.i.d. } (0, \sigma^2)\) are white noise
+shocks.
+
+\section{Autoregressive Models}\label{autoregressive-models}
+
+\(Y_t = \alpha + \phi_1 Y_{t-1} + \phi_2 Y_{t-2} + \dots + \phi_p Y_{t-p} + \epsilon_t\)
+
+Where:
+
+\(Y_t\) is the value at time \(t\)
+
+\(\alpha\) is a constant,
+
+\(\phi_1, \phi_2,...\phi_p\) are the parameters,
+
+\(\epsilon_t\) is white noise (error term),
+
+\(p\) is the order of the AR model.
+
+\section{In-class: Properties of AR(1)
+process}\label{in-class-properties-of-ar1-process}
+
+Derive
+
+\begin{itemize}
+\item
+  Mean
+\item
+  Variance
+\item
+  Covariance
+\item
+  Autocorrelation function of an AR(1) process
+\end{itemize}
+
+\section{In-class: Properties of AR(2)
+process}\label{in-class-properties-of-ar2-process}
+
+Derive
+
+\begin{itemize}
+\item
+  Mean
+\item
+  Variance
+\item
+  Covariance
+\item
+  Autocorrelation function of an AR(1) process
+\end{itemize}
+
+\section{In-class: Properties of AR(P)
+process}\label{in-class-properties-of-arp-process}
+
+Derive
+
+\begin{itemize}
+\item
+  Mean
+\item
+  Variance
+\item
+  Covariance
+\item
+  Autocorrelation function of an AR(P) process
+\end{itemize}
 
 \bookmarksetup{startatroot}
 

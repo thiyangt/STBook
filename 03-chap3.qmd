@@ -54,6 +54,24 @@ autoplot(aelec) +
   guides(colour=guide_legend(title="Forecast"))
 ```
 
+## Time Series and Stochastic Processes
+
+The terms stochastic processes and time series are closely related but not the same. 
+
+ A \textbf{stochastic process} is a collection of random variables indexed by time (or space).  
+    
+  $$\{X_t : t \in T\},$$
+    
+  where $T$ is the index set (e.g., discrete or continuous time).
+    
+A \textbf{time series} is a single realization (observed data) of a stochastic process. It is the actual sequence of observations collected over time.
+
+In short:
+
+Stochastic process = model/theory (all possible sequences). The probability mechanism (all possible paths).
+
+Time series = observed data (one sequence). One observed path (the single trajectory we actually have).
+
 ## Statistical Properties
 
 ### Mean function
@@ -95,13 +113,16 @@ A time series ${X_t}$ is called weekly stationary if
 
 -   $\mu_X(t)$ is independent of $t$.
 
--   $\gamma_X(t+h, t)$ is independent of $(t)$ for each $(h)$.
+- $Var(X_t) = \sigma^2$, Variance is constant.
+2
+
+-   $\gamma_X(t+h, t)$ is independent of $(t)$ for each $(h)$. The autocovariance depends only on the lag ($\gamma(h)$ depends only on how far apart two points are ($h$), and not on the actual time $t$.
 
 In other words the statistical properties of the time series (mean, variance, autocorrelation, etc.) do not depend on the time at which the series is observed, that is no trend or seasonality. However, a time series with cyclic behaviour (but with no trend or seasonality) is stationary.
 
 ## Strict stationarity of a time series
 
-A time series $\{X_t\}$ is called weekly stationary if the random vector $[X_1, X_2..., X_n]$ and $[X_{1+h}, X_{2+h}..., X_{n+h}]$ have the same joint distribution for all integers $(h)$ and $(n > 0)$.
+A time series $\{X_t\}$ is called strictly stationary if the random vector $[X_1, X_2..., X_n]$ and $[X_{1+h}, X_{2+h}..., X_{n+h}]$ have the same joint distribution for all integers $(h)$ and $(n > 0)$.
 
 
 
@@ -312,9 +333,12 @@ where $\epsilon_t \sim iid(0, \sigma^2)$, $t = 1, 2, ...T$
 
 Mean of the process is time dependent, but the variance of the process is constant.
 
-A trend is deterministic if it is a nonrandom function of time.
+A trend is deterministic if it is a nonrandom function of time. A deterministic trend is a predictable, fixed function of time. If you know the form of the function, you can determine the trend exactly.
 
 ### Stochastic trend
+
+A stochastic trend is driven by random shocks that accumulate over time. A stochastic trend is driven by random shocks (also called innovations, disturbances, or error terms) that accumulate over time.
+
 
 **1. Random walk**
 
@@ -330,7 +354,7 @@ A trend is said to be stochastic if it is a random function of time.
 
 **2. Random walk with drift**
 
-$$Y_t = \alpha+  Y_{t-1} + \epsilon_t$$
+$$Y_t = \alpha +  Y_{t-1} + \epsilon_t$$
 
 -   Random walk with drift has a stochastic trend and a deterministic trend.
 
@@ -357,7 +381,7 @@ Variance: $Var(Y_t)=t \sigma^2$.
 
 $$
 \begin{aligned}
-  Y_t &= Y_{t-1} + \epsilon_t \\
+  Y_t &= \alpha + Y_{t-1} + \epsilon_t \\
      Y_1    &= \alpha+Y_0 + \epsilon_1 \\
          Y_2 &= \alpha+ Y_1 + \epsilon_2=2 \alpha+Y_0 + \epsilon_1 + \epsilon_2\\
           Y_3 &= \alpha+ Y_2 + \epsilon_3= 3 \alpha+ Y_0 + \epsilon_1 + \epsilon_2 +\epsilon_3\\

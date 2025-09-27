@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Forecasting with Linear Time Series Models – Spatio-Temporal Data Analysis</title>
+<title>4&nbsp; Models For Stationary Time Series – Spatio-Temporal Data Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -125,7 +125,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-chap4.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Forecasting with Linear Time Series Models</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-chap4.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Models For Stationary Time Series</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -177,7 +177,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-chap4.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Forecasting with Linear Time Series Models</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Models For Stationary Time Series</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -196,10 +196,11 @@ window.Quarto = {
     <h2 id="toc-title"><b>Sections</b></h2>
    
   <ul class="collapse">
-  <li><a href="#autoregressive-models" id="toc-autoregressive-models" class="nav-link active" data-scroll-target="#autoregressive-models"><span class="header-section-number">4.1</span> Autoregressive Models</a></li>
-  <li><a href="#in-class-properties-of-ar1-process" id="toc-in-class-properties-of-ar1-process" class="nav-link" data-scroll-target="#in-class-properties-of-ar1-process"><span class="header-section-number">4.2</span> In-class: Properties of AR(1) process</a></li>
-  <li><a href="#in-class-properties-of-ar2-process" id="toc-in-class-properties-of-ar2-process" class="nav-link" data-scroll-target="#in-class-properties-of-ar2-process"><span class="header-section-number">4.3</span> In-class: Properties of AR(2) process</a></li>
-  <li><a href="#in-class-properties-of-arp-process" id="toc-in-class-properties-of-arp-process" class="nav-link" data-scroll-target="#in-class-properties-of-arp-process"><span class="header-section-number">4.4</span> In-class: Properties of AR(P) process</a></li>
+  <li><a href="#general-linear-process" id="toc-general-linear-process" class="nav-link active" data-scroll-target="#general-linear-process"><span class="header-section-number">4.1</span> General Linear Process</a></li>
+  <li><a href="#autoregressive-models" id="toc-autoregressive-models" class="nav-link" data-scroll-target="#autoregressive-models"><span class="header-section-number">4.2</span> Autoregressive Models</a></li>
+  <li><a href="#in-class-properties-of-ar1-process" id="toc-in-class-properties-of-ar1-process" class="nav-link" data-scroll-target="#in-class-properties-of-ar1-process"><span class="header-section-number">4.3</span> In-class: Properties of AR(1) process</a></li>
+  <li><a href="#in-class-properties-of-ar2-process" id="toc-in-class-properties-of-ar2-process" class="nav-link" data-scroll-target="#in-class-properties-of-ar2-process"><span class="header-section-number">4.4</span> In-class: Properties of AR(2) process</a></li>
+  <li><a href="#in-class-properties-of-arp-process" id="toc-in-class-properties-of-arp-process" class="nav-link" data-scroll-target="#in-class-properties-of-arp-process"><span class="header-section-number">4.5</span> In-class: Properties of AR(P) process</a></li>
   </ul>
 </nav>
     </div>
@@ -208,7 +209,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Forecasting with Linear Time Series Models</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Models For Stationary Time Series</span></h1>
 </div>
 
 
@@ -225,8 +226,18 @@ window.Quarto = {
 </header>
 
 
-<section id="autoregressive-models" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="autoregressive-models"><span class="header-section-number">4.1</span> Autoregressive Models</h2>
+<p>In this chapter we will discuss family of autoregressive moving average (ARMA) time series models.</p>
+<section id="general-linear-process" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="general-linear-process"><span class="header-section-number">4.1</span> General Linear Process</h2>
+<p>A is a time series written as an infinite linear combination of random shocks <span class="math inline">\{\varepsilon_t\}</span>:</p>
+<p><span class="math display">X_t = \mu + \sum_{j=0}^{\infty} \psi_j \, \varepsilon_{t-j},</span></p>
+<p>where,</p>
+<p><span class="math inline">\mu</span> is the mean</p>
+<p><span class="math inline">\{\psi_j\}</span> are coefficients (weights)</p>
+<p><span class="math inline">\varepsilon_t \sim \text{i.i.d. } (0, \sigma^2)</span> are white noise shocks.</p>
+</section>
+<section id="autoregressive-models" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="autoregressive-models"><span class="header-section-number">4.2</span> Autoregressive Models</h2>
 <p><span class="math inline">Y_t = \alpha + \phi_1 Y_{t-1} + \phi_2 Y_{t-2} + \dots + \phi_p Y_{t-p} + \epsilon_t</span></p>
 <p>Where:</p>
 <p><span class="math inline">Y_t</span> is the value at time <span class="math inline">t</span></p>
@@ -235,8 +246,8 @@ window.Quarto = {
 <p><span class="math inline">\epsilon_t</span> is white noise (error term),</p>
 <p><span class="math inline">p</span> is the order of the AR model.</p>
 </section>
-<section id="in-class-properties-of-ar1-process" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="in-class-properties-of-ar1-process"><span class="header-section-number">4.2</span> In-class: Properties of AR(1) process</h2>
+<section id="in-class-properties-of-ar1-process" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="in-class-properties-of-ar1-process"><span class="header-section-number">4.3</span> In-class: Properties of AR(1) process</h2>
 <p>Derive</p>
 <ul>
 <li><p>Mean</p></li>
@@ -245,8 +256,8 @@ window.Quarto = {
 <li><p>Autocorrelation function of an AR(1) process</p></li>
 </ul>
 </section>
-<section id="in-class-properties-of-ar2-process" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="in-class-properties-of-ar2-process"><span class="header-section-number">4.3</span> In-class: Properties of AR(2) process</h2>
+<section id="in-class-properties-of-ar2-process" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="in-class-properties-of-ar2-process"><span class="header-section-number">4.4</span> In-class: Properties of AR(2) process</h2>
 <p>Derive</p>
 <ul>
 <li><p>Mean</p></li>
@@ -255,8 +266,8 @@ window.Quarto = {
 <li><p>Autocorrelation function of an AR(1) process</p></li>
 </ul>
 </section>
-<section id="in-class-properties-of-arp-process" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="in-class-properties-of-arp-process"><span class="header-section-number">4.4</span> In-class: Properties of AR(P) process</h2>
+<section id="in-class-properties-of-arp-process" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="in-class-properties-of-arp-process"><span class="header-section-number">4.5</span> In-class: Properties of AR(P) process</h2>
 <p>Derive</p>
 <ul>
 <li><p>Mean</p></li>
