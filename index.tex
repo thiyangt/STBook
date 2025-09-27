@@ -2166,7 +2166,6 @@ Derive
 Consider the following \(AR(1)\) model.
 
 \begin{equation}
-  \label{eq:ar}
 Y_t=\phi_0+\phi_1Y_{t-1}+\epsilon_{t}
 \end{equation}
 
@@ -2196,7 +2195,6 @@ Under the stationarity condition, \(E(Y_t)=E(Y_{t-1})=\mu\). Thus we get
 Solving for \(\mu\) yields
 
 \begin{equation}
-  \label{eq:2}
 E(Y_t)=\mu=\frac{\phi_0}{1-\phi_1}.
 \end{equation}
 
@@ -2247,7 +2245,6 @@ autocovariance of \(Y_t\). The two main properties of \(\gamma_k\): (a)
 The lag-\(k\) autocovariance of \(Y_t\) is
 
 \begin{equation}
-  \label{eq:3}
 \begin{aligned}
   \gamma_k &= Cov(Y_t, Y_{t-k}) \\
          &= E[(Y_t-\mu)(Y_{t-k}-\mu)] \\
@@ -2259,7 +2256,6 @@ The lag-\(k\) autocovariance of \(Y_t\) is
 Now we have
 
 \begin{equation}
-  \label{eq:3}
   E(Y_t Y_{t-k}) = \gamma_k + \mu^2
 \end{equation}
 
@@ -2280,7 +2276,6 @@ Substituting the results in Equation @ref(eq:2) to Equation @ref(eq:3)
 we get
 
 \begin{equation}
-\label{eq:5}
 \gamma_k = \phi_1 \gamma_{k-1}.
 \end{equation}
 
@@ -2300,7 +2295,6 @@ sides by \(\gamma_0\) and substituting with \(\rho_1=\phi_1\) we get
 Now it is easy to see that in general
 
 \begin{equation}
-\label{eq:acfar1}
 \rho_k = \frac{\gamma_k}{\gamma_0}=\phi_1^k 
 \end{equation}
 
@@ -2327,7 +2321,6 @@ are,
 Now consider a second-order autoregressive process (AR(2))
 
 \begin{equation}
-  \label{eq:ar2}
 Y_t=\phi_0+\phi_1Y_{t-1}+\phi_2Y_{t-2}+\epsilon_t.
 \end{equation}
 
@@ -2353,7 +2346,6 @@ Start with
 Solve it until you obtain the Eq. (a) as shown below.
 
 \begin{equation}
-\tag{a}
 \gamma_0 (1-\phi_1^2 - \phi_2^2) = 2\phi_1\phi_2\gamma_1+\sigma^2.
 \end{equation}
 
@@ -2418,7 +2410,6 @@ is valid for AR(2)) we have
 Solving for \(\gamma_k\) we get
 
 \begin{align}
-\label{eq:eq9}
  \gamma_k=\phi_1\gamma_{k-1}+\phi_2\gamma_{k-2}.
 \end{align}
 
@@ -2426,7 +2417,6 @@ By dividing the both sides of Equation @ref(eq:eq9) by \(\gamma_0\), we
 have
 
 \begin{align}
-\label{eq:yule2}
  \rho_k=\phi_1\rho_{k-1}+\phi_2\rho_{k-2}.
 \end{align}
 
@@ -2474,7 +2464,6 @@ for \(AR(2)\) process, obtain the following recursive relationship for
 \(AR(p)\).
 
 \begin{align}
-\label{eq:yulep}
 \rho_k = \phi_1\rho_{k-1}+\phi_2 \rho_{k-2} + ... + \phi_p \rho_{k-p}.
 \end{align}
 
@@ -2483,7 +2472,6 @@ Setting \(k=1, 2, ..., p\) into Equation @ref(eq:yulep) and using
 for \(AR(p)\) process
 
 \begin{equation}
-  \label{eq:13}
 \begin{aligned}
   \rho_1 &= \phi_1+\phi_2 \rho_{1} + ... + \phi_p \rho_{p-1}\\
   \rho_2 &= \phi_1 \rho_1+\phi_2  + ... + \phi_p \rho_{p-2}\\
@@ -2570,7 +2558,6 @@ Let \(\phi_{ki}\), the \(j\)th coefficient in an \(AR(k)\) model. Then,
 \(\phi_{kj}\) satisfy the set of equations
 
 \begin{equation}
-\label{eq:pacf}
 \rho_j=\phi_{k1}\rho_{j-1}+...+\phi_{k(k-1)}\rho_{j-k+1}+\phi_{kk}\rho_{j-k},
 \end{equation}
 
@@ -2578,7 +2565,6 @@ for \(j=1, 2, ...k\), leading to the Yule-Walker equations which may be
 written
 
 \begin{equation}
-\label{eq:pacf}
 \left[\begin{array}
 {r}
 \rho_1  \\
@@ -2644,14 +2630,12 @@ equations for \(k=1, 2, 3...\) successively, we obtain
 For \(k=1\),
 
 \begin{equation}
-\label{eq:p1}
 \phi_{11}=\rho_1.
 \end{equation}
 
 For \(k=2\),
 
 \begin{equation}
-\label{eq:p2}
 \phi_{22}=\frac{\left[\begin{array}
 {rr}
 1 & \rho_2  \\
@@ -2666,7 +2650,6 @@ For \(k=2\),
 For \(k=3\),
 
 \begin{equation}
-\label{eq:p3}
 \phi_{33}=\frac{\left[\begin{array}
 {rrr}
 1 & \rho_1 & \rho_1  \\
@@ -2735,7 +2718,6 @@ then give the results for the general \(MA(q)\) model.
 The general form for \(MA(1)\) model is
 
 \begin{equation}
-  \label{eq:ma1}
 Y_t = \theta_0 + \theta_1 \epsilon_{t-1} + \epsilon_t
 \end{equation}
 
@@ -2764,7 +2746,6 @@ both sides of Equation @ref(eq:ma1) by \(Y_{t-k}\) and take the
 expectation.
 
 \begin{equation}
-\label{eq: ma1acfs1}
 \begin{aligned}
 E[Y_tY_{t-k}] &= E[\theta_0 Y_{t-k} + \theta_1 \epsilon_{t-1} Y_{t-k} + \epsilon_t Y_{t-k}]\\
 &= \theta_0 E(Y_{t-k}) + \theta_1 E(\epsilon_{t-1}Y_{t-k}) + E(\epsilon_t Y_{t-k})\\
@@ -2775,14 +2756,12 @@ Using the independence between \(\epsilon_t\) and \(Y_{t-k}\) (future
 error and past observation) \(E(\epsilon_t Y_{t-k}) = 0\). Now we have
 
 \begin{equation}
-\label{eq:ma1acfs2}
 E[Y_tY_{t-k}] = \theta_0^2  + \theta_1 E(\epsilon_{t-1}Y_{t-k}) 
 \end{equation}
 
 Now let's obtain an expression for \(E[Y_t Y_{t-k}]\).
 
 \begin{equation}
-  \label{eq:covma1}
 \begin{aligned}
   \gamma_k &= Cov(Y_t, Y_{t-k}) \\
          &= E[(Y_t-\theta_0)(Y_{t-k}-\theta_0)] \\
@@ -2794,21 +2773,18 @@ Now let's obtain an expression for \(E[Y_t Y_{t-k}]\).
 Now we have
 
 \begin{equation}
-  \label{eq:covma1}
   E(Y_t Y_{t-k}) = \gamma_k + \theta_0^2.
 \end{equation}
 
 Using the Equations @ref(eq:ma1acfs2) and @ref(eq:covma1) we have
 
 \begin{equation}
-  \label{eq:covma2}
   \gamma_k = \theta_0^2 - \theta_0^2 + \theta_1E(\epsilon_{t-1}Y_{t-k}).
 \end{equation}
 
 Now let's consider the case \(k=1\).
 
 \begin{equation}
-  \label{eq:covma3}
   \gamma_1 = \theta_0^2 - \theta_0^2 + \theta_1E(\epsilon_{t-1}Y_{t-1})
 \end{equation}
 
@@ -2817,7 +2793,6 @@ Today's error and today's value are dependent. Hence,
 \(E(\epsilon_{t-1}Y_{t-1})\).
 
 \begin{equation}
-  \label{eq:covma4}
 \begin{aligned}
 E(\epsilon_{t-1}Y_{t-1}) &= E(\theta_0 \epsilon_{t-1} + \theta_1 \epsilon_{t-2} \epsilon_{t-1}+ \epsilon_{t-1}^2)\\
 \end{aligned}
@@ -2828,7 +2803,6 @@ Since, \{\(\epsilon_t\)\} is a white noise process
 Hence, we have
 
 \begin{equation}
-  \label{eq:covma5}
 \begin{aligned}
 E(\epsilon_{t-1}Y_{t-1}) &= E(\epsilon_{t-1}^2)=\sigma^2\\
 \end{aligned}
@@ -2855,7 +2829,6 @@ of 1 of the process.
 covariance}\label{method-2-by-using-the-definition-of-covariance}
 
 \begin{equation}
-  \label{eq:mtd21}
 \begin{aligned}
 \gamma_1 = Cov(Y_t, Y_{t-1}) &= Cov(\epsilon_t + \theta_1 \epsilon_{t-1}+ \theta_0, \epsilon_{t-1}+\theta_1 \epsilon_{t-2} + \theta_0)\\
 &=Cov(\theta_1 \epsilon_{t-1}, \epsilon_{t-1})\\
@@ -2864,7 +2837,6 @@ covariance}\label{method-2-by-using-the-definition-of-covariance}
 \end{equation}
 
 \begin{equation}
-  \label{eq:mtd21}
 \begin{aligned}
 \gamma_2=Cov(Y_t, Y_{t-2}) &= Cov(\epsilon_t + \theta_1 \epsilon_{t-1}+ \theta_0, \epsilon_{t-2}+\theta_1 \epsilon_{t-3} + \theta_0)\\
 &=0.
@@ -2884,7 +2856,6 @@ Similarly we can show \(\gamma_k=\rho_k=0\) for all \(k \geq 2\).
 An \(MA(2)\) model is in the form
 
 \begin{equation}
-  \label{eq:ma2}
 Y_t = \theta_0 + \theta_1 \epsilon_{t-1} + \theta_2 \epsilon_{t-2} + \epsilon_t
 \end{equation}
 
@@ -2913,7 +2884,6 @@ and \(\rho_k=0\) for all \(k \geq 3.\)
 \section{Properties of MA(q) model}\label{properties-of-maq-model}
 
 \begin{equation}
-  \label{eq:ma2}
 Y_t = \theta_0 + \theta_1 \epsilon_{t-1} + \theta_2 \epsilon_{t-2} +...+ \theta_q \epsilon_{t-q} +\epsilon_t
 \end{equation}
 
@@ -2946,9 +2916,7 @@ much like the autocorrelation functions of \(AR(p)\) models. The PACF of
 \(MA\) models decays exponentially to zero, rather like ACF for \(AR\)
 model.
 
-\bookmarksetup{startatroot}
-
-\chapter{Dual relation between AR and MA
+\section{Dual relation between AR and MA
 process}\label{dual-relation-between-ar-and-ma-process}
 
 \textbf{Dual relation 1}
@@ -3019,9 +2987,7 @@ process are not required to satisfy any condition to ensure
 stationarity. However, to ensure the condition of invertibility, the
 roots of \(\theta(B)=0\) must lie outside the unit circle.
 
-\bookmarksetup{startatroot}
-
-\chapter{Autoregressive and Moving-average (ARMA)
+\section{Autoregressive and Moving-average (ARMA)
 models}\label{autoregressive-and-moving-average-arma-models}
 
 current value = linear combination of past values + linear combination
@@ -3056,9 +3022,7 @@ model. The PACF of ARMA process behaves like the PACF of a MA process.
 Hence, the ACF and PACF are not informative in determining the order of
 an ARMA model.
 
-\bookmarksetup{startatroot}
-
-\chapter{Theoretical ACF and PACF for AR, MA and ARMA
+\section{Theoretical ACF and PACF for AR, MA and ARMA
 models}\label{theoretical-acf-and-pacf-for-ar-ma-and-arma-models}
 
 Theoretical autocorrelation coefficients for some of the more common AR,

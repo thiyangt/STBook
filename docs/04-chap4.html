@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.42">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>4&nbsp; Models For Stationary Time Series – Spatio-Temporal Data Analysis</title>
 <style>
 code{white-space: pre-wrap;}
@@ -21,7 +18,6 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 </style>
-
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
@@ -40,8 +36,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-47708def744f7d6bf9e6ade08d3fbeef.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dcaec5c8d80e8fa62fc25e24c15f567a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-dcaec5c8d80e8fa62fc25e24c15f567a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -67,11 +62,8 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-<link href="https://fonts.googleapis.com/css?family=Fira+Sans|Merriweather|Source Code Pro" rel="stylesheet">
-
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
+}</script><link href="https://fonts.googleapis.com/css?family=Fira+Sans|Merriweather|Source%20Code%20Pro" rel="stylesheet">
+<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
  for (var i = 0; i < mathElements.length; i++) {
@@ -84,9 +76,7 @@ ul.task-list li input[type="checkbox"] {
     fleqn: false
    });
 }}});
-  </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
-
+  </script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 <script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
@@ -113,15 +103,11 @@ window.Quarto = {
   typesetMath
 };
 </script>
-
 </head>
-
 <body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -132,13 +118,9 @@ window.Quarto = {
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Spatio-Temporal Data Analysis</a> 
     </div>
@@ -150,7 +132,7 @@ window.Quarto = {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Front matter</span></a>
@@ -187,30 +169,48 @@ window.Quarto = {
   </div>
 </li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title"><b>Sections</b></h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title"><b>Sections</b></h2>
    
   <ul class="collapse">
-  <li><a href="#general-linear-process" id="toc-general-linear-process" class="nav-link active" data-scroll-target="#general-linear-process"><span class="header-section-number">4.1</span> General Linear Process</a></li>
+<li><a href="#general-linear-process" id="toc-general-linear-process" class="nav-link active" data-scroll-target="#general-linear-process"><span class="header-section-number">4.1</span> General Linear Process</a></li>
   <li><a href="#moving-average-processes" id="toc-moving-average-processes" class="nav-link" data-scroll-target="#moving-average-processes"><span class="header-section-number">4.2</span> Moving Average Processes</a></li>
   <li><a href="#autoregressive-processes" id="toc-autoregressive-processes" class="nav-link" data-scroll-target="#autoregressive-processes"><span class="header-section-number">4.3</span> Autoregressive Processes</a></li>
-  <li><a href="#in-class-properties-of-ar1-process" id="toc-in-class-properties-of-ar1-process" class="nav-link" data-scroll-target="#in-class-properties-of-ar1-process"><span class="header-section-number">4.4</span> In-class: Properties of AR(1) process</a></li>
-  <li><a href="#in-class-properties-of-ar2-process" id="toc-in-class-properties-of-ar2-process" class="nav-link" data-scroll-target="#in-class-properties-of-ar2-process"><span class="header-section-number">4.5</span> In-class: Properties of AR(2) process</a></li>
-  <li><a href="#in-class-properties-of-arp-process" id="toc-in-class-properties-of-arp-process" class="nav-link" data-scroll-target="#in-class-properties-of-arp-process"><span class="header-section-number">4.6</span> In-class: Properties of AR(P) process</a></li>
+  <li><a href="#ar-processes-are-also-just-special-cases-of-the-general-linear-process" id="toc-ar-processes-are-also-just-special-cases-of-the-general-linear-process" class="nav-link" data-scroll-target="#ar-processes-are-also-just-special-cases-of-the-general-linear-process"><span class="header-section-number">4.4</span> AR processes are also just special cases of the general linear process</a></li>
+  <li><a href="#in-class-properties-of-ar1-process" id="toc-in-class-properties-of-ar1-process" class="nav-link" data-scroll-target="#in-class-properties-of-ar1-process"><span class="header-section-number">4.5</span> In-class: Properties of AR(1) process</a></li>
+  <li><a href="#in-class-properties-of-ar2-process" id="toc-in-class-properties-of-ar2-process" class="nav-link" data-scroll-target="#in-class-properties-of-ar2-process"><span class="header-section-number">4.6</span> In-class: Properties of AR(2) process</a></li>
+  <li><a href="#in-class-properties-of-arp-process" id="toc-in-class-properties-of-arp-process" class="nav-link" data-scroll-target="#in-class-properties-of-arp-process"><span class="header-section-number">4.7</span> In-class: Properties of AR(P) process</a></li>
+  <li><a href="#properties-of-ar1-model" id="toc-properties-of-ar1-model" class="nav-link" data-scroll-target="#properties-of-ar1-model"><span class="header-section-number">4.8</span> Properties of AR(1) model</a></li>
+  <li><a href="#properties-of-ar2-model" id="toc-properties-of-ar2-model" class="nav-link" data-scroll-target="#properties-of-ar2-model"><span class="header-section-number">4.9</span> Properties of AR(2) model</a></li>
+  <li><a href="#properties-of-arp-model" id="toc-properties-of-arp-model" class="nav-link" data-scroll-target="#properties-of-arp-model"><span class="header-section-number">4.10</span> Properties of AR(p) model</a></li>
+  <li><a href="#the-partial-autocorrelation-function-pacf" id="toc-the-partial-autocorrelation-function-pacf" class="nav-link" data-scroll-target="#the-partial-autocorrelation-function-pacf"><span class="header-section-number">4.11</span> The partial autocorrelation function (PACF)</a></li>
+  <li>
+<a href="#moving-average-ma-models" id="toc-moving-average-ma-models" class="nav-link" data-scroll-target="#moving-average-ma-models"><span class="header-section-number">5</span> Moving average (MA) models</a>
+  <ul class="collapse">
+<li><a href="#properties-of-ma1-model" id="toc-properties-of-ma1-model" class="nav-link" data-scroll-target="#properties-of-ma1-model"><span class="header-section-number">5.1</span> Properties of MA(1) model</a></li>
+  <li><a href="#properties-of-ma2-model" id="toc-properties-of-ma2-model" class="nav-link" data-scroll-target="#properties-of-ma2-model"><span class="header-section-number">5.2</span> Properties of MA(2) model</a></li>
+  <li><a href="#properties-of-maq-model" id="toc-properties-of-maq-model" class="nav-link" data-scroll-target="#properties-of-maq-model"><span class="header-section-number">5.3</span> Properties of MA(q) model</a></li>
+  <li><a href="#partial-autocorrelation-function-of-an-maq-process" id="toc-partial-autocorrelation-function-of-an-maq-process" class="nav-link" data-scroll-target="#partial-autocorrelation-function-of-an-maq-process"><span class="header-section-number">5.4</span> Partial autocorrelation function of an MA(q) process</a></li>
+  <li><a href="#dual-relation-between-ar-and-ma-process" id="toc-dual-relation-between-ar-and-ma-process" class="nav-link" data-scroll-target="#dual-relation-between-ar-and-ma-process"><span class="header-section-number">5.5</span> Dual relation between AR and MA process</a></li>
+  <li><a href="#autoregressive-and-moving-average-arma-models" id="toc-autoregressive-and-moving-average-arma-models" class="nav-link" data-scroll-target="#autoregressive-and-moving-average-arma-models"><span class="header-section-number">5.6</span> Autoregressive and Moving-average (ARMA) models</a></li>
+  <li><a href="#stationary-condition" id="toc-stationary-condition" class="nav-link" data-scroll-target="#stationary-condition"><span class="header-section-number">5.7</span> Stationary condition</a></li>
+  <li><a href="#invertible-condition" id="toc-invertible-condition" class="nav-link" data-scroll-target="#invertible-condition"><span class="header-section-number">5.8</span> Invertible condition</a></li>
+  <li><a href="#autocorrelation-function-and-partial-autocorrelation-function" id="toc-autocorrelation-function-and-partial-autocorrelation-function" class="nav-link" data-scroll-target="#autocorrelation-function-and-partial-autocorrelation-function"><span class="header-section-number">5.9</span> Autocorrelation function and Partial autocorrelation function</a></li>
+  <li><a href="#theoretical-acf-and-pacf-for-ar-ma-and-arma-models" id="toc-theoretical-acf-and-pacf-for-ar-ma-and-arma-models" class="nav-link" data-scroll-target="#theoretical-acf-and-pacf-for-ar-ma-and-arma-models"><span class="header-section-number">5.10</span> Theoretical ACF and PACF for AR, MA and ARMA models</a></li>
+  <li><a href="#acf-and-pacf-calculated-from-data" id="toc-acf-and-pacf-calculated-from-data" class="nav-link" data-scroll-target="#acf-and-pacf-calculated-from-data"><span class="header-section-number">5.11</span> ACF and PACF calculated from data</a></li>
   </ul>
-</nav>
+</li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">6</span> References</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Models For Stationary Time Series</span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Models For Stationary Time Series</span>
+</h1>
 </div>
 
 
@@ -224,29 +224,29 @@ window.Quarto = {
   
 
 
-</header>
-
-
-<p>In this chapter we will discuss family of autoregressive moving average (ARMA) time series models.</p>
-<section id="general-linear-process" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="general-linear-process"><span class="header-section-number">4.1</span> General Linear Process</h2>
+</header><p>In this chapter we will discuss family of autoregressive moving average (ARMA) time series models.</p>
+<section id="general-linear-process" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="general-linear-process">
+<span class="header-section-number">4.1</span> General Linear Process</h2>
 <p>A is a time series written as an infinite linear combination of random shocks <span class="math inline">\{\varepsilon_t\}</span>:</p>
 <p><span class="math display">X_t = \mu + \sum_{j=0}^{\infty} \psi_j \, \varepsilon_{t-j},</span></p>
 <p>where,</p>
 <p><span class="math inline">\mu</span> is the mean</p>
 <p><span class="math inline">\{\psi_j\}</span> are coefficients (weights)</p>
 <p><span class="math inline">\varepsilon_t \sim \text{i.i.d. } (0, \sigma^2)</span> are white noise shocks.</p>
-</section>
-<section id="moving-average-processes" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="moving-average-processes"><span class="header-section-number">4.2</span> Moving Average Processes</h2>
+</section><section id="moving-average-processes" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="moving-average-processes">
+<span class="header-section-number">4.2</span> Moving Average Processes</h2>
 <p>If only finitely many coefficients <span class="math inline">\psi_j</span> are nonzero, say up to lag <span class="math inline">q</span>, then we have an MA(<span class="math inline">q</span>) process:</p>
-<p>[ X_t = + _t + <em>1 </em>{t-1} + + <em>q </em>{t-q}, ]</p>
-<p>where: - <span class="math inline">\mu</span> is the mean, - <span class="math inline">\varepsilon_t \sim \text{i.i.d. }(0, \sigma^2)</span> are white noise shocks, - <span class="math inline">\theta_1, \dots, \theta_q</span> are the MA coefficients.</p>
+<p><span class="math display">X_t = \mu + \varepsilon_t + \theta_1 \varepsilon_{t-1} + \dots + \theta_q \varepsilon_{t-q},</span></p>
+<p>where:</p>
+<ul>
+<li><p><span class="math inline">\mu</span> is the mean,</p></li>
+<li><p><span class="math inline">\varepsilon_t \sim \text{i.i.d. }(0, \sigma^2)</span> are white noise shocks,</p></li>
+<li><p><span class="math inline">\theta_1, \dots, \theta_q</span> are the MA coefficients.</p></li>
+</ul>
 <p>So we can write:</p>
-<p>[ (q) . ]</p>
-</section>
-<section id="autoregressive-processes" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="autoregressive-processes"><span class="header-section-number">4.3</span> Autoregressive Processes</h2>
+<p><span class="math display">\text{MA}(q) \subset \text{Linear Process}.</span></p>
+</section><section id="autoregressive-processes" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="autoregressive-processes">
+<span class="header-section-number">4.3</span> Autoregressive Processes</h2>
 <p><span class="math inline">Y_t = \alpha + \phi_1 Y_{t-1} + \phi_2 Y_{t-2} + \dots + \phi_p Y_{t-p} + \epsilon_t</span></p>
 <p>Where:</p>
 <p><span class="math inline">Y_t</span> is the value at time <span class="math inline">t</span></p>
@@ -254,42 +254,556 @@ window.Quarto = {
 <p><span class="math inline">\phi_1, \phi_2,...\phi_p</span> are the parameters,</p>
 <p><span class="math inline">\epsilon_t</span> is white noise (error term),</p>
 <p><span class="math inline">p</span> is the order of the AR model.</p>
-</section>
-<section id="in-class-properties-of-ar1-process" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="in-class-properties-of-ar1-process"><span class="header-section-number">4.4</span> In-class: Properties of AR(1) process</h2>
+</section><section id="ar-processes-are-also-just-special-cases-of-the-general-linear-process" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="ar-processes-are-also-just-special-cases-of-the-general-linear-process">
+<span class="header-section-number">4.4</span> AR processes are also just special cases of the general linear process</h2>
+<p>If the AR process is causal (i.e., roots of the characteristic polynomial lie outside the unit circle), then it can be written as an infinite linear process:</p>
+<p><span class="math display">X_t = \sum_{j=0}^{\infty} \psi_j \, \varepsilon_{t-j},</span></p>
+<p>where:</p>
+<ul>
+<li><p><span class="math inline">\varepsilon_t \sim \text{i.i.d. }(0, \sigma^2)</span> are white noise shocks,</p></li>
+<li><p><span class="math inline">\psi_j</span> are coefficients determined from the AR parameters.</p></li>
+</ul>
+<section id="arp-process-as-an-infinite-linear-process-using-backshift-operator" class="level3"><h3 class="anchored" data-anchor-id="arp-process-as-an-infinite-linear-process-using-backshift-operator">AR(p) Process as an Infinite Linear Process Using Backshift Operator</h3>
+<p>Start with the AR(p) process:</p>
+<p><span class="math display">X_t = \phi_1 X_{t-1} + \phi_2 X_{t-2} + \dots + \phi_p X_{t-p} + \varepsilon_t,</span></p>
+<p>where <span class="math inline">\varepsilon_t \sim \text{i.i.d. }(0, \sigma^2)</span> are white noise shocks.</p>
+<section id="define-the-backshift-operator-b" class="level4"><h4 class="anchored" data-anchor-id="define-the-backshift-operator-b">1. Define the backshift operator (B)</h4>
+<p><span class="math display">B X_t = X_{t-1}, \quad B^2 X_t = X_{t-2}, \dots, B^p X_t = X_{t-p}.</span></p>
+</section><section id="rewrite-the-arp-process-using-b" class="level4"><h4 class="anchored" data-anchor-id="rewrite-the-arp-process-using-b">2. Rewrite the AR(p) process using (B)</h4>
+<p><span class="math display">X_t - \phi_1 B X_t - \phi_2 B^2 X_t - \dots - \phi_p B^p X_t = \varepsilon_t</span></p>
+<p>Factor out <span class="math inline">X_t</span>:</p>
+<p><span class="math display">(1 - \phi_1 B - \phi_2 B^2 - \dots - \phi_p B^p) X_t = \varepsilon_t</span></p>
+<p>Define the AR polynomial:</p>
+<p><span class="math display">\phi(B) = 1 - \phi_1 B - \phi_2 B^2 - \dots - \phi_p B^p</span></p>
+<p>Then the AR(p) process becomes:</p>
+<p><span class="math display">\phi(B) X_t = \varepsilon_t</span></p>
+</section><section id="express-as-an-infinite-linear-process" class="level4"><h4 class="anchored" data-anchor-id="express-as-an-infinite-linear-process">3. Express as an infinite linear process</h4>
+<p>If the AR process is <strong>causal</strong> (roots of <span class="math inline">\phi(z)=0</span> lie outside the unit circle), we can invert the operator:</p>
+<p><span class="math display">X_t = \phi(B)^{-1} \varepsilon_t</span></p>
+<p>Expanding gives:</p>
+<p><span class="math display">X_t = \sum_{j=0}^{\infty} \psi_j \, \varepsilon_{t-j},</span></p>
+<p>where the coefficients <span class="math inline">\psi_j</span> are determined recursively from the AR parameters <span class="math inline">\phi_1, \dots, \phi_p</span>.</p>
+<p>This shows that causal AR processes are <strong>special cases of the general linear process</strong>.</p>
+</section></section></section><section id="in-class-properties-of-ar1-process" class="level2" data-number="4.5"><h2 data-number="4.5" class="anchored" data-anchor-id="in-class-properties-of-ar1-process">
+<span class="header-section-number">4.5</span> In-class: Properties of AR(1) process</h2>
 <p>Derive</p>
 <ul>
 <li><p>Mean</p></li>
 <li><p>Variance</p></li>
 <li><p>Covariance</p></li>
 <li><p>Autocorrelation function of an AR(1) process</p></li>
-</ul>
-</section>
-<section id="in-class-properties-of-ar2-process" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="in-class-properties-of-ar2-process"><span class="header-section-number">4.5</span> In-class: Properties of AR(2) process</h2>
+</ul></section><section id="in-class-properties-of-ar2-process" class="level2" data-number="4.6"><h2 data-number="4.6" class="anchored" data-anchor-id="in-class-properties-of-ar2-process">
+<span class="header-section-number">4.6</span> In-class: Properties of AR(2) process</h2>
 <p>Derive</p>
 <ul>
 <li><p>Mean</p></li>
 <li><p>Variance</p></li>
 <li><p>Covariance</p></li>
 <li><p>Autocorrelation function of an AR(1) process</p></li>
-</ul>
-</section>
-<section id="in-class-properties-of-arp-process" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="in-class-properties-of-arp-process"><span class="header-section-number">4.6</span> In-class: Properties of AR(P) process</h2>
+</ul></section><section id="in-class-properties-of-arp-process" class="level2" data-number="4.7"><h2 data-number="4.7" class="anchored" data-anchor-id="in-class-properties-of-arp-process">
+<span class="header-section-number">4.7</span> In-class: Properties of AR(P) process</h2>
 <p>Derive</p>
 <ul>
 <li><p>Mean</p></li>
 <li><p>Variance</p></li>
 <li><p>Covariance</p></li>
 <li><p>Autocorrelation function of an AR(P) process</p></li>
-</ul>
+</ul></section><section id="properties-of-ar1-model" class="level2" data-number="4.8"><h2 data-number="4.8" class="anchored" data-anchor-id="properties-of-ar1-model">
+<span class="header-section-number">4.8</span> Properties of AR(1) model</h2>
+<p>Consider the following <span class="math inline">AR(1)</span> model.</p>
+<p><span class="math display">\begin{equation}
+Y_t=\phi_0+\phi_1Y_{t-1}+\epsilon_{t}
+\end{equation}</span></p>
+<p>where <span class="math inline">{\epsilon_t}</span> is assumed to be a white noise process with mean zero and variance <span class="math inline">\sigma^2</span>.</p>
+<section id="mean" class="level3"><h3 class="anchored" data-anchor-id="mean">Mean</h3>
+<p>Assuming that the series is weak stationary, we have <span class="math inline">E(Y_t)=\mu</span>, <span class="math inline">Var(Y_t)=\gamma_0</span>, and <span class="math inline">Cov(Y_t, Y_{t-k})=\gamma_k</span>, where <span class="math inline">\mu</span> and <span class="math inline">\gamma_0</span> are constants. Given that <span class="math inline">{\epsilon_t}</span> is a white noise, we have <span class="math inline">E(\epsilon_t)=0</span>. The mean of <span class="math inline">AR(1)</span> process can be computed as follows:</p>
+<p><span class="math display">
+\begin{aligned}
+  E(Y_t) &amp;= E(\phi_0+\phi_1 Y_{t-1}) \\
+         &amp;= E(\phi_0) +E(\phi_1 Y_{t-1}) \\
+         &amp;= \phi_0 +\phi_1 E(Y_{t-1}). \\
+\end{aligned}
+</span></p>
+<p>Under the stationarity condition, <span class="math inline">E(Y_t)=E(Y_{t-1})=\mu</span>. Thus we get</p>
+<p><span class="math display">\mu = \phi_0+\phi_1\mu.</span></p>
+<p>Solving for <span class="math inline">\mu</span> yields</p>
+<p><span class="math display">\begin{equation}
+E(Y_t)=\mu=\frac{\phi_0}{1-\phi_1}.
+\end{equation}</span></p>
+<p>The results has two constraints for <span class="math inline">Y_t</span>. First, the mean of <span class="math inline">Y_t</span> exists if <span class="math inline">\phi_1 \neq 1 .</span> The mean of <span class="math inline">Y_t</span> is zero if and only if <span class="math inline">\phi_0=0</span>.</p>
+</section><section id="variance-and-the-stationary-condition-of-ar-1-process" class="level3"><h3 class="anchored" data-anchor-id="variance-and-the-stationary-condition-of-ar-1-process">Variance and the stationary condition of AR (1) process</h3>
+<p>First take variance of both sides of Equation @ref(eq:ar)</p>
+<p><span class="math display">Var(Y_t)=Var(\phi_0+\phi_1 Y_{t-1}+\epsilon_t)</span></p>
+<p>The <span class="math inline">Y_{t-1}</span> occurred before time <span class="math inline">t</span>. The <span class="math inline">\epsilon_t</span> does not depend on any past observation. Hence, <span class="math inline">cov(Y_{t-1}, \epsilon_t)= 0</span>. Furthermore, <span class="math inline">{\epsilon_t}</span> is a white noise. This gives</p>
+<p><span class="math display">Var(Y_t)=\phi_1^2 Var(Y_{t-1})+\sigma^2.</span></p>
+<p>Under the stationarity condition, <span class="math inline">Var(Y_t)=Var(Y_{t-1})</span>. Hence,</p>
+<p><span class="math display">Var(Y_t)=\frac{\sigma^2}{1-\phi_1^2}.</span></p>
+<p>provided that <span class="math inline">\phi_1^2 &lt; 1</span> or <span class="math inline">|\phi_1| &lt; 1</span> (The variance of a random variable is bounded and non-negative). The necessary and sufficient condition for the <span class="math inline">AR(1)</span> model in Equation @ref(eq:ar) to be weakly stationary is <span class="math inline">|\phi_1| &lt; 1</span>. This condition is equivalent to saying that the root of <span class="math inline">1-\phi_1B = 0</span> must lie outside the unit circle. This can be explained as below</p>
+<p>Using the backshift notation we can write <span class="math inline">AR(1)</span> process as</p>
+<p><span class="math display">Y_t = \phi_0 + \phi_1BY_{t} + \epsilon_t.</span></p>
+<p>Then we get</p>
+<p><span class="math display">(1-\phi_1B)Y_t=\phi_0 + \epsilon_t.</span> The <span class="math inline">AR(1)</span> process is said to be stationary if the roots of <span class="math inline">(1-\phi_1B)=0</span> lie outside the unit circle.</p>
+</section><section id="covariance" class="level3"><h3 class="anchored" data-anchor-id="covariance">Covariance</h3>
+<p>The covariance <span class="math inline">\gamma_k=Cov(Y_t, Y_{t-k})</span> is called the lag-<span class="math inline">k</span> autocovariance of <span class="math inline">Y_t</span>. The two main properties of <span class="math inline">\gamma_k</span>: (a) <span class="math inline">\gamma_0=Var(Y_t)</span> and (b) <span class="math inline">\gamma_{-k}=\gamma_{k}</span>.</p>
+<p>The lag-<span class="math inline">k</span> autocovariance of <span class="math inline">Y_t</span> is</p>
+<p><span class="math display">\begin{equation}
+\begin{aligned}
+  \gamma_k &amp;= Cov(Y_t, Y_{t-k}) \\
+         &amp;= E[(Y_t-\mu)(Y_{t-k}-\mu)] \\
+         &amp;= E[Y_tY_{t-k}-Y_t\mu-\mu Y_{t-k} +\mu^2] \\
+         &amp;= E(Y_t Y_{t-k}) - \mu^2. \\
+\end{aligned}
+\end{equation}</span></p>
+<p>Now we have</p>
+<p><span class="math display">\begin{equation}
+  E(Y_t Y_{t-k}) = \gamma_k + \mu^2
+\end{equation}</span></p>
+</section><section id="autocorrelation-function-of-an-ar1-process" class="level3"><h3 class="anchored" data-anchor-id="autocorrelation-function-of-an-ar1-process">Autocorrelation function of an AR(1) process</h3>
+<p>To derive autocorrelation function of an AR(1) process we first multiply both sides of Equation @ref(eq:ar) by <span class="math inline">Y_{t-k}</span> and take expected values:</p>
+<p><span class="math display">E(Y_tY_{t-k})=\phi_0E(Y_{t-k})+\phi_1 E(Y_{t-1}Y_{t-k})+E(\epsilon_tY_{t-k})</span> Since <span class="math inline">\epsilon_t</span> and <span class="math inline">Y_{t-k}</span> are independent and using the results in Equation @ref(eq:3)</p>
+<p><span class="math display">\gamma_k + \mu^2 = \phi_0 \mu+\phi_1(\gamma_{k-1}+\mu^2)</span></p>
+<p>Substituting the results in Equation @ref(eq:2) to Equation @ref(eq:3) we get</p>
+<p><span class="math display">\begin{equation}
+\gamma_k = \phi_1 \gamma_{k-1}.
+\end{equation}</span></p>
+<p>The autocorrelation function, <span class="math inline">\rho_k</span>, is defined as</p>
+<p><span class="math display">\rho_k = \frac{\gamma_k}{\gamma_0}</span>.</p>
+<p>Setting <span class="math inline">k=1</span>, we get <span class="math inline">\gamma_1 = \phi_1\gamma_0.</span> Hence,</p>
+<p><span class="math display">\rho_1=\phi_1.</span></p>
+<p>Similarly with <span class="math inline">k=2</span>, <span class="math inline">\gamma_2 = \phi_1 \gamma_1</span>. Dividing both sides by <span class="math inline">\gamma_0</span> and substituting with <span class="math inline">\rho_1=\phi_1</span> we get</p>
+<p><span class="math display">\rho_2=\phi_1^2.</span></p>
+<p>Now it is easy to see that in general</p>
+<p><span class="math display">\begin{equation}
+\rho_k = \frac{\gamma_k}{\gamma_0}=\phi_1^k
+\end{equation}</span></p>
+<p>for <span class="math inline">k=0, 1, 2, 3, ...</span>.</p>
+<p>Since <span class="math inline">|\phi_1| &lt; 1,</span> the autocorrelation function is an exponentially decreasing as the number of lags <span class="math inline">k</span> increases. There are two features in the ACF of AR(1) process depending on the sign of <span class="math inline">\phi_1</span>. They are,</p>
+<ol type="1">
+<li><p>If <span class="math inline">0 &lt; \phi_1 &lt; 1,</span> all correlations are positive.</p></li>
+<li><p>if <span class="math inline">-1 &lt; \phi_1 &lt; 0,</span> the lag 1 autocorrelation is negative (<span class="math inline">\rho_1=\phi_1</span>) and the signs of successive autocorrelations alternate from positive to negative with their magnitudes decreasing exponentially.</p></li>
+</ol></section></section><section id="properties-of-ar2-model" class="level2" data-number="4.9"><h2 data-number="4.9" class="anchored" data-anchor-id="properties-of-ar2-model">
+<span class="header-section-number">4.9</span> Properties of AR(2) model</h2>
+<p>Now consider a second-order autoregressive process (AR(2))</p>
+<p><span class="math display">\begin{equation}
+Y_t=\phi_0+\phi_1Y_{t-1}+\phi_2Y_{t-2}+\epsilon_t.
+\end{equation}</span></p>
+<section id="mean-1" class="level3"><h3 class="anchored" data-anchor-id="mean-1">Mean</h3>
+<p><strong>Question 1:</strong> Using the same technique as that of the AR(1), show that</p>
+<p><span class="math display">E(Y_t) = \mu = \frac{\phi_0}{1-\phi_1 - \phi_2}</span> and the mean of <span class="math inline">Y_t</span> exists if <span class="math inline">\phi_1 + \phi_2 \neq 1</span>.</p>
+</section><section id="variance" class="level3"><h3 class="anchored" data-anchor-id="variance">Variance</h3>
+<p><strong>Question 2:</strong> Show that <span class="math display">Var(Y_t) = \frac{(1-\phi_2)\sigma^2}{(1+\phi_2)((1+\phi_2)^2-\phi_1^2)}.</span></p>
+<p>Here is a guide to the solution</p>
+<p>Start with</p>
+<p><span class="math display">Var(Y_t)=Var(\phi_0+\phi_1Y_{t-1}+\phi_2Y_{t-2}+\epsilon_t)</span></p>
+<p>Solve it until you obtain the Eq. (a) as shown below.</p>
+<p><span class="math display">\begin{equation}
+\gamma_0 (1-\phi_1^2 - \phi_2^2) = 2\phi_1\phi_2\gamma_1+\sigma^2.
+\end{equation}</span></p>
+<p>Next multiply both sides of Equation @ref(eq:ar2) by <span class="math inline">Y_{t-1}</span> and obtain an expression for <span class="math inline">\gamma_1</span>. Let’s call this Eq. (b).</p>
+<p>Solve Eq. (a) and (b) for <span class="math inline">\gamma_0.</span></p>
+</section><section id="stationarity-of-ar2-process" class="level3"><h3 class="anchored" data-anchor-id="stationarity-of-ar2-process">Stationarity of AR(2) process</h3>
+<p>To discuss the stationarity condition of the <span class="math inline">AR(2)</span> process we use the roots of the characteristic polynomial. Here is the illustration.</p>
+<p>Using the backshift notation we can write <span class="math inline">AR(2)</span> process as</p>
+<p><span class="math display">Y_t = \phi_0 + \phi_1 BY_{t} + \phi_2 B^2 Y_{t} + \epsilon_t.</span></p>
+<p>Furthermore, we get</p>
+<p><span class="math display">(1-\phi_1 B - \phi_2 B^2) Y_t = \phi_0 + \epsilon_t.</span></p>
+<p>The <strong>characteristic polynomial</strong> of <span class="math inline">AR(2)</span> process is</p>
+<p><span class="math display">\Phi(B)=1-\phi_1 B - \phi_2 B^2.</span></p>
+<p>and the corresponding <strong>AR characteristic equation</strong></p>
+<p><span class="math display">1-\phi_1 B - \phi_2 B^2=0.</span></p>
+<p>For stationarity, the roots of AR characteristic equation must lie outside the unit circle. The two roots of the AR characteristic equation are</p>
+<p><span class="math display">\frac{\phi_1 \pm \sqrt{\phi_1^2 + 4\phi_2}}{-2\phi_2}</span></p>
+<p>Using algebraic manipulation, we can show that these roots will exceed 1 in modulus if and only if simultaneously <span class="math inline">\phi_1 + \phi_2 &lt; 1,</span> <span class="math inline">\phi_2-\phi_1 &lt; 1,</span> and <span class="math inline">|\phi_2| &lt; 1.</span> This is called the stationarity condition of <span class="math inline">AR(2)</span> process.</p>
+</section><section id="autocorrelation-function-of-an-ar2-process" class="level3"><h3 class="anchored" data-anchor-id="autocorrelation-function-of-an-ar2-process">Autocorrelation function of an AR(2) process</h3>
+<p>To derive autocorrelation function of an AR(2) process we first multiply both sides of Equation @ref(eq:ar2) by <span class="math inline">Y_{t-k}</span> and take expected values:</p>
+<p><span class="math display">\begin{align}
+E(Y_tY_{t-k}) &amp;= E(\phi_0Y_{t-k}+\theta_1Y_{t-1}Y_{t-k}+\theta_2Y_{t-2}Y_{t-k})+\epsilon_tY_{t-k} \\
+&amp;= \phi_0 E(Y_{t-k})+\phi_{1}E(Y_{t-1}Y_{t-k}) + \phi_2 E(Y_{t-2} Y_{t-k}) + E(\epsilon_tY_{t-k}).
+\end{align}</span></p>
+<p>Using the independence between <span class="math inline">\epsilon_t</span> and <span class="math inline">Y_{t-1}</span>, <span class="math inline">E(\epsilon_t Y_{t-k})=0</span> and the results in Equation @ref(eq:3) (This is valid for AR(2)) we have</p>
+<p><span class="math display">\gamma_k + \mu^2 = \gamma_0 \mu + \theta_1 (\gamma_{k-1}+\mu^2)+\phi_2 (\gamma_{k-2}+\mu^2).</span></p>
+<p>(Note that <span class="math inline">E(X_{t-1}X_{t-k})=E(X_{t-1}X_{(t-1)-(k-1)}=\gamma_{k-1})</span>)</p>
+<p>Solving for <span class="math inline">\gamma_k</span> we get</p>
+<p><span class="math display">\begin{align}
+\gamma_k=\phi_1\gamma_{k-1}+\phi_2\gamma_{k-2}.
+\end{align}</span></p>
+<p>By dividing the both sides of Equation @ref(eq:eq9) by <span class="math inline">\gamma_0</span>, we have</p>
+<p><span class="math display">\begin{align}
+\rho_k=\phi_1\rho_{k-1}+\phi_2\rho_{k-2}.
+\end{align}</span></p>
+<p>for <span class="math inline">k&gt;0</span>.</p>
+<p>Setting <span class="math inline">k=1</span> and using <span class="math inline">\rho_0=1</span> and <span class="math inline">\rho_{-1}=\rho_1</span>, we get <strong>the Yule-Walker equation for <span class="math inline">AR(2)</span> process.</strong></p>
+<p><span class="math display">\rho_1=\phi_1+\phi_2 \rho_1</span> or</p>
+<p><span class="math display">\rho_1 = \frac{\phi_1}{1-\phi_2}.</span></p>
+<p>Similarly, we can show that</p>
+<p><span class="math display">\rho_2 = \frac{\phi_2(1-\phi_2)+\phi_1^2}{(1-\phi_2)}.</span></p>
+</section></section><section id="properties-of-arp-model" class="level2" data-number="4.10"><h2 data-number="4.10" class="anchored" data-anchor-id="properties-of-arp-model">
+<span class="header-section-number">4.10</span> Properties of AR(p) model</h2>
+<p>The <span class="math inline">p</span>th order autoregressive model can be written as</p>
+<p><span class="math display">\begin{align}
+Y_t = \phi_0 + \phi_1Y_{t-1}+\phi_2 Y_{t-2}+ ... + \phi_p Y_{t-p}+\epsilon_t.
+\end{align}</span></p>
+<p>The AR characteristic equation is</p>
+<p><span class="math display">1-\phi_1B-\phi_2B^2-...-\phi_pB^p=0.</span></p>
+<p>For stationarity of <span class="math inline">AR(p)</span> process, the <span class="math inline">p</span> roots of the AR characteristic must lie outside the unit circle.</p>
+<section id="mean-2" class="level3"><h3 class="anchored" data-anchor-id="mean-2">Mean</h3>
+<p><strong>Question 3: </strong> Find <span class="math inline">E(Y_t)</span> of <span class="math inline">AR(p)</span> process.</p>
+</section><section id="variance-1" class="level3"><h3 class="anchored" data-anchor-id="variance-1">Variance</h3>
+<p><strong>Question 4: </strong> Find <span class="math inline">Var(Y_t)</span> of <span class="math inline">AR(p)</span> process.</p>
+</section><section id="autocorrelation-function-acf-of-an-arp-process" class="level3"><h3 class="anchored" data-anchor-id="autocorrelation-function-acf-of-an-arp-process">Autocorrelation function (ACF) of an AR(p) process</h3>
+<p><strong>Question 5: </strong> Similar to the results in Equation @ref(eq:yule2) for <span class="math inline">AR(2)</span> process, obtain the following recursive relationship for <span class="math inline">AR(p)</span>.</p>
+<p><span class="math display">\begin{align}
+\rho_k = \phi_1\rho_{k-1}+\phi_2 \rho_{k-2} + ... + \phi_p \rho_{k-p}.
+\end{align}</span></p>
+<p>Setting <span class="math inline">k=1, 2, ..., p</span> into Equation @ref(eq:yulep) and using <span class="math inline">\rho_0=1</span> and <span class="math inline">\rho_{-k}=\rho_k</span>, we get the Yule-Walker equations for <span class="math inline">AR(p)</span> process</p>
+<p><span class="math display">\begin{equation}
+\begin{aligned}
+  \rho_1 &amp;= \phi_1+\phi_2 \rho_{1} + ... + \phi_p \rho_{p-1}\\
+  \rho_2 &amp;= \phi_1 \rho_1+\phi_2  + ... + \phi_p \rho_{p-2}\\
+  ... \\
+  \rho_p &amp;= \phi_1 \rho_{p-1} +\phi_2 \rho_{p-2}  + ... + \phi_p \\
+\end{aligned}
+\end{equation}</span></p>
+<p>The Yule-Walker equations in @ref(eq:13) can be written in matrix form as below.</p>
+<p><span class="math display">\left[\begin{array}
+{r}
+\rho_1  \\
+\rho_2  \\
+.\\
+.\\
+.\\
+\rho_p
+\end{array}\right] = \left[\begin{array}
+{rrrrrrr}
+1 &amp; \rho_1 &amp; \rho_2 &amp; .&amp;.&amp;.&amp; \rho_{p-1} \\
+\rho_1 &amp; 1 &amp; \rho_1 &amp; .&amp;.&amp;.&amp; \rho_{p-2} \\
+. &amp; . &amp; . &amp; .&amp;.&amp;.&amp; . \\
+. &amp; . &amp; . &amp; .&amp;.&amp;.&amp; . \\
+. &amp; . &amp; . &amp; .&amp;.&amp;.&amp; . \\
+\rho_{p-1} &amp; \rho_{p-2} &amp; \rho_{p-3} &amp; .&amp;.&amp;.&amp; 1 \\
+\end{array}\right] \left[\begin{array}
+{r}
+\phi_1  \\
+\phi_2  \\
+.\\
+.\\
+.\\
+\phi_p
+\end{array}\right]
+</span></p>
+<p>or</p>
+<p><span class="math display">\bm{\rho_p}=\bm{P_p\phi}.</span></p>
+<p>where,</p>
+<p><span class="math display">\bm{\rho_p} = \left[\begin{array}
+{r}
+\rho_1  \\
+\rho_2  \\
+.\\
+.\\
+.\\
+\rho_p
+\end{array}\right], \bm{P_p} = \left[\begin{array}
+{rrrrrrr}
+1 &amp; \rho_1 &amp; \rho_2 &amp; .&amp;.&amp;.&amp; \rho_{p-1} \\
+\rho_1 &amp; 1 &amp; \rho_1 &amp; .&amp;.&amp;.&amp; \rho_{p-2} \\
+. &amp; . &amp; . &amp; .&amp;.&amp;.&amp; . \\
+. &amp; . &amp; . &amp; .&amp;.&amp;.&amp; . \\
+. &amp; . &amp; . &amp; .&amp;.&amp;.&amp; . \\
+\rho_{p-1} &amp; \rho_{p-2} &amp; \rho_{p-3} &amp; .&amp;.&amp;.&amp; 1 \\
+\end{array}\right], \bm{\phi} = \left[\begin{array}
+{r}
+\phi_1  \\
+\phi_2  \\
+.\\
+.\\
+.\\
+\phi_p
+\end{array}\right]</span></p>
+<p>The parameters can be estimated using</p>
+<p><span class="math display">\bm{\phi}=\bm{P_p^{-1}\rho_p}.</span></p>
+<p><strong>Question 6:</strong> Obtain the parameters of an <span class="math inline">AR(3)</span> process whose first autocorrelations are <span class="math inline">\rho_1=0.9</span>; <span class="math inline">\rho_2=0.9</span>; <span class="math inline">\rho_3=0.5</span>. Is the process stationary?</p>
+</section></section><section id="the-partial-autocorrelation-function-pacf" class="level2" data-number="4.11"><h2 data-number="4.11" class="anchored" data-anchor-id="the-partial-autocorrelation-function-pacf">
+<span class="header-section-number">4.11</span> The partial autocorrelation function (PACF)</h2>
+<p>Let <span class="math inline">\phi_{ki}</span>, the <span class="math inline">j</span>th coefficient in an <span class="math inline">AR(k)</span> model. Then, <span class="math inline">\phi_{kk}</span> is the last coefficient. From Equation @ref(eq:yulep), the <span class="math inline">\phi_{kj}</span> satisfy the set of equations</p>
+<p><span class="math display">\begin{equation}
+\rho_j=\phi_{k1}\rho_{j-1}+...+\phi_{k(k-1)}\rho_{j-k+1}+\phi_{kk}\rho_{j-k},
+\end{equation}</span></p>
+<p>for <span class="math inline">j=1, 2, ...k</span>, leading to the Yule-Walker equations which may be written</p>
+<p><span class="math display">\begin{equation}
+\left[\begin{array}
+{r}
+\rho_1  \\
+\rho_2  \\
+.\\
+.\\
+.\\
+\rho_k
+\end{array}\right] = \left[\begin{array}
+{rrrrrrr}
+1 &amp; \rho_1 &amp; \rho_2 &amp; .&amp;.&amp;.&amp; \rho_{k-1} \\
+\rho_1 &amp; 1 &amp; \rho_1 &amp; .&amp;.&amp;.&amp; \rho_{k-2} \\
+. &amp; . &amp; . &amp; .&amp;.&amp;.&amp; . \\
+. &amp; . &amp; . &amp; .&amp;.&amp;.&amp; . \\
+. &amp; . &amp; . &amp; .&amp;.&amp;.&amp; . \\
+\rho_{k-1} &amp; \rho_{k-2} &amp; \rho_{k-3} &amp; .&amp;.&amp;.&amp; 1 \\
+\end{array}\right] \left[\begin{array}
+{r}
+\phi_{k1}  \\
+\phi_{k2}  \\
+.\\
+.\\
+.\\
+\phi_{kk}
+\end{array}\right]
+\end{equation}</span></p>
+<p>or</p>
+<p><span class="math display">\bm{\rho_k}=\bm{P_k\phi_k}.</span></p>
+<p>where</p>
+<p><span class="math display">\bm{\rho_k} = \left[\begin{array}
+{r}
+\rho_1  \\
+\rho_2  \\
+.\\
+.\\
+.\\
+\rho_k
+\end{array}\right], \bm{P_k} =\left[\begin{array}
+{rrrrrrr}
+1 &amp; \rho_1 &amp; \rho_2 &amp; .&amp;.&amp;.&amp; \rho_{k-1} \\
+\rho_1 &amp; 1 &amp; \rho_1 &amp; .&amp;.&amp;.&amp; \rho_{k-2} \\
+. &amp; . &amp; . &amp; .&amp;.&amp;.&amp; . \\
+. &amp; . &amp; . &amp; .&amp;.&amp;.&amp; . \\
+. &amp; . &amp; . &amp; .&amp;.&amp;.&amp; . \\
+\rho_{k-1} &amp; \rho_{k-2} &amp; \rho_{k-3} &amp; .&amp;.&amp;.&amp; 1 \\
+\end{array}\right], \bm{\phi_k} = \left[\begin{array}
+{r}
+\phi_{k1}  \\
+\phi_{k2}  \\
+.\\
+.\\
+.\\
+\phi_{kk}
+\end{array}\right]</span></p>
+<p>For each <span class="math inline">k</span>, we compute the coefficients <span class="math inline">\phi_{kk}</span>. Solving the equations for <span class="math inline">k=1, 2, 3...</span> successively, we obtain</p>
+<p>For <span class="math inline">k=1</span>,</p>
+<p><span class="math display">\begin{equation}
+\phi_{11}=\rho_1.
+\end{equation}</span></p>
+<p>For <span class="math inline">k=2</span>,</p>
+<p><span class="math display">\begin{equation}
+\phi_{22}=\frac{\left[\begin{array}
+{rr}
+1 &amp; \rho_2  \\
+\rho_1 &amp; \rho_2  \\
+\end{array}\right]}{\left[\begin{array}
+{rr}
+1 &amp; \rho_1  \\
+\rho_1 &amp; 1  \\
+\end{array}\right]} = \frac{\rho_2-\rho_1^2}{1-\rho_1^2}
+\end{equation}</span></p>
+<p>For <span class="math inline">k=3</span>,</p>
+<p><span class="math display">\begin{equation}
+\phi_{33}=\frac{\left[\begin{array}
+{rrr}
+1 &amp; \rho_1 &amp; \rho_1  \\
+\rho_1 &amp; 1 &amp; \rho_2  \\
+\rho_2 &amp; \rho_1 &amp; \rho_3  \\
+\end{array}\right]}{\left[\begin{array}
+{rrr}
+1 &amp; \rho_1 &amp; \rho_2  \\
+\rho_1 &amp; 1 &amp; \rho_1  \\
+\rho_2 &amp; \rho_1 &amp; 1  \\
+\end{array}\right]}
+\end{equation}</span></p>
+<p>The quantity <span class="math inline">\phi_{kk}</span> is called the partial autocorrelation at lag <span class="math inline">k</span> and can be defined as <span class="math display">\phi_{kk}=Corr(Y_tY_{t-k}|Y_{t-1}, Y_{t-2},..., Y_{t-k+1}).</span> The partial autocorrelation between <span class="math inline">Y_t</span> and <span class="math inline">Y_{t-k}</span> is the correlation between <span class="math inline">Y_t</span> and <span class="math inline">Y_{t-k}</span> after removing the effect of the intermediate variables <span class="math inline">Y_{t-1}, Y_{t-2}, ..., Y_{t-k+1}</span>.</p>
+<p>In general the determinant in the numerator of Equations @ref(eq:p1), @ref(eq:p2) and @ref(eq:p3) has the same elements as that in the denominator, but replacing the last column with <span class="math inline">\bm{\rho_k}= (\rho_1, \rho_2,...\rho_k).</span></p>
+<section id="pacf-for-ar1-models" class="level3"><h3 class="anchored" data-anchor-id="pacf-for-ar1-models">PACF for AR(1) models</h3>
+<p>From Equation @ref(eq:acfar1) we have</p>
+<p><span class="math inline">\rho_k=\phi_1^k</span> for <span class="math inline">k=0, 1, 2, 3,...</span></p>
+<p>Hence, for <span class="math inline">k=1</span>, the first partial autocorrelation coefficient is</p>
+<p><span class="math display">\phi_{11}=\rho_1=\phi_1.</span> From @ref(eq:p2) for <span class="math inline">k=2</span>, the second partial autocorrelation coefficient is</p>
+<p><span class="math display">\phi_{22}=\frac{\rho_2-\rho_1^2}{1-\rho_1^2}=\frac{\phi_1^2-\phi_1^2}{1-\phi_1^2} = 0</span>.</p>
+<p>Similarly, for <span class="math inline">AR(1)</span> we can show that <span class="math inline">\phi_{kk}=0</span> for all <span class="math inline">k &gt; 0</span>. Hence, for <span class="math inline">AR(1)</span> process the partial autocorrelation is non-zero for lag <span class="math inline">1</span> which is the order of the process, but is zero for lags beyond the order 1.</p>
+</section><section id="pacf-for-ar2-model" class="level3"><h3 class="anchored" data-anchor-id="pacf-for-ar2-model">PACF for AR(2) model</h3>
+<p><strong>Question 7:</strong> For <span class="math inline">AR(2)</span> process show that <span class="math inline">\phi_{kk}=0</span> for all <span class="math inline">k&gt;2</span>. Sketch the PACF of <span class="math inline">AR(2)</span> process.</p>
+</section><section id="pacf-for-arp-model" class="level3"><h3 class="anchored" data-anchor-id="pacf-for-arp-model">PACF for AR(P) model</h3>
+<p>In general for <span class="math inline">AR(p)</span> precess, the partial autocorrelation function <span class="math inline">\phi_{kk}</span> is non-zero for <span class="math inline">k</span> less than or equal to <span class="math inline">p</span> (the order of the process) and zero for all <span class="math inline">k</span> greater than <span class="math inline">p</span>. In other words, the partial autocorrelation function of a <span class="math inline">AR(p)</span> process has a cut-off after lag <span class="math inline">p</span>.</p>
+</section></section><section id="moving-average-ma-models" class="level1" data-number="5"><h1 data-number="5">
+<span class="header-section-number">5</span> Moving average (MA) models</h1>
+<p>We first derive the properties of <span class="math inline">MA(1)</span> and <span class="math inline">MA(2)</span> models and then give the results for the general <span class="math inline">MA(q)</span> model.</p>
+<section id="properties-of-ma1-model" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="properties-of-ma1-model">
+<span class="header-section-number">5.1</span> Properties of MA(1) model</h2>
+<p>The general form for <span class="math inline">MA(1)</span> model is</p>
+<p><span class="math display">\begin{equation}
+Y_t = \theta_0 + \theta_1 \epsilon_{t-1} + \epsilon_t
+\end{equation}</span></p>
+<p>where <span class="math inline">\theta_0</span> is a constant and <span class="math inline">{\epsilon_t}</span> is a white noise series.</p>
+<section id="mean-3" class="level3"><h3 class="anchored" data-anchor-id="mean-3">Mean</h3>
+<p><strong>Question 8:</strong> Show that <span class="math inline">E(Y_t) = \theta_0</span>.</p>
+</section><section id="variance-2" class="level3"><h3 class="anchored" data-anchor-id="variance-2">Variance</h3>
+<p><strong>Question 9:</strong> Show that <span class="math inline">Var(Y_t) = (1+\theta_1^2)\sigma^2</span>.</p>
+<p>We can see both mean and variance are time-invariant. <span class="math inline">MA</span> models are finite linear combinations of a white noise sequence. Hence, <span class="math inline">MA</span> processes are always weakly stationary.</p>
+</section><section id="autocorrelation-function-of-an-ma1-process" class="level3"><h3 class="anchored" data-anchor-id="autocorrelation-function-of-an-ma1-process">Autocorrelation function of an MA(1) process</h3>
+<section id="method-1" class="level4"><h4 class="anchored" data-anchor-id="method-1">Method 1</h4>
+<p>To obtain the autocorrelation function of <span class="math inline">MA(1)</span>, we first multiply both sides of Equation @ref(eq:ma1) by <span class="math inline">Y_{t-k}</span> and take the expectation.</p>
+<p><span class="math display">\begin{equation}
+\begin{aligned}
+E[Y_tY_{t-k}] &amp;= E[\theta_0 Y_{t-k} + \theta_1 \epsilon_{t-1} Y_{t-k} + \epsilon_t Y_{t-k}]\\
+&amp;= \theta_0 E(Y_{t-k}) + \theta_1 E(\epsilon_{t-1}Y_{t-k}) + E(\epsilon_t Y_{t-k})\\
+\end{aligned}
+\end{equation}</span></p>
+<p>Using the independence between <span class="math inline">\epsilon_t</span> and <span class="math inline">Y_{t-k}</span> (future error and past observation) <span class="math inline">E(\epsilon_t Y_{t-k}) = 0</span>. Now we have</p>
+<p><span class="math display">\begin{equation}
+E[Y_tY_{t-k}] = \theta_0^2  + \theta_1 E(\epsilon_{t-1}Y_{t-k})
+\end{equation}</span></p>
+<p>Now let’s obtain an expression for <span class="math inline">E[Y_t Y_{t-k}]</span>.</p>
+<p><span class="math display">\begin{equation}
+\begin{aligned}
+  \gamma_k &amp;= Cov(Y_t, Y_{t-k}) \\
+         &amp;= E[(Y_t-\theta_0)(Y_{t-k}-\theta_0)] \\
+         &amp;= E[Y_tY_{t-k}-Y_t\theta_0-\theta_0 Y_{t-k} +\theta_0^2] \\
+         &amp;= E(Y_t Y_{t-k}) - \theta_0^2. \\
+\end{aligned}
+\end{equation}</span></p>
+<p>Now we have</p>
+<p><span class="math display">\begin{equation}
+  E(Y_t Y_{t-k}) = \gamma_k + \theta_0^2.
+\end{equation}</span></p>
+<p>Using the Equations @ref(eq:ma1acfs2) and @ref(eq:covma1) we have</p>
+<p><span class="math display">\begin{equation}
+  \gamma_k = \theta_0^2 - \theta_0^2 + \theta_1E(\epsilon_{t-1}Y_{t-k}).
+\end{equation}</span></p>
+<p>Now let’s consider the case <span class="math inline">k=1</span>.</p>
+<p><span class="math display">\begin{equation}
+  \gamma_1 = \theta_0^2 - \theta_0^2 + \theta_1E(\epsilon_{t-1}Y_{t-1})
+\end{equation}</span></p>
+<p>Today’s error and today’s value are dependent. Hence, <span class="math inline">E(\epsilon_{t-1}Y_{t-1}) \neq 0.</span> We first need to identify <span class="math inline">E(\epsilon_{t-1}Y_{t-1})</span>.</p>
+<p><span class="math display">\begin{equation}
+\begin{aligned}
+E(\epsilon_{t-1}Y_{t-1}) &amp;= E(\theta_0 \epsilon_{t-1} + \theta_1 \epsilon_{t-2} \epsilon_{t-1}+ \epsilon_{t-1}^2)\\
+\end{aligned}
+\end{equation}</span></p>
+<p>Since, {<span class="math inline">\epsilon_t</span>} is a white noise process <span class="math inline">E(\epsilon_{t-1}) = 0</span> and <span class="math inline">E(\epsilon_{t-2} \epsilon_{t-1}) = 0</span>. Hence, we have</p>
+<p><span class="math display">\begin{equation}
+\begin{aligned}
+E(\epsilon_{t-1}Y_{t-1}) &amp;= E(\epsilon_{t-1}^2)=\sigma^2\\
+\end{aligned}
+\end{equation}</span></p>
+<p>Substituting @ref(eq:covma5) in @ref(eq:covma3) we get</p>
+<p><span class="math display">\gamma_1=\theta_1\sigma^2</span>.</p>
+<p>Furthermore, <span class="math inline">\gamma_0 = Var(Y_t)=  (1+\theta_1^2)\sigma^2</span>. Hence</p>
+<p><span class="math display">\rho_1=\frac{\gamma_1}{\gamma_0}=\frac{\theta}{1+\theta_1^2}.</span></p>
+<p>When <span class="math inline">k=2</span>, from Equation @ref(eq:covma3) and <span class="math inline">E(\epsilon_{t-1}Y_{k-2}) = 0</span> (future error and past observation) we get <span class="math inline">\gamma_2=0</span>. Hence <span class="math inline">\rho_2=0</span>. Similarly, we can show that</p>
+<p><span class="math display">\gamma_k = \rho_k=0</span> for all <span class="math inline">k \geq 2</span>.</p>
+<p>We can see that the ACF of <span class="math inline">MA(1)</span> process is zero, beyond the order of 1 of the process.</p>
+</section><section id="method-2-by-using-the-definition-of-covariance" class="level4"><h4 class="anchored" data-anchor-id="method-2-by-using-the-definition-of-covariance">Method 2: By using the definition of covariance</h4>
+<p><span class="math display">\begin{equation}
+\begin{aligned}
+\gamma_1 = Cov(Y_t, Y_{t-1}) &amp;= Cov(\epsilon_t + \theta_1 \epsilon_{t-1}+ \theta_0, \epsilon_{t-1}+\theta_1 \epsilon_{t-2} + \theta_0)\\
+&amp;=Cov(\theta_1 \epsilon_{t-1}, \epsilon_{t-1})\\
+&amp;=\theta_1 \sigma^2.
+\end{aligned}
+\end{equation}</span></p>
+<p><span class="math display">\begin{equation}
+\begin{aligned}
+\gamma_2=Cov(Y_t, Y_{t-2}) &amp;= Cov(\epsilon_t + \theta_1 \epsilon_{t-1}+ \theta_0, \epsilon_{t-2}+\theta_1 \epsilon_{t-3} + \theta_0)\\
+&amp;=0.
+\end{aligned}
+\end{equation}</span></p>
+<p>We have <span class="math inline">\gamma_0=\sigma^2(1+\theta_1^2)</span>, (Using the variance).</p>
+<p>Hence</p>
+<p><span class="math display">\rho_1=\frac{\gamma_1}{\gamma_0}=\frac{\theta_1}{1+\theta_1^2}.</span></p>
+<p>Similarly we can show <span class="math inline">\gamma_k=\rho_k=0</span> for all <span class="math inline">k \geq 2</span>.</p>
+</section></section></section><section id="properties-of-ma2-model" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="properties-of-ma2-model">
+<span class="header-section-number">5.2</span> Properties of MA(2) model</h2>
+<p>An <span class="math inline">MA(2)</span> model is in the form</p>
+<p><span class="math display">\begin{equation}
+Y_t = \theta_0 + \theta_1 \epsilon_{t-1} + \theta_2 \epsilon_{t-2} + \epsilon_t
+\end{equation}</span></p>
+<p>where <span class="math inline">\theta_0</span> is a constant and <span class="math inline">{\epsilon_t}</span> is a white noise series.</p>
+<section id="mean-4" class="level3"><h3 class="anchored" data-anchor-id="mean-4">Mean</h3>
+<p><strong>Question 10: </strong> Show that <span class="math inline">E(Y_t) = \theta_0.</span></p>
+</section><section id="variance-3" class="level3"><h3 class="anchored" data-anchor-id="variance-3">Variance</h3>
+<p><strong>Question 11: </strong> Show that <span class="math inline">Var(Y_t) = \sigma^2 (1+\theta_1^2 + \theta_2^2).</span></p>
+</section><section id="autocorrelation-function-of-an-ma2-process" class="level3"><h3 class="anchored" data-anchor-id="autocorrelation-function-of-an-ma2-process">Autocorrelation function of an MA(2) process</h3>
+<p><strong>Question 12: </strong>For <span class="math inline">MA(2)</span> process show that,</p>
+<p><span class="math display">\rho_1=\frac{\theta_1(1+\theta_2)}{1+\theta_1^2+\theta_2^2},</span> <span class="math display">\rho_2 = \frac{\theta_2}{1+\theta_1^2 + \theta_2^2},</span></p>
+<p>and <span class="math inline">\rho_k=0</span> for all <span class="math inline">k \geq 3.</span></p>
+</section></section><section id="properties-of-maq-model" class="level2" data-number="5.3"><h2 data-number="5.3" class="anchored" data-anchor-id="properties-of-maq-model">
+<span class="header-section-number">5.3</span> Properties of MA(q) model</h2>
+<p><span class="math display">\begin{equation}
+Y_t = \theta_0 + \theta_1 \epsilon_{t-1} + \theta_2 \epsilon_{t-2} +...+ \theta_q \epsilon_{t-q} +\epsilon_t
+\end{equation}</span></p>
+<p>where <span class="math inline">\theta_0</span> is a constant and <span class="math inline">{\epsilon_t}</span> is a white noise series.</p>
+<section id="mean-5" class="level3"><h3 class="anchored" data-anchor-id="mean-5">Mean</h3>
+<p><strong>Question 13:</strong> Show that the constant term of an <span class="math inline">MA</span> model is the mean of the series (i.e.&nbsp;<span class="math inline">E(Y_t)=\theta_0</span>).</p>
+</section><section id="variance-4" class="level3"><h3 class="anchored" data-anchor-id="variance-4">Variance</h3>
+<p><strong>Question 14:</strong> Show that the variance of an <span class="math inline">MA</span> model is <span class="math display">Var(Y_t)=(1+\theta_1^2+\theta_2^2+...+\theta_q^2)\sigma^2.</span></p>
+</section><section id="autocorrelation-function-of-an-maq-process" class="level3"><h3 class="anchored" data-anchor-id="autocorrelation-function-of-an-maq-process">Autocorrelation function of an MA(q) process</h3>
+<p><strong>Question 15:</strong> Show that the autocorrelation function of a <span class="math inline">MA(q)</span> process is zero, beyond the order of <span class="math inline">q</span> of the process. In other words, the autocorrelation function of a moving average process has a cutoff after lag <span class="math inline">q</span>.</p>
+</section></section><section id="partial-autocorrelation-function-of-an-maq-process" class="level2" data-number="5.4"><h2 data-number="5.4" class="anchored" data-anchor-id="partial-autocorrelation-function-of-an-maq-process">
+<span class="header-section-number">5.4</span> Partial autocorrelation function of an MA(q) process</h2>
+<p>The partial autocorrelation functions for <span class="math inline">MA(q)</span> models behave very much like the autocorrelation functions of <span class="math inline">AR(p)</span> models. The PACF of <span class="math inline">MA</span> models decays exponentially to zero, rather like ACF for <span class="math inline">AR</span> model.</p>
+</section><section id="dual-relation-between-ar-and-ma-process" class="level2" data-number="5.5"><h2 data-number="5.5" class="anchored" data-anchor-id="dual-relation-between-ar-and-ma-process">
+<span class="header-section-number">5.5</span> Dual relation between AR and MA process</h2>
+<p><strong>Dual relation 1</strong></p>
+<p><strong>First we consider the relation AR(p) &lt;–&gt; MA(</strong><span class="math inline">\infty</span><strong>)</strong></p>
+<p>Let <span class="math inline">AR(p)</span> be a <strong>stationary</strong> <span class="math inline">AR</span> model with order <span class="math inline">p</span>. Then,</p>
+<p><span class="math display">Y_t = \phi_1Y_{t-1}+ \phi_2Y_{t-2}+...+ \phi_pY_{t-p}+\epsilon_t,</span> where <span class="math inline">\epsilon_t \sim WN(0, \sigma^2).</span></p>
+<p>Using the backshift operator we can write the <span class="math inline">AR(p)</span> model as</p>
+<p><span class="math display">(1-\phi_1B-\phi_2B^2-...-\phi_pB^P)Y_t=\epsilon_t.</span> Then</p>
+<p><span class="math display">\phi(B)Y_t=\epsilon_t,</span> where <span class="math inline">\phi(B)=1-\phi_1B-\phi_2B^2-...-\phi_pB^p.</span> Furthermore, <span class="math inline">Y_t</span> can be written as infinite sum of previous <span class="math inline">\epsilon</span>’s as below</p>
+<p><span class="math display">Y_t = \phi^{-1}(B)\epsilon_t,</span> where <span class="math inline">\phi(B)\psi(B)=1</span> and <span class="math inline">\psi(B)=1+\Psi_1B+\psi_2B^2+...</span> Then <span class="math display">Y_t=\psi(B)\epsilon_t.</span> This is a representation of <span class="math inline">MA(\infty)</span> process.</p>
+<p><strong>Next, we consider the relation MA(q) &lt;–&gt; AR(</strong><span class="math inline">\infty</span><strong>)</strong></p>
+<p>Let <span class="math inline">MA(q)</span> be <strong>invertible</strong> moving average process</p>
+<p><span class="math display">Y_t = \epsilon_t + \theta_t\epsilon_{t-1}+\theta_2\epsilon_{t-2}+...+\theta_p\epsilon_{t-q}.</span></p>
+<p>Using the backshift operator we can write the <span class="math inline">MA(q)</span> process as</p>
+<p><span class="math display">Y_t = (1+\theta_1B+\theta_2B^2-...+\theta_qB^q)\epsilon_t.</span></p>
+<p>Then,</p>
+<p><span class="math display">Y_t = \theta(B)\epsilon_t,</span></p>
+<p>where <span class="math inline">\theta(B)=1+\theta_1B+\theta_2B^2+...+\theta_1B^q.</span> Hence, for an <strong>invertible</strong> moving average process, <span class="math inline">Y_t</span> can be represented as a finite weighted sum of previous error terms, <span class="math inline">\epsilon</span>. Furthermore, since the process is invertible <span class="math inline">\epsilon_t</span> can be represented as an infinite weighted sum of previous <span class="math inline">Y</span>’s as below</p>
+<p><span class="math display">\epsilon_t=\theta^{-1}(B)Y_t,</span> where <span class="math inline">\pi(B)\theta(B)=1</span>, and <span class="math inline">\pi(B) = 1+\pi_1B+\pi B^2+...</span>. Hence,</p>
+<p><span class="math display">\epsilon_t = \pi(B)Y_t.</span> This is an representation of a <span class="math inline">AR(\infty)</span> process.</p>
+<p><strong>Dual relation 2</strong></p>
+<p>An <span class="math inline">MA(q)</span> process has an ACF function that is zero beyond lag <span class="math inline">q</span> and its PACF is decays exponentially to 0. Consequently, an <span class="math inline">AR(p)</span> process has an PACF that is zero beyond lag-<span class="math inline">p</span>, but its ACF decays exponentially to 0.</p>
+<p><strong>Dual relation 3</strong></p>
+<p>For an <span class="math inline">AR(p)</span> process the roots of <span class="math inline">\phi(B)=0</span> must lie outside the unit circle to satisfy the condition of stationarity. However, the parameters of the <span class="math inline">AR(p)</span> are not required to satisfy any conditions to ensure invertibility. Conversely, the parameters of the <span class="math inline">MA</span> process are not required to satisfy any condition to ensure stationarity. However, to ensure the condition of invertibility, the roots of <span class="math inline">\theta(B)=0</span> must lie outside the unit circle.</p>
+</section><section id="autoregressive-and-moving-average-arma-models" class="level2" data-number="5.6"><h2 data-number="5.6" class="anchored" data-anchor-id="autoregressive-and-moving-average-arma-models">
+<span class="header-section-number">5.6</span> Autoregressive and Moving-average (ARMA) models</h2>
+<p>current value = linear combination of past values + linear combination of past error + current error</p>
+<p>The <span class="math inline">ARMA(p, q)</span> can be written as</p>
+<p><span class="math display">Y_t=c+\phi_1 Y_{t-1}+\phi_2 Y_{t-2}+...+\phi_p Y_{t-p}+\theta_1\epsilon_{t-1}+\theta_2\epsilon_{t-2}+...+\theta_q\epsilon_{t-q}+\epsilon_t,</span> where <span class="math inline">\{\epsilon_t\}</span> is a white noise process.</p>
+<p>Using the back shift operator</p>
+<p><span class="math display">\phi(B)Y_t=\theta(B)\epsilon_t,</span> where <span class="math inline">\phi(.)</span> and <span class="math inline">\theta(.)</span> are the <span class="math inline">p</span>th and <span class="math inline">q</span>th degree polynomials,</p>
+<p><span class="math display">\phi(B)=1-\phi_1 \epsilon -...-\phi_p \epsilon^p,</span> and <span class="math display">\theta(B)=1+\theta_1\epsilon+...+\theta_q\epsilon^q.</span></p>
+</section><section id="stationary-condition" class="level2" data-number="5.7"><h2 data-number="5.7" class="anchored" data-anchor-id="stationary-condition">
+<span class="header-section-number">5.7</span> Stationary condition</h2>
+<p>Roots of <span class="math display">\phi(B)=0</span> lie outside the unit circle.</p>
+</section><section id="invertible-condition" class="level2" data-number="5.8"><h2 data-number="5.8" class="anchored" data-anchor-id="invertible-condition">
+<span class="header-section-number">5.8</span> Invertible condition</h2>
+<p>Roots of <span class="math display">\theta(B)=0</span> lie outside the unit circle.</p>
+</section><section id="autocorrelation-function-and-partial-autocorrelation-function" class="level2" data-number="5.9"><h2 data-number="5.9" class="anchored" data-anchor-id="autocorrelation-function-and-partial-autocorrelation-function">
+<span class="header-section-number">5.9</span> Autocorrelation function and Partial autocorrelation function</h2>
+<p>The ACF of an ARMA model exhibits a pattern similar to that of an AR model. The PACF of ARMA process behaves like the PACF of a MA process. Hence, the ACF and PACF are not informative in determining the order of an ARMA model.</p>
+</section><section id="theoretical-acf-and-pacf-for-ar-ma-and-arma-models" class="level2" data-number="5.10"><h2 data-number="5.10" class="anchored" data-anchor-id="theoretical-acf-and-pacf-for-ar-ma-and-arma-models">
+<span class="header-section-number">5.10</span> Theoretical ACF and PACF for AR, MA and ARMA models</h2>
+<p>Theoretical autocorrelation coefficients for some of the more common AR, MA and ARMA models are shown here. However, the ACF and PACF calculated from the data will not exactly match any set of theoretical ACF and PACF because the ACF and PACF calculated from the data are subject to sampling variation.</p>
+</section><section id="acf-and-pacf-calculated-from-data" class="level2" data-number="5.11"><h2 data-number="5.11" class="anchored" data-anchor-id="acf-and-pacf-calculated-from-data">
+<span class="header-section-number">5.11</span> ACF and PACF calculated from data</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="04-chap4_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="768"></p>
+<figcaption>ACF and PACF of AR(1), MA(1) and ARMA(1, 1) models calculated from the data</figcaption></figure>
+</div>
+</div>
+</div>
+</section></section><section id="references" class="level1" data-number="6"><h1 data-number="6">
+<span class="header-section-number">6</span> References</h1>
+<p>Box, G. E., Jenkins, G. M., Reinsel, G. C., &amp; Ljung, G. M. (2015). Time series analysis: forecasting and control.</p>
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -705,9 +1219,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="./03-chap3.html" class="pagination-link" aria-label="Introduction to Time Series Forecasting">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to Time Series Forecasting</span></span>
       </a>          
@@ -719,7 +1231,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 
