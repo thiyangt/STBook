@@ -1,0 +1,43 @@
+# Time Series Decomposition {#sec-intro}
+
+Decompose a time series into seasonal, trend and irregular components 
+
+## Different Methods in Time Series Decomposition
+
+1. `stats::decompose(ts_data, type = c(“additive”, “multiplicative”))`
+Decompose a time series into seasonal, trend and irregular components using moving average.
+
+
+```{r, echo=TRUE}
+library(forecast)
+library(expsmooth) # use a dataset cangas here
+library(ggplot2)
+ts_data = cangas
+ts_data |> ggAcf()
+autoplot(ts_data) + ylab("Canadaian Gas Production")
+fit <- decompose(ts_data, type='additive')
+autoplot(fit)
+```
+
+2. `stats::stl(ts_data, s.window)`
+Decompose a time series into seasonal, trend and irregular components using loess.
+
+```{r}
+ts_data|>
+  stl(t.window=13, s.window="periodic", robust=TRUE) |> head()
+ts_data|>
+  stl(t.window=13, s.window="periodic", robust=TRUE) |>
+  autoplot()
+```
+
+3. `forecast::seasadj(object)`
+
+Returns seasonally adjusted data by removing the seasonal component.
+
+```{r, echo=TRUE}
+fit |> seasadj() |> autoplot() + ggtitle("Seasonally adjusted data")
+```
+
+```{r, echo=TRUE}
+fit |> seasadj() |> ggAcf()
+```

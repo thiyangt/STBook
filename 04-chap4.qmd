@@ -736,7 +736,7 @@ E(\epsilon_{t-1}Y_{t-1}) &= E(\epsilon_{t-1}^2)=\sigma^2\\
 \end{aligned}
 \end{equation}
 
-Substituting @eq-covma5 in @eq-covma3 we get
+Substituting 29 in 27 we get
 
 $$\gamma_1=\theta_1\sigma^2$$.
 
@@ -744,7 +744,7 @@ Furthermore, $\gamma_0 = Var(Y_t)=  (1+\theta_1^2)\sigma^2$. Hence
 
 $$\rho_1=\frac{\gamma_1}{\gamma_0}=\frac{\theta}{1+\theta_1^2}.$$
 
-When $k=2$, from Equation @eq-covma3  and $E(\epsilon_{t-1}Y_{k-2}) = 0$ (future error and past observation) we get $\gamma_2=0$. Hence $\rho_2=0$. Similarly, we can show that
+When $k=2$, from Equation 27  and $E(\epsilon_{t-1}Y_{k-2}) = 0$ (future error and past observation) we get $\gamma_2=0$. Hence $\rho_2=0$. Similarly, we can show that
 
 $$\gamma_k = \rho_k=0$$ for all $k \geq 2$.
 
@@ -917,6 +917,48 @@ The ACF of an ARMA model exhibits a pattern similar to that of an AR model. The 
 
 Theoretical autocorrelation coefficients for some of the more common AR, MA and ARMA models are shown here. However, the ACF and PACF calculated from the data will not exactly match any set of theoretical ACF and PACF because the ACF and PACF calculated from the data are subject to sampling variation.
 
+[Reading](https://www.xycoon.com/ar2_process.htm)
+
+| Model      | ACF Pattern                           | PACF Pattern                           |
+|------------|---------------------------------------|-----------------------------------------|
+| **AR(p)**  | Tails off gradually (decays)          | Cuts off after lag *p*                  |
+| **MA(q)**  | Cuts off after lag *q*                | Tails off gradually (decays)            |
+| **ARMA(p,q)** | Tails off gradually                | Tails off gradually                     |
+
+
+Pure AR(p): Identifiable because PACF cuts off at lag p.
+
+Pure MA(q): Identifiable because ACF cuts off at lag q.
+
+ARMA(p,q): ❌ Not directly identifiable from ACF/PACF alone, because both ACF and PACF tail off gradually.
+
+**Why?**
+
+AR and MA leave distinct signatures (one tails off, the other cuts off).
+
+But when you mix them (ARMA), the cutoff disappears in both ACF and PACF → they both look like "tails."
+
+So, with ARMA you cannot read off the orders (p, q) just by eyeballing ACF/PACF.
+Instead:
+
+Use ACF/PACF to guess a reasonable starting model (e.g., looks AR-like → include AR part, looks MA-like → include MA part).
+
+Then refine by fitting candidate ARMA models and comparing AIC/BIC (or likelihood-based tests).
+
+**Rule of thumb**
+
+- If ACF shows a sharp cutoff but PACF tails → suspect MA.
+
+- If PACF shows a sharp cutoff but ACF tails → suspect AR.
+
+- If both tail → likely ARMA (but exact p,q needs model selection).
+
+So in an ARMA, both ACF and PACF tail off, **but**:
+
+- If the first few lags of the ACF are strong, it suggests an MA part.
+
+- If the first few lags of the PACF are strong, it suggests an AR part.
+
 
 
 ## ACF and PACF calculated from data
@@ -956,6 +998,9 @@ p8 <- ggAcf(ARMA1acf) + ggtitle("ACF: ARMA(1,1), \n theta1 = 0.5, phi1 = 0.9")
 p9 <- ggAcf(ARMA1acf, type = "partial") + ggtitle("PACF: ARMA(1,1), \n theta1 = 0.5, phi1 = 0.9")
 (t1|p1|p3)/(t2|p5|p7)/(t3|p8|p9)
 ```
+
+
+
 
 ## References
 

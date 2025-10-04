@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>5&nbsp; Models for Nonstationary Series – Spatio-Temporal Data Analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./06-chap6.html" rel="next">
+<link href="./04-chap4.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-47708def744f7d6bf9e6ade08d3fbeef.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-dcaec5c8d80e8fa62fc25e24c15f567a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><link href="https://fonts.googleapis.com/css?family=Fira+Sans|Merriweather|Source%20Code%20Pro" rel="stylesheet">
+<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+</head>
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-chap5.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Models for Nonstationary Series</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Spatio-Temporal Data Analysis</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Front matter</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-chap1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-chap2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to Time Series Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-chap3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to Time Series Forecasting</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-chap4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Models For Stationary Time Series</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-chap5.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Models for Nonstationary Series</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-chap6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Time Series Decomposition</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./refs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bibliography</span></a>
+  </div>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title"><b>Sections</b></h2>
+   
+  <ul class="collapse">
+<li><a href="#types-of-nonstationarity-and-remedies" id="toc-types-of-nonstationarity-and-remedies" class="nav-link active" data-scroll-target="#types-of-nonstationarity-and-remedies"><span class="header-section-number">5.1</span> Types of Nonstationarity and Remedies</a></li>
+  <li><a href="#choosing-the-order-of-differencing" id="toc-choosing-the-order-of-differencing" class="nav-link" data-scroll-target="#choosing-the-order-of-differencing"><span class="header-section-number">5.2</span> Choosing the Order of Differencing</a></li>
+  <li><a href="#models-after-differencing" id="toc-models-after-differencing" class="nav-link" data-scroll-target="#models-after-differencing"><span class="header-section-number">5.3</span> Models after Differencing</a></li>
+  <li><a href="#seasonal-components" id="toc-seasonal-components" class="nav-link" data-scroll-target="#seasonal-components"><span class="header-section-number">5.4</span> Seasonal components</a></li>
+  <li><a href="#modelling-steps" id="toc-modelling-steps" class="nav-link" data-scroll-target="#modelling-steps"><span class="header-section-number">5.5</span> Modelling steps</a></li>
+  <li><a href="#example-model-fitting" id="toc-example-model-fitting" class="nav-link" data-scroll-target="#example-model-fitting"><span class="header-section-number">5.6</span> Example: Model Fitting</a></li>
+  <li><a href="#auto.arima" id="toc-auto.arima" class="nav-link" data-scroll-target="#auto.arima"><span class="header-section-number">5.7</span> <code>auto.arima</code></a></li>
+  <li><a href="#reading" id="toc-reading" class="nav-link" data-scroll-target="#reading"><span class="header-section-number">5.8</span> Reading</a></li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title"><span id="sec-ch5" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Models for Nonstationary Series</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><section id="types-of-nonstationarity-and-remedies" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="types-of-nonstationarity-and-remedies">
+<span class="header-section-number">5.1</span> Types of Nonstationarity and Remedies</h2>
+<section id="deterministic-trend" class="level3"><h3 class="anchored" data-anchor-id="deterministic-trend">1. Deterministic trend</h3>
+<ul>
+<li>
+<p>A <strong>deterministic trend</strong> is a predictable, non-random component such as a straight line or quadratic curve.<br>
+Example:</p>
+<p><span class="math display">X_t = \alpha + \beta t + \epsilon_t</span></p>
+<p>where <span class="math inline">\epsilon_t</span> is stationary white noise.</p>
+</li>
+<li>
+<p>Solution:</p>
+<ul>
+<li>Fit and remove the trend (regression detrending), or<br>
+</li>
+<li>Use first differencing (removes linear trend).<br>
+</li>
+</ul>
+</li>
+<li><p>After detrending, the residuals should be stationary.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Parameters</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
+<span><span class="va">alpha</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">beta</span> <span class="op">&lt;-</span> <span class="fl">0.5</span></span>
+<span></span>
+<span><span class="co"># Simulate deterministic trend with noise</span></span>
+<span><span class="va">t</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="va">n</span></span>
+<span><span class="va">epsilon</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="va">alpha</span> <span class="op">+</span> <span class="va">beta</span> <span class="op">*</span> <span class="va">t</span> <span class="op">+</span> <span class="va">epsilon</span></span>
+<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">t</span>, <span class="va">X</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Fit regression for detrending</span></span>
+<span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">X</span> <span class="op">~</span> <span class="va">t</span>, data <span class="op">=</span> <span class="va">data</span><span class="op">)</span></span>
+<span><span class="va">data</span><span class="op">$</span><span class="va">resid</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># First differencing</span></span>
+<span><span class="va">data</span><span class="op">$</span><span class="va">diffX</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">X</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  t         X       resid      diffX
+1 1  9.939524 -0.52658288         NA
+2 2 10.769823 -0.19879580  0.8302982
+3 3 13.058708  1.58757892  2.2888858
+4 4 12.070508  0.09686791 -0.9881999
+5 5 12.629288  0.15313617  0.5587793
+6 6 14.715065  1.73640233  2.0857773</code></pre>
+</div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># --- Plot 1: Original series with fitted trend ---</span></span>
+<span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">t</span>, y <span class="op">=</span> <span class="va">X</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"blue"</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span>, color <span class="op">=</span> <span class="st">"red"</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Original Series with Deterministic Trend"</span>,</span>
+<span>       x <span class="op">=</span> <span class="st">"Time"</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">X</span><span class="op">[</span><span class="va">t</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">14</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># --- Plot 2: Residuals after regression detrending ---</span></span>
+<span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">t</span>, y <span class="op">=</span> <span class="va">resid</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"darkgreen"</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Residuals after Removing Trend (Detrended Series)"</span>,</span>
+<span>       x <span class="op">=</span> <span class="st">"Time"</span>, y <span class="op">=</span> <span class="st">"Residuals"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">14</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># --- Plot 3: First differenced series ---</span></span>
+<span><span class="va">p3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">t</span>, y <span class="op">=</span> <span class="va">diffX</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"purple"</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"First Differenced Series"</span>,</span>
+<span>       x <span class="op">=</span> <span class="st">"Time"</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">Delta</span><span class="op">*</span><span class="va">X</span><span class="op">[</span><span class="va">t</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">14</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Print all plots (Quarto will stack them nicely)</span></span>
+<span><span class="va">p1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="05-chap5_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="05-chap5_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="05-chap5_files/figure-html/unnamed-chunk-1-3.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="stochastic-trend" class="level3"><h3 class="anchored" data-anchor-id="stochastic-trend">2. Stochastic trend</h3>
+<ul>
+<li>
+<p>A <strong>stochastic trend</strong> arises from accumulated random shocks.<br>
+Example: Random walk</p>
+<p><span class="math display">X_t = X_{t-1} + \epsilon_t</span></p>
+<p>where shocks accumulate over time.<br></p>
+</li>
+<li><p>Unlike deterministic trends, stochastic trends are unpredictable and keep evolving.<br></p></li>
+<li><p>Apply non-seasonal differencing to remove stochastic trend.</p></li>
+<li><p>Remedy: First differencing usually removes the unit root, yielding stationarity.<br></p></li>
+<li><p>Testing: Augmented Dickey–Fuller (ADF), Phillips–Perron, or KPSS tests.</p></li>
+</ul>
+<p><strong>Key difference:</strong><br>
+- Deterministic trend = predictable pattern (e.g., straight line).<br>
+- Stochastic trend = unpredictable, driven by random shocks.</p>
+<p><strong>Non seasonal first-order differencing:</strong> <span class="math inline">Y'_t=Y_t - Y_{t-1}</span></p>
+<p>Miss one observation</p>
+<p><strong>Non seasonal second-order differencing:</strong> <span class="math inline">Y''_t=Y'_t - Y'_{t-1}</span></p>
+<p>Miss two observations</p>
+</section><section id="seasonality" class="level3"><h3 class="anchored" data-anchor-id="seasonality">3. Seasonality</h3>
+<ul>
+<li><p>Deterministic seasonal pattern → add seasonal dummies or Fourier terms.<br></p></li>
+<li><p>Stochastic seasonal trend → apply <strong>seasonal differencing</strong>:</p></li>
+<li><p>Seasonal ARIMA (SARIMA) models combine regular and seasonal differencing.</p></li>
+</ul>
+<p><strong>Seasonal differencing:</strong> <span class="math inline">Y_t - Y_{t-m}</span></p>
+<ul>
+<li><p>To get rid from prominent seasonal components.</p></li>
+<li><p>For monthly, <span class="math inline">m=12</span>, for quarterly, <span class="math inline">m=4</span>.</p></li>
+<li><p>For monthly, we will loose first 12 observations</p></li>
+<li><p>Seasonally differenced series will have <span class="math inline">T-m</span> observations. Usually we do not consider differencing more than twice.</p></li>
+</ul></section><section id="nonconstant-variance" class="level3"><h3 class="anchored" data-anchor-id="nonconstant-variance">4. Nonconstant variance</h3>
+<ul>
+<li>Some series show increasing variability over time. The data show different variation at different levels of the series.</li>
+<li>Remedies:
+<ul>
+<li>Variance-stabilizing transformations (log, square root, Box–Cox).<br>
+</li>
+<li>For conditional heteroscedasticity → fit GARCH-type models.</li>
+</ul>
+</li>
+</ul>
+<p><strong>What differences do you notice?</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="05-chap5_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Log transformation to stabilize variance</strong></p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Original dataset</span></span>
+<span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="va">AirPassengers</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Original scale"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Transformed dataset</span></span>
+<span><span class="va">AirPassengersBoxCox</span> <span class="op">=</span> <span class="fu">BoxCox</span><span class="op">(</span><span class="va">AirPassengers</span>, lambda <span class="op">=</span> <span class="st">"auto"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="va">AirPassengersBoxCox</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"Box Cox with lambda = "</span>, </span>
+<span>        <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/attributes.html">attributes</a></span><span class="op">(</span><span class="va">AirPassengersBoxCox</span><span class="op">)</span><span class="op">$</span><span class="va">lambda</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span>          <span class="op">)</span></span>
+<span><span class="va">p1</span><span class="op">|</span><span class="va">p2</span>              </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="05-chap5_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</section></section><section id="choosing-the-order-of-differencing" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="choosing-the-order-of-differencing">
+<span class="header-section-number">5.2</span> Choosing the Order of Differencing</h2>
+<ul>
+<li>Avoid <strong>over-differencing</strong> (adds unnecessary MA terms and inflates variance).<br>
+</li>
+<li>Visual inspection:
+<ul>
+<li>Random walk–like series → first differencing.<br>
+</li>
+<li>Strong seasonal cycle → seasonal differencing.<br>
+</li>
+</ul>
+</li>
+<li>Statistical tests (ADF, KPSS) can guide the choice.</li>
+</ul></section><section id="models-after-differencing" class="level2" data-number="5.3"><h2 data-number="5.3" class="anchored" data-anchor-id="models-after-differencing">
+<span class="header-section-number">5.3</span> Models after Differencing</h2>
+<ul>
+<li>Once stationarity is achieved, ARMA models can be fitted.<br>
+</li>
+<li>General class:
+<ul>
+<li>
+<span class="math inline">ARIMA(p,d,q)</span><br>
+</li>
+<li>Seasonal <span class="math inline">ARIMA (p,d,q)(P,D,Q))_m</span>
+</li>
+</ul>
+</li>
+<li>Sometimes include drift to capture mean shifts.</li>
+</ul></section><section id="seasonal-components" class="level2" data-number="5.4"><h2 data-number="5.4" class="anchored" data-anchor-id="seasonal-components">
+<span class="header-section-number">5.4</span> Seasonal components</h2>
+<ul>
+<li>The seasonal part of an AR or MA model will be seen in the seasonal lags of the PACF and ACF.</li>
+</ul>
+<p><strong>ARIMA(0,0,0)(0,0,1)12 will show</strong></p>
+<ul>
+<li><p>a spike at lag 12 in the ACF but no other significant spikes.</p></li>
+<li><p>The PACF will show exponential decay in the seasonal lags 12, 24, 36, . . . .</p></li>
+</ul>
+<p><strong>ARIMA(0,0,0)(1,0,0)12 will show</strong></p>
+<ul>
+<li><p>exponential decay in the seasonal lags of the ACF.</p></li>
+<li><p>a single significant spike at lag 12 in the PACF.</p></li>
+</ul>
+<section id="practical-examples" class="level3"><h3 class="anchored" data-anchor-id="practical-examples">Practical Examples</h3>
+<ul>
+<li><p>Simulated series with linear trend → stationary after first differencing.</p></li>
+<li><p>Monthly series with annual seasonality → stationary after seasonal differencing (s=12).</p></li>
+<li><p>Log-transformed economic series → removes variance growth, then differencing achieves stationarity.</p></li>
+</ul></section></section><section id="modelling-steps" class="level2" data-number="5.5"><h2 data-number="5.5" class="anchored" data-anchor-id="modelling-steps">
+<span class="header-section-number">5.5</span> Modelling steps</h2>
+<ol type="1">
+<li><p>Plot the data.</p></li>
+<li><p>Split time series into training, validation (optional), test.</p></li>
+<li><p>If necessary, transform the data (using a Box-Cox transformation) to stabilise the variance.</p></li>
+<li><p>If the data are non-stationary, take first differences of the data until the data are stationary.</p></li>
+<li><p>Examine the ACF/PACF to identify a suitable model.</p></li>
+<li><p>Try your chosen model(s), and to search for a better model.</p></li>
+<li><p>Check the residuals from your chosen model by plotting the ACF of the residuals, and doing a portmanteau test of the residuals. If they do not look like white noise, try a modified model.</p></li>
+<li><p>Once the residuals look like white noise, calculate forecasts.</p></li>
+</ol></section><section id="example-model-fitting" class="level2" data-number="5.6"><h2 data-number="5.6" class="anchored" data-anchor-id="example-model-fitting">
+<span class="header-section-number">5.6</span> Example: Model Fitting</h2>
+<p><strong>Step 1: Plot data</strong></p>
+<ol type="1">
+<li><p>Detect unusual observations in the data</p></li>
+<li><p>Detect non-stationarity by visual inspections of plots</p></li>
+</ol>
+<p>Stationary series:</p>
+<ul>
+<li><p>has a constant mean value and fluctuates around the mean.</p></li>
+<li><p>constant variance.</p></li>
+<li><p>no pattern predictable in the long-term.</p></li>
+</ul>
+<p><strong>Step 2: Split time series into training and test sets</strong></p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">training.ap</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/window.html">window</a></span><span class="op">(</span><span class="va">AirPassengers</span>, end<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1957</span>, <span class="fl">12</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">training.ap</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
+1949 112 118 132 129 121 135 148 148 136 119 104 118
+1950 115 126 141 135 125 149 170 170 158 133 114 140
+1951 145 150 178 163 172 178 199 199 184 162 146 166
+1952 171 180 193 181 183 218 230 242 209 191 172 194
+1953 196 196 236 235 229 243 264 272 237 211 180 201
+1954 204 188 235 227 234 264 302 293 259 229 203 229
+1955 242 233 267 269 270 315 364 347 312 274 237 278
+1956 284 277 317 313 318 374 413 405 355 306 271 306
+1957 315 301 356 348 355 422 465 467 404 347 305 336</code></pre>
+</div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">test.ap</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/window.html">window</a></span><span class="op">(</span><span class="va">AirPassengers</span>, start<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1958</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">test.ap</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
+1958 340 318 362 348 363 435 491 505 404 359 310 337
+1959 360 342 406 396 420 472 548 559 463 407 362 405
+1960 417 391 419 461 472 535 622 606 508 461 390 432</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">AirPassengers</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">1958</span>, colour<span class="op">=</span><span class="st">"forestgreen"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="05-chap5_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Training part</p>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">training.ap</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="05-chap5_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Step 3: Apply transformations</strong></p>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">log.airpassenger</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">training.ap</span><span class="op">)</span></span>
+<span><span class="co">#log.airpassenger &lt;- BoxCox(training.ap, lambda = 0)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">log.airpassenger</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="05-chap5_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Step 4: Take difference series</strong></p>
+<p><strong>Without differencing</strong></p>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">log.airpassenger</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="05-chap5_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggAcf</span><span class="op">(</span><span class="va">log.airpassenger</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="05-chap5_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>With differencing</strong></p>
+<p>Seasonal</p>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">log.airpassenger</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span>lag<span class="op">=</span><span class="fl">12</span><span class="op">)</span>  <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="05-chap5_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">log.airpassenger</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span>lag<span class="op">=</span><span class="fl">12</span><span class="op">)</span>  <span class="op">|&gt;</span> <span class="fu">ggAcf</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="05-chap5_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Non-seasonal</p>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">log.airpassenger</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span>lag<span class="op">=</span><span class="fl">1</span><span class="op">)</span>  <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="05-chap5_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">log.airpassenger</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span>lag<span class="op">=</span><span class="fl">1</span><span class="op">)</span>  <span class="op">|&gt;</span> <span class="fu">ggAcf</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="05-chap5_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Seasonal differencing + Non-seasonal differencing</p>
+<div class="cell">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">log.airpassenger</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span>lag<span class="op">=</span><span class="fl">12</span><span class="op">)</span>  <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span>lag<span class="op">=</span><span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="05-chap5_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">log.airpassenger</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span>lag<span class="op">=</span><span class="fl">12</span><span class="op">)</span>  <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span>lag<span class="op">=</span><span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">ggAcf</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="05-chap5_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Testing for nonstationarity for the presence of unit roots</strong></p>
+<ul>
+<li><p>Dickey and Fuller (DF) test</p></li>
+<li><p>Augmented DF test</p></li>
+<li><p>Phillips and Perron (PP) nonparametric test</p></li>
+<li><p>Kwiatkowski-Phillips-Schmidt-Shin (KPSS) test</p></li>
+</ul>
+<p>KPSS test</p>
+<p><strong>H0:</strong> Series is level or trend stationary.</p>
+<p><strong>H1:</strong> Series is not stationary.</p>
+<div class="cell">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">urca</span><span class="op">)</span></span>
+<span><span class="va">diff.sdiff.log.passenger</span> <span class="op">&lt;-</span> <span class="va">log.airpassenger</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span>lag<span class="op">=</span><span class="fl">12</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span>lag<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">diff.sdiff.log.passenger</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/urca/man/ur.kpss.html">ur.kpss</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/urca/man/summary-methods.html">summary</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+####################### 
+# KPSS Unit Root Test # 
+####################### 
+
+Test is of type: mu with 3 lags. 
+
+Value of test-statistic is: 0.0942 
+
+Critical value for a significance level of: 
+                10pct  5pct 2.5pct  1pct
+critical values 0.347 0.463  0.574 0.739</code></pre>
+</div>
+</div>
+<p>KPSS test</p>
+<div class="cell">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/urca/man/ur.kpss.html">ur.kpss</a></span><span class="op">(</span><span class="va">log.airpassenger</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/pkg/urca/man/summary-methods.html">summary</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+####################### 
+# KPSS Unit Root Test # 
+####################### 
+
+Test is of type: mu with 4 lags. 
+
+Value of test-statistic is: 2.113 
+
+Critical value for a significance level of: 
+                10pct  5pct 2.5pct  1pct
+critical values 0.347 0.463  0.574 0.739</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sdiff.log.airpassenger</span> <span class="op">&lt;-</span> <span class="va">training.ap</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span>lag<span class="op">=</span><span class="fl">12</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/urca/man/ur.kpss.html">ur.kpss</a></span><span class="op">(</span><span class="va">sdiff.log.airpassenger</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/pkg/urca/man/summary-methods.html">summary</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+####################### 
+# KPSS Unit Root Test # 
+####################### 
+
+Test is of type: mu with 3 lags. 
+
+Value of test-statistic is: 0.1264 
+
+Critical value for a significance level of: 
+                10pct  5pct 2.5pct  1pct
+critical values 0.347 0.463  0.574 0.739</code></pre>
+</div>
+</div>
+<p><strong>Step 5: Examine the ACF/PACF to identify a suitable model</strong></p>
+<ul>
+<li><p><span class="math inline">d=1</span> and <span class="math inline">D=1</span> (from step 3)</p></li>
+<li><p>Significant spike at lag 1 in ACF suggests non-seasonal MA(1) component.</p></li>
+<li><p>Significant spike at lag 12 in ACF suggests seasonal MA(1) component.</p></li>
+<li><p>Initial candidate model: <span class="math inline">ARIMA(0,1,1)(0,1,1)_{12}</span>.</p></li>
+<li><p>By analogous logic applied to the PACF, we could also have started with <span class="math inline">ARIMA(1,1,0)(1,1,0)_{12}</span>.</p></li>
+<li><p>Let’s try both</p></li>
+</ul>
+<p><strong>Initial model:</strong></p>
+<p><span class="math inline">ARIMA(0,1,1)(0,1,1)_{12}</span></p>
+<p><span class="math inline">ARIMA(1,1,0)(1,1,0)_{12}</span></p>
+<p><strong>Try some variations of the initial model:</strong></p>
+<p><span class="math inline">ARIMA(0,1,1)(1,1,1)_{12}</span></p>
+<p><span class="math inline">ARIMA(1,1,1)(1,1,0)_{12}</span></p>
+<p><span class="math inline">ARIMA(1,1,1)(1,1,1)_{12}</span></p>
+<p>Both the ACF and PACF show significant spikes at lag 3, and almost significant spikes at lag 3, indicating that some additional non-seasonal terms need to be included in the model.</p>
+<p><span class="math inline">ARIMA(3,1,1)(1,1,1)_{12}</span></p>
+<p><span class="math inline">ARIMA(1,1,3)(1,1,1)_{12}</span></p>
+<p><span class="math inline">ARIMA(3,1,3)(1,1,1)_{12}</span></p>
+<p>AICc</p>
+<p><strong>Initial model: AICc</strong></p>
+<p><span class="math inline">ARIMA(0,1,1)(0,1,1)_{12}</span>: -344.33 (the smallest AICc)</p>
+<p><span class="math inline">ARIMA(1,1,0)(1,1,0)_{12}</span>: -336.32</p>
+<p><strong>Try some variations of the initial model:</strong></p>
+<p><span class="math inline">ARIMA(0,1,1)(1,1,1)_{12}</span>: -342.3 (second smallest AICc)</p>
+<p><span class="math inline">ARIMA(1,1,1)(1,1,0)_{12}</span>: -336.08</p>
+<p><span class="math inline">ARIMA(1,1,1)(1,1,1)_{12}</span>: -340.74</p>
+<p><span class="math inline">ARIMA(3,1,1)(1,1,1)_{12}</span>: -338.89</p>
+<p><span class="math inline">ARIMA(1,1,3)(1,1,1)_{12}</span>: -339.42</p>
+<p><span class="math inline">ARIMA(3,1,3)(1,1,1)_{12}</span>: -335.65</p>
+<p><strong>Step 7: Residual diagnostics</strong></p>
+<p>Fitted values:</p>
+<p><span class="math inline">\hat{Y}_{t|t-1}</span>: Forecast of <span class="math inline">Y_t</span> based on observations <span class="math inline">Y_1,...Y_t</span>.</p>
+<p>Residuals</p>
+<p><span class="math display">e_t=Y_t - \hat{Y}_{t|t-1}</span></p>
+<p>Assumptions of residuals</p>
+<ul>
+<li>
+<span class="math inline">\{e_t\}</span> uncorrelated. If they aren’t, then information left in residuals that should be used in computing forecasts.</li>
+</ul>
+<!--If you see autocorrelations, then you should go back and adjust residuals. In theoretically, If there is information leftover and we can do something better. But it is not the case you will also be able to do with. If can't you can't. Then stop. If you check you know you have done the best as you can.--><ul>
+<li>
+<span class="math inline">\{e_t\}</span> have mean zero. If they don’t, then forecasts are biased.</li>
+</ul>
+<!--If you see autocorrelations, then you should go back and adjust residuals. We want our residuals to be unbiased. If the mean is not zero. Go and adjust the model. Add an intercept. Whatever you want to do.--><p><strong>Useful properties (for prediction intervals)</strong></p>
+<ul>
+<li><p><span class="math inline">\{e_t\}</span> have constant variance.</p></li>
+<li><p><span class="math inline">\{e_t\}</span> are normally distributed.</p></li>
+</ul>
+<!--If the following assumptions are wrong that doesn't mean your forecasts are incorrect. --><p><strong>Step 7: Residual diagnostics (cont.)</strong></p>
+<p>H0: Data are not serially correlated.</p>
+<p>H1: Data are serially correlated.</p>
+<div class="cell">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fit1</span> <span class="op">&lt;-</span> <span class="fu">Arima</span><span class="op">(</span><span class="va">training.ap</span>, </span>
+<span>              order<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>,</span>
+<span>seasonal<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>, lambda <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="fu">checkresiduals</span><span class="op">(</span><span class="va">fit1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="05-chap5_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Ljung-Box test
+
+data:  Residuals from ARIMA(0,1,1)(0,1,1)[12]
+Q* = 14.495, df = 20, p-value = 0.8045
+
+Model df: 2.   Total lags used: 22</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fit1</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">ggtsdisplay</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="05-chap5_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fit3</span> <span class="op">&lt;-</span> <span class="fu">Arima</span><span class="op">(</span><span class="va">training.ap</span>, </span>
+<span>              order<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>,</span>
+<span>seasonal<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>, lambda <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="fu">checkresiduals</span><span class="op">(</span><span class="va">fit3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="05-chap5_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Ljung-Box test
+
+data:  Residuals from ARIMA(0,1,1)(1,1,1)[12]
+Q* = 13.971, df = 19, p-value = 0.7854
+
+Model df: 3.   Total lags used: 22</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fit3</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">ggtsdisplay</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="05-chap5_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Step 8: Calculate forecasts</strong></p>
+<p><span class="math inline">ARIMA(0,1,1)(0,1,1)_{12}</span></p>
+<div class="cell">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fit1</span> <span class="op">%&gt;%</span> <span class="fu">forecast</span><span class="op">(</span>h<span class="op">=</span><span class="fl">36</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="05-chap5_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math inline">ARIMA(0,1,1)(1,1,1)_{12}</span></p>
+<div class="cell">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fit3</span> <span class="op">%&gt;%</span> <span class="fu">forecast</span><span class="op">(</span>h<span class="op">=</span><span class="fl">36</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="05-chap5_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math inline">ARIMA(0,1,1)(0,1,1)_{12}</span></p>
+<div class="cell">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fit1.forecast</span> <span class="op">&lt;-</span> <span class="va">fit1</span> <span class="op">%&gt;%</span> <span class="fu">forecast</span><span class="op">(</span>h<span class="op">=</span><span class="fl">36</span><span class="op">)</span> </span>
+<span><span class="va">fit1.forecast</span><span class="op">$</span><span class="va">mean</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Jan      Feb      Mar      Apr      May      Jun      Jul      Aug
+1958 350.6592 339.1766 396.7654 389.3934 394.7295 460.6986 512.2818 507.5185
+1959 394.8025 381.8745 446.7129 438.4129 444.4207 518.6945 576.7713 571.4083
+1960 444.5029 429.9474 502.9482 493.6032 500.3674 583.9912 649.3792 643.3411
+          Sep      Oct      Nov      Dec
+1958 445.0042 386.2473 339.3564 381.5803
+1959 501.0243 434.8708 382.0769 429.6162
+1960 564.0966 489.6152 430.1753 483.6992</code></pre>
+</div>
+</div>
+<p><span class="math inline">ARIMA(0,1,1)(1,1,1)_{12}</span></p>
+<div class="cell">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fit3.forecast</span> <span class="op">&lt;-</span> <span class="va">fit3</span> <span class="op">%&gt;%</span> <span class="fu">forecast</span><span class="op">(</span>h<span class="op">=</span><span class="fl">36</span><span class="op">)</span> </span>
+<span><span class="va">fit3.forecast</span><span class="op">$</span><span class="va">mean</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Jan      Feb      Mar      Apr      May      Jun      Jul      Aug
+1958 351.0115 339.0589 396.3161 389.4484 395.0305 461.6590 513.6099 507.9900
+1959 395.2760 381.5215 446.3245 438.4261 444.8906 520.5608 578.7432 573.0358
+1960 444.7886 429.3347 502.2289 493.3544 500.6143 585.7116 651.2077 644.7354
+          Sep      Oct      Nov      Dec
+1958 445.3297 386.3269 339.4872 381.8812
+1959 501.8766 435.0725 382.3290 429.4328
+1960 564.7108 489.5677 430.2174 483.2724</code></pre>
+</div>
+</div>
+<p><strong>Step 9: Evaluate forecast accuracy</strong></p>
+<p>How well our model is doing for out-of-sample?</p>
+<!--So far we have talked about fitted values and residuals.-->
+<!--Train data and Test data. We want to know if forecasts doing well for out-of-sample.-->
+<p>Forecast error = True value - Observed value</p>
+<p><span class="math display">e_{T+h}=Y_{T+h}-\hat{Y}_{T+h|T}</span></p>
+<p>Where,</p>
+<p><span class="math inline">Y_{T+h}</span>: <span class="math inline">(T+h)^{th}</span> observation, <span class="math inline">h=1,..., H</span></p>
+<p><span class="math inline">\hat{Y}_{T+h|T}</span>: Forecast based on data uo to time <span class="math inline">T</span>.</p>
+<ul>
+<li><p><strong>True</strong> forecast error as the test data is not used in computing <span class="math inline">\hat{Y}_{T+h|T}</span>.</p></li>
+<li><p>Unlike, residuals, forecast errors on the test set involve multi-step forecasts.</p></li>
+<li><p>Use forecast error measures to evaluate the models.</p></li>
+</ul>
+<!--Since, true forecast error, no hat involved.--><p><span class="math inline">ARIMA(0,1,1)(0,1,1)_{12}</span></p>
+<div class="cell">
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fit1.forecast</span> <span class="op">&lt;-</span> <span class="va">fit1</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">forecast</span><span class="op">(</span>h<span class="op">=</span><span class="fl">36</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">accuracy</span><span class="op">(</span><span class="va">fit1.forecast</span><span class="op">$</span><span class="va">mean</span>, <span class="va">test.ap</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                ME   RMSE      MAE       MPE     MAPE       ACF1 Theil's U
+Test set -33.71566 36.559 33.71566 -8.112567 8.112567 0.08524612 0.7974916</code></pre>
+</div>
+</div>
+<p><span class="math inline">ARIMA(0,1,1)(1,1,1)_{12}</span></p>
+<div class="cell">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fit3.forecast</span> <span class="op">&lt;-</span> <span class="va">fit3</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">forecast</span><span class="op">(</span>h<span class="op">=</span><span class="fl">36</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">accuracy</span><span class="op">(</span><span class="va">fit3.forecast</span><span class="op">$</span><span class="va">mean</span>, <span class="va">test.ap</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                ME     RMSE      MAE       MPE     MAPE       ACF1 Theil's U
+Test set -34.12174 36.87661 34.12174 -8.190874 8.190874 0.06782644 0.8019226</code></pre>
+</div>
+</div>
+<p><span class="math inline">ARIMA(0,1,1)(0,1,1)_{12}</span> MAE, MAPE is smaller than <span class="math inline">ARIMA(0,1,1)(1,1,1)_{12}</span>. Hence, we select <span class="math inline">ARIMA(0,1,1)(0,1,1)_{12}</span> to forecast future values.</p>
+</section><section id="auto.arima" class="level2" data-number="5.7"><h2 data-number="5.7" class="anchored" data-anchor-id="auto.arima">
+<span class="header-section-number">5.7</span> <code>auto.arima</code>
+</h2>
+<p>Your turn: Explain the steps and logic behind the auto.arima() function in R for automatically identifying the appropriate ARIMA/SARIMA model.</p>
+</section><section id="reading" class="level2" data-number="5.8"><h2 data-number="5.8" class="anchored" data-anchor-id="reading">
+<span class="header-section-number">5.8</span> Reading</h2>
+<p><a href="https://jtr13.github.io/cc19/visualization-in-time-series-analysis.html">https://jtr13.github.io/cc19/visualization-in-time-series-analysis.html</a></p>
+
+
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./04-chap4.html" class="pagination-link" aria-label="Models For Stationary Time Series">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Models For Stationary Time Series</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./06-chap6.html" class="pagination-link" aria-label="Time Series Decomposition">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Time Series Decomposition</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
