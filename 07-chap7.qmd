@@ -1,0 +1,22 @@
+# Spatial Data Visualisation {#sec-ch7}
+
+[Slides](https://thiyanga-spatiotemporal.netlify.app/posts/spatial/spatial_analysis.pdf)
+
+## Spatial Continuity
+
+Spatial continuity is a concept commonly used in geostatistics, spatial analysis, and environmental sciences. It describes how similar or related the values of a variable are at locations that are close to each other in space. Essentially, it measures the degree to which nearby locations resemble each other.
+
+Here’s a breakdown:
+
+Intuitive Explanation
+
+If a variable (e.g., soil pH, temperature, rainfall, or pollutant concentration) changes gradually over space, then it has high spatial continuity.
+
+If it changes abruptly or seems random from one location to another, it has low spatial continuity.
+
+Formal Concept
+
+Spatial continuity is often modeled using covariance or semivariogram functions in geostatistics.
+
+The semivariogram quantifies how the similarity between measurements decreases as the distance between them increases.
+
