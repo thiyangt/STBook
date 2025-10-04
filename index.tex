@@ -313,7 +313,7 @@
 
 \markboth{Copyright notice}{Copyright notice}
 
-Produced on 27 September 2025.
+Produced on 4 October 2025.
 
 © Thiyanga S. Talagala (2025).
 
@@ -1389,9 +1389,9 @@ The autocorrelation function of \({X_t}\) at lag \((h)\) is
 
 \[\rho_X(h)=\frac{\gamma_X(h)}{\gamma_X(0)}=Cor(X_{t+h}, X_t).\]
 
-\section{Weekly stationary}\label{weekly-stationary}
+\section{Weakly stationary}\label{weakly-stationary}
 
-A time series \({X_t}\) is called weekly stationary if
+A time series \({X_t}\) is called weakly stationary if
 
 \begin{itemize}
 \item
@@ -1992,18 +1992,28 @@ In this chapter we will discuss family of autoregressive moving average
 \section{General Linear Process}\label{general-linear-process}
 
 A \textbf{linear process} is a time series written as an infinite linear
-combination of random shocks \(\{\varepsilon_t\}\):
+combination of random shocks \(\{\varepsilon_t\}\). These shocks are
+randomly drawn from a fixed distribution, usually Normal and having mean
+zero and variance \(\sigma^2_{\epsilon}\). Such a sequence is called a
+white noise process.
 
 \[X_t = \mu + \sum_{j=0}^{\infty} \psi_j \, \varepsilon_{t-j},\]
 
+or
+
+\[X_t = \mu + \Psi(B)\epsilon_t\]
+
 where,
 
-\(\mu\) is the mean
+\(\mu\) is a parameter that determines the ``level'' of the process
 
 \(\{\psi_j\}\) are coefficients (weights)
 
-\(\varepsilon_t \sim \text{i.i.d. } (0, \sigma^2)\) are white noise
-shocks.
+\(\varepsilon_t \sim \text{i.i.d. } (0, \sigma^2_\epsilon)\) are white
+noise shocks.
+
+\(\Psi(B)\) is the linear operator that transforms \(\epsilon_t\) into
+\(X_t\). This is called transfer function or linear filter.
 
 \section{Moving Average Processes}\label{moving-average-processes}
 
@@ -2205,7 +2215,7 @@ exists if \(\phi_1 \neq 1 .\) The mean of \(Y_t\) is zero if and only if
 \subsection{Variance and the stationary condition of AR (1)
 process}\label{variance-and-the-stationary-condition-of-ar-1-process}
 
-First take variance of both sides of Equation @ref(eq:ar)
+First take variance of both sides of Equation (1)
 
 \[Var(Y_t)=Var(\phi_0+\phi_1 Y_{t-1}+\epsilon_t)\]
 
@@ -2221,9 +2231,9 @@ Under the stationarity condition, \(Var(Y_t)=Var(Y_{t-1})\). Hence,
 
 provided that \(\phi_1^2 < 1\) or \(|\phi_1| < 1\) (The variance of a
 random variable is bounded and non-negative). The necessary and
-sufficient condition for the \(AR(1)\) model in Equation @ref(eq:ar) to
-be weakly stationary is \(|\phi_1| < 1\). This condition is equivalent
-to saying that the root of \(1-\phi_1B = 0\) must lie outside the unit
+sufficient condition for the \(AR(1)\) model in Equation (1) to be
+weakly stationary is \(|\phi_1| < 1\). This condition is equivalent to
+saying that the root of \(1-\phi_1B = 0\) must lie outside the unit
 circle. This can be explained as below
 
 Using the backshift notation we can write \(AR(1)\) process as
@@ -2263,17 +2273,15 @@ Now we have
 process}\label{autocorrelation-function-of-an-ar1-process}
 
 To derive autocorrelation function of an AR(1) process we first multiply
-both sides of Equation @ref(eq:ar) by \(Y_{t-k}\) and take expected
-values:
+both sides of Equation (1) by \(Y_{t-k}\) and take expected values:
 
 \[E(Y_tY_{t-k})=\phi_0E(Y_{t-k})+\phi_1 E(Y_{t-1}Y_{t-k})+E(\epsilon_tY_{t-k})\]
 Since \(\epsilon_t\) and \(Y_{t-k}\) are independent and using the
-results in Equation @ref(eq:3)
+results in Equation \textbf{?@eq-3}
 
 \[\gamma_k + \mu^2 = \phi_0 \mu+\phi_1(\gamma_{k-1}+\mu^2)\]
 
-Substituting the results in Equation @ref(eq:2) to Equation @ref(eq:3)
-we get
+Substituting the results in Equation (2) to Equation (3) we get
 
 \begin{equation}
 \gamma_k = \phi_1 \gamma_{k-1}.
@@ -2349,8 +2357,8 @@ Solve it until you obtain the Eq. (a) as shown below.
 \gamma_0 (1-\phi_1^2 - \phi_2^2) = 2\phi_1\phi_2\gamma_1+\sigma^2.
 \end{equation}
 
-Next multiply both sides of Equation @ref(eq:ar2) by \(Y_{t-1}\) and
-obtain an expression for \(\gamma_1\). Let's call this Eq. (b).
+Next multiply both sides of Equation 7 by \(Y_{t-1}\) and obtain an
+expression for \(\gamma_1\). Let's call this Eq. (b).
 
 Solve Eq. (a) and (b) for \(\gamma_0.\)
 
@@ -2391,8 +2399,7 @@ stationarity condition of \(AR(2)\) process.
 process}\label{autocorrelation-function-of-an-ar2-process}
 
 To derive autocorrelation function of an AR(2) process we first multiply
-both sides of Equation @ref(eq:ar2) by \(Y_{t-k}\) and take expected
-values:
+both sides of Equation 7 by \(Y_{t-k}\) and take expected values:
 
 \begin{align}
 E(Y_tY_{t-k}) &= E(\phi_0Y_{t-k}+\theta_1Y_{t-1}Y_{t-k}+\theta_2Y_{t-2}Y_{t-k})+\epsilon_tY_{t-k} \\
@@ -2400,8 +2407,8 @@ E(Y_tY_{t-k}) &= E(\phi_0Y_{t-k}+\theta_1Y_{t-1}Y_{t-k}+\theta_2Y_{t-2}Y_{t-k})+
 \end{align}
 
 Using the independence between \(\epsilon_t\) and \(Y_{t-1}\),
-\(E(\epsilon_t Y_{t-k})=0\) and the results in Equation @ref(eq:3) (This
-is valid for AR(2)) we have
+\(E(\epsilon_t Y_{t-k})=0\) and the results in Equation 4 (This is valid
+for AR(2)) we have
 
 \[\gamma_k + \mu^2 = \gamma_0 \mu + \theta_1 (\gamma_{k-1}+\mu^2)+\phi_2 (\gamma_{k-2}+\mu^2).\]
 
@@ -2413,8 +2420,7 @@ Solving for \(\gamma_k\) we get
  \gamma_k=\phi_1\gamma_{k-1}+\phi_2\gamma_{k-2}.
 \end{align}
 
-By dividing the both sides of Equation @ref(eq:eq9) by \(\gamma_0\), we
-have
+By dividing the both sides of Equation 10 by \(\gamma_0\), we have
 
 \begin{align}
  \rho_k=\phi_1\rho_{k-1}+\phi_2\rho_{k-2}.
@@ -2459,17 +2465,17 @@ characteristic must lie outside the unit circle.
 \subsection{Autocorrelation function (ACF) of an AR(p)
 process}\label{autocorrelation-function-acf-of-an-arp-process}
 
-\textbf{Question 5: } Similar to the results in Equation @ref(eq:yule2)
-for \(AR(2)\) process, obtain the following recursive relationship for
+\textbf{Question 5: } Similar to the results in Equation 12 for
+\(AR(2)\) process, obtain the following recursive relationship for
 \(AR(p)\).
 
 \begin{align}
 \rho_k = \phi_1\rho_{k-1}+\phi_2 \rho_{k-2} + ... + \phi_p \rho_{k-p}.
 \end{align}
 
-Setting \(k=1, 2, ..., p\) into Equation @ref(eq:yulep) and using
-\(\rho_0=1\) and \(\rho_{-k}=\rho_k\), we get the Yule-Walker equations
-for \(AR(p)\) process
+Setting \(k=1, 2, ..., p\) into Equation 14 and using \(\rho_0=1\) and
+\(\rho_{-k}=\rho_k\), we get the Yule-Walker equations for \(AR(p)\)
+process
 
 \begin{equation}
 \begin{aligned}
@@ -2480,8 +2486,7 @@ for \(AR(p)\) process
 \end{aligned}
 \end{equation}
 
-The Yule-Walker equations in @ref(eq:13) can be written in matrix form
-as below.
+The Yule-Walker equations in 14 can be written in matrix form as below.
 
 \[\left[\begin{array}
 {r}
@@ -2554,8 +2559,8 @@ first autocorrelations are \(\rho_1=0.9\); \(\rho_2=0.9\);
 (PACF)}\label{the-partial-autocorrelation-function-pacf}
 
 Let \(\phi_{ki}\), the \(j\)th coefficient in an \(AR(k)\) model. Then,
-\(\phi_{kk}\) is the last coefficient. From Equation @ref(eq:yulep), the
-\(\phi_{kj}\) satisfy the set of equations
+\(\phi_{kk}\) is the last coefficient. From Equation
+\textbf{?@eq-yulep}, the \(\phi_{kj}\) satisfy the set of equations
 
 \begin{equation}
 \rho_j=\phi_{k1}\rho_{j-1}+...+\phi_{k(k-1)}\rho_{j-k+1}+\phi_{kk}\rho_{j-k},
@@ -2670,21 +2675,20 @@ partial autocorrelation between \(Y_t\) and \(Y_{t-k}\) is the
 correlation between \(Y_t\) and \(Y_{t-k}\) after removing the effect of
 the intermediate variables \(Y_{t-1}, Y_{t-2}, ..., Y_{t-k+1}\).
 
-In general the determinant in the numerator of Equations @ref(eq:p1),
-@ref(eq:p2) and @ref(eq:p3) has the same elements as that in the
-denominator, but replacing the last column with
-\(\bm{\rho_k}= (\rho_1, \rho_2,...\rho_k).\)
+In general the determinant in the numerator of Equations 18, 19 and 20
+has the same elements as that in the denominator, but replacing the last
+column with \(\bm{\rho_k}= (\rho_1, \rho_2,...\rho_k).\)
 
 \subsection{PACF for AR(1) models}\label{pacf-for-ar1-models}
 
-From Equation @ref(eq:acfar1) we have
+From Equation 6 we have
 
 \(\rho_k=\phi_1^k\) for \(k=0, 1, 2, 3,...\)
 
 Hence, for \(k=1\), the first partial autocorrelation coefficient is
 
-\[\phi_{11}=\rho_1=\phi_1.\] From @ref(eq:p2) for \(k=2\), the second
-partial autocorrelation coefficient is
+\[\phi_{11}=\rho_1=\phi_1.\] From 19 for \(k=2\), the second partial
+autocorrelation coefficient is
 
 \[\phi_{22}=\frac{\rho_2-\rho_1^2}{1-\rho_1^2}=\frac{\phi_1^2-\phi_1^2}{1-\phi_1^2} = 0\].
 
@@ -2740,8 +2744,7 @@ process}\label{autocorrelation-function-of-an-ma1-process}
 \subsubsection{Method 1}\label{method-1}
 
 To obtain the autocorrelation function of \(MA(1)\), we first multiply
-both sides of Equation @ref(eq:ma1) by \(Y_{t-k}\) and take the
-expectation.
+both sides of Equation 21 by \(Y_{t-k}\) and take the expectation.
 
 \begin{equation}
 \begin{aligned}
@@ -2774,7 +2777,7 @@ Now we have
   E(Y_t Y_{t-k}) = \gamma_k + \theta_0^2.
 \end{equation}
 
-Using the Equations @ref(eq:ma1acfs2) and @ref(eq:covma1) we have
+Using the Equations 23 and 25 we have
 
 \begin{equation}
   \gamma_k = \theta_0^2 - \theta_0^2 + \theta_1E(\epsilon_{t-1}Y_{t-k}).
@@ -2806,7 +2809,7 @@ E(\epsilon_{t-1}Y_{t-1}) &= E(\epsilon_{t-1}^2)=\sigma^2\\
 \end{aligned}
 \end{equation}
 
-Substituting @ref(eq:covma5) in @ref(eq:covma3) we get
+Substituting \textbf{?@eq-covma5} in \textbf{?@eq-covma3} we get
 
 \[\gamma_1=\theta_1\sigma^2\].
 
@@ -2814,7 +2817,7 @@ Furthermore, \(\gamma_0 = Var(Y_t)=  (1+\theta_1^2)\sigma^2\). Hence
 
 \[\rho_1=\frac{\gamma_1}{\gamma_0}=\frac{\theta}{1+\theta_1^2}.\]
 
-When \(k=2\), from Equation @ref(eq:covma3) and
+When \(k=2\), from Equation \textbf{?@eq-covma3} and
 \(E(\epsilon_{t-1}Y_{k-2}) = 0\) (future error and past observation) we
 get \(\gamma_2=0\). Hence \(\rho_2=0\). Similarly, we can show that
 
